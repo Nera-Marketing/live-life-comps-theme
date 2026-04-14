@@ -1,0 +1,48 @@
+/**
+ * Live Life Prizes — My Account overrides
+ * Beats parent wp_head indigo/white (inc/woocommerce.php nera_my_account_styles) and wallet badge inline gradient.
+ */
+
+body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a {
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border-color: var(--color-gray-200);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-gray-300);
+  color: var(--color-text-primary);
+}
+
+body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-active a {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
+  color: var(--color-on-primary) !important;
+  border-color: transparent !important;
+  box-shadow: 0 10px 15px -3px rgba(155, 80, 57, 0.35) !important;
+}
+
+body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-active a:hover {
+  box-shadow: 0 20px 25px -5px rgba(155, 80, 57, 0.45) !important;
+}
+
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content {
+  background: var(--color-surface);
+  border-color: var(--color-gray-200);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.woocommerce-account.logged-in .entry-title,
+body.woocommerce-account.logged-in .page-title,
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
+  color: var(--color-text-primary);
+}
+
+/* WooWallet badge — parent sets inline indigo gradient */
+.wallet-balance-badge {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
+  color: var(--color-on-primary) !important;
+  box-shadow: 0 2px 4px rgba(155, 80, 57, 0.35) !important;
+}

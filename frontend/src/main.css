@@ -1,0 +1,125 @@
+/**
+ * Live Life Prizes — Concept B: Earthy Editorial
+ * Child Tailwind entry; paths relative to frontend/src/
+ */
+
+@import 'tailwindcss';
+
+@source "../../**/*.php";
+@source "../assets/**/*.js";
+
+/* Palette reference: bronze #d8b582, terracotta #9b5039 / #c4704e, canvas #0c0b09, surface #1e1c18 */
+@theme {
+  --color-primary: #9b5039;
+  --color-primary-dark: #7a3d2a;
+  --color-secondary: #1a1815;
+  --color-background-light: #0c0b09;
+  --color-background-dark: #141310;
+  --color-surface: #1e1c18;
+  --color-accent: #c4704e;
+  --color-on-primary: #d8b582;
+  --color-success: #10b981;
+  --color-danger: #dc2626;
+  --color-warning: #f77f00;
+  --color-info: #c4704e;
+  --color-text-primary: #d8b582;
+  --color-text-secondary: #a89572;
+
+  /* Warm neutrals for dark UI (borders, muted chrome) */
+  --color-gray-50: #141210;
+  --color-gray-100: #1a1815;
+  --color-gray-200: #2e2a24;
+  --color-gray-300: #454039;
+  --color-gray-400: #5c5348;
+  --color-gray-500: #7a6f62;
+  --color-gray-600: #9a8f7e;
+  --color-gray-700: #b8a88f;
+  --color-gray-800: #d4c4a8;
+  --color-gray-900: #e8dcc0;
+
+  /* Remap indigo scale so parent utilities like `to-indigo-600` stay on-palette */
+  --color-indigo-50: #2a1812;
+  --color-indigo-100: #3d2418;
+  --color-indigo-200: #5a3320;
+  --color-indigo-300: #7a4328;
+  --color-indigo-400: #9b5039;
+  --color-indigo-500: #b85c40;
+  --color-indigo-600: #c4704e;
+  --color-indigo-700: #a85d3f;
+  --color-indigo-800: #8a4a32;
+  --color-indigo-900: #6d3a28;
+
+  --font-heading: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-primary: 0 10px 20px -10px rgba(155, 80, 57, 0.38);
+}
+
+/* Nera Core plugin bridge — theme owns palette */
+:root {
+  --nera-primary: var(--color-primary);
+  --nera-text: var(--color-text-primary);
+  --nera-text-secondary: var(--color-text-secondary);
+  --nera-bg: var(--color-background-light);
+  --nera-surface: var(--color-surface);
+  --nera-border: var(--color-gray-200);
+}
+
+/* Parent utilities embed fixed indigo hex — redeclare after @theme */
+@utility text-gradient-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility bg-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+@utility bg-gradient-dark {
+  background: linear-gradient(135deg, var(--color-background-dark), var(--color-primary));
+}
+
+@utility shadow-primary {
+  box-shadow: var(--shadow-primary);
+}
+
+@utility btn-checkout {
+  @apply flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-gradient-to-r from-primary to-indigo-600 font-bold text-lg shadow-lg shadow-primary/30 transition-all duration-300;
+  color: var(--color-on-primary);
+
+  &:hover {
+    @apply shadow-xl shadow-primary/40 -translate-y-0.5 brightness-110;
+  }
+}
+
+/*
+ * Concept B: bronze text on terracotta fills.
+ * Parent forces `text-white` on `.bg-gradient-primary` — override after parent bundle.
+ */
+.bg-gradient-primary,
+.bg-primary,
+[class*='bg-gradient-primary'] {
+  color: var(--color-on-primary);
+}
+
+.bg-gradient-primary a,
+.bg-primary a,
+[class*='bg-gradient-primary'] a {
+  color: var(--color-on-primary) !important;
+  text-decoration: none !important;
+}
+
+.bg-gradient-primary a:hover,
+.bg-primary a:hover,
+a.bg-gradient-primary:hover,
+a.bg-primary:hover {
+  color: var(--color-on-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Links on dark canvas: hover toward accent, not cool primary-dark */
+body a:hover {
+  color: var(--color-accent);
+}
