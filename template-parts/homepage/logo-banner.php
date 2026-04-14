@@ -34,9 +34,9 @@ $site_name = get_bloginfo('name');
 ?>
 <section class="logo-banner relative overflow-hidden py-8 lg:py-10 bg-[#0c0b09] border-b border-[rgba(216,181,130,0.15)]" id="logo-banner" data-aos="fade-in" data-aos-duration="1000">
 
-  <!-- Radial glow behind the logo -->
+  <!-- Radial glow behind the logo (subtle VLB gold on dark canvas) -->
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-    <div class="w-[480px] h-[320px] rounded-full bg-[#d8b582] opacity-[0.035] blur-[72px]"></div>
+    <div class="w-[480px] h-[320px] rounded-full bg-[#d8b582] opacity-[0.06] blur-[72px]"></div>
   </div>
 
   <div class="relative w-full max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-center gap-6">
@@ -48,9 +48,9 @@ $site_name = get_bloginfo('name');
     </div>
 
     <!-- Logo -->
-    <a href="<?php echo esc_url(home_url('/')); ?>" class="block flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-earthy-bronze-40 rounded">
+    <a href="<?php echo esc_url(home_url('/')); ?>" class="block flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#d8b582]/50 rounded">
       <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($site_name); ?>"
-        class="max-h-[100px] lg:max-h-[120px] w-auto object-contain mx-auto">
+        class="max-h-[100px] lg:max-h-[250px] w-auto object-contain mx-auto">
     </a>
 
     <!-- Right flanking line -->
