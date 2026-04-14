@@ -153,7 +153,7 @@ a.bg-primary:hover {
 }
 
 .hero-primary {
-  color: var(--color-background-light) !important;
+  color: #1c1917 !important;
 }
 
 .hero-primary:hover {
@@ -438,6 +438,109 @@ button[class*='bg-gradient'][class*='9b5039'] {
   .prizes .prizes-header-left h2 {
     font-size: 28px;
   }
+}
+
+/* ==========================================================================
+   Homepage (Live Life template): terracotta-led canvas (colors-concept.md #9b5039)
+   + bronze/VLB gold foregrounds; white cards for prizes + account prompt.
+   Scoped to main.nera-homepage — shop/single product keep global @theme.
+   ========================================================================== */
+
+main.nera-homepage {
+  background-color: #9b5039;
+  color: rgba(216, 181, 130, 0.92);
+}
+
+/* Welcome = light cream band; rich text must stay dark-on-light (not bronze-on-terracotta) */
+main.nera-homepage .welcome-section .welcome-text-content .rich-text :where(p, li) {
+  color: #44403c;
+}
+
+main.nera-homepage .welcome-section .welcome-text-content .rich-text :where(a) {
+  color: #9b5039;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+main.nera-homepage .welcome-section .welcome-text-content .rich-text :where(a):hover {
+  color: #c4704e;
+}
+
+/* Featured prizes: section on terracotta; headings in VLB gold */
+main.nera-homepage .prizes-header-left .tag {
+  background: rgba(255, 255, 255, 0.12);
+  color: #d8b582;
+  border: 1px solid rgba(216, 181, 130, 0.45);
+}
+
+main.nera-homepage .prizes-header-left h2 {
+  color: #d8b582;
+}
+
+main.nera-homepage .prizes-header a {
+  color: rgba(216, 181, 130, 0.85);
+  border-bottom-color: rgba(216, 181, 130, 0.35);
+}
+
+main.nera-homepage .prizes-header a:hover {
+  color: #fffefb;
+}
+
+main.nera-homepage .prizes .prize-card {
+  background: #ffffff;
+  border-color: rgba(155, 80, 57, 0.12);
+  box-shadow: 0 4px 24px -12px rgba(28, 25, 23, 0.08);
+}
+
+main.nera-homepage .prizes .prize-card:hover {
+  border-color: rgba(155, 80, 57, 0.28);
+  box-shadow: 0 12px 32px -16px rgba(155, 80, 57, 0.18);
+}
+
+main.nera-homepage .prizes .prize-img {
+  background: linear-gradient(135deg, rgba(155, 80, 57, 0.12), rgba(216, 181, 130, 0.1));
+}
+
+main.nera-homepage .prizes .prize-img span {
+  color: rgba(155, 80, 57, 0.35);
+  text-shadow: none;
+}
+
+main.nera-homepage .prizes .prize-status {
+  background: rgba(28, 25, 23, 0.88);
+  color: #d8b582;
+}
+
+main.nera-homepage .prizes .prize-body h3 {
+  color: #1c1917;
+}
+
+main.nera-homepage .prizes .prize-body p {
+  color: #57534e;
+}
+
+main.nera-homepage .prizes .prize-stat label {
+  color: #78716c;
+}
+
+main.nera-homepage .prizes .prize-stat .prize-stat-value {
+  color: #9b5039;
+}
+
+main.nera-homepage .prizes .prize-bar {
+  background: rgba(155, 80, 57, 0.1);
+}
+
+/* How To Enter = light band; terracotta hover on cream */
+main.nera-homepage .how-to-enter-section .how-step-link:hover {
+  color: #9b5039 !important;
+}
+
+main.nera-homepage .account-prompt-card {
+  border-color: rgba(216, 181, 130, 0.4);
+  box-shadow:
+    0 4px 28px -8px rgba(12, 11, 9, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
 }
 
 /* ==========================================================================

@@ -47,7 +47,7 @@ if (!$competitions->have_posts()) {
 $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop/');
 ?>
 
-<section class="prizes" id="ending-soon" data-aos="fade-up">
+<section class="prizes bg-[#9b5039] border-t border-[rgba(216,181,130,0.2)]" id="ending-soon" data-aos="fade-up">
   <div class="prizes-header">
     <div class="prizes-header-left">
       <span class="tag"><?php _e('Open Draws', 'nera-competitions'); ?></span>

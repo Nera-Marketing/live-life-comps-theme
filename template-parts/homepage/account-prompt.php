@@ -34,7 +34,7 @@ $badge = get_field('account_prompt_badge');
 $icon = get_field('account_prompt_icon') ?: 'person_add';
 ?>
 
-<section class="account-prompt-section py-10 lg:py-12 px-6 lg:px-20 relative overflow-visible" data-aos="fade-up" role="region" aria-label="<?php esc_attr_e('Account creation', 'nera-competitions'); ?>">
+<section class="account-prompt-section py-10 lg:py-12 px-6 lg:px-20 relative overflow-visible bg-[#9b5039]" data-aos="fade-up" role="region" aria-label="<?php esc_attr_e('Account creation', 'nera-competitions'); ?>">
 
   <div class="max-w-4xl mx-auto relative">
     <!-- Decorative blur orbs -->
@@ -42,7 +42,7 @@ $icon = get_field('account_prompt_icon') ?: 'person_add';
     <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-[rgba(216,181,130,0.05)] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
     <!-- Contained card -->
-    <div class="account-prompt-card relative overflow-hidden rounded-2xl lg:rounded-3xl bg-[#1a1815] border border-[rgba(216,181,130,0.15)] backdrop-blur-sm group">
+    <div class="account-prompt-card relative overflow-hidden rounded-2xl lg:rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_24px_-8px_rgba(28,25,23,0.08)] backdrop-blur-sm group">
 
       <!-- Top gradient strip -->
       <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[rgba(155,80,57,0.4)] to-transparent" aria-hidden="true"></div>
@@ -65,7 +65,7 @@ $icon = get_field('account_prompt_icon') ?: 'person_add';
                 </span>
               </span>
             </div>
-            <p class="text-base lg:text-lg font-medium text-[rgba(216,181,130,0.9)] tracking-[0.3px] !m-0 leading-relaxed">
+            <p class="text-base lg:text-lg font-medium text-stone-800 tracking-[0.3px] !m-0 leading-relaxed">
               <?php echo esc_html($copy); ?>
             </p>
           </div>

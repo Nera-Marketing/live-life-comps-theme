@@ -37,19 +37,19 @@ if (empty($credibility_items)) {
 }
 ?>
 
-<section class="credibility-section trust-bar py-10 px-4 lg:px-20 bg-[#0c0b09] border-t md:border-t-0 border-b border-[rgba(216,181,130,0.06)]" data-aos="fade-up">
+<section class="credibility-section trust-bar py-10 px-4 lg:px-20 bg-[#9b5039] border-t border-[rgba(216,181,130,0.2)] md:border-t-0 border-b border-[rgba(216,181,130,0.2)]" data-aos="fade-up">
   <div class="flex flex-wrap items-center md:justify-center gap-x-12 md:gap-x-16 lg:gap-x-[60px]">
     <?php foreach ($credibility_items as $item):
       if (empty($item['label'])) {
         continue;
       } ?>
       <div class="trust-item flex items-center gap-2.5">
-        <span class="inline-flex items-center justify-center w-9 h-9 text-[#c4704e]">
+        <span class="inline-flex items-center justify-center w-9 h-9 text-[#d8b582]">
           <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">
             <?php echo esc_html($item['icon']); ?>
           </span>
         </span>
-        <span class="text-[12px] text-[rgba(216,181,130,0.56)] tracking-[1px]">
+        <span class="text-[12px] text-[rgba(216,181,130,0.9)] tracking-[1px]">
           <?php echo esc_html($item['label']); ?>
         </span>
       </div>

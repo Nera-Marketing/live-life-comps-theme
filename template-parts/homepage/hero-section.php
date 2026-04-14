@@ -59,13 +59,13 @@ if ($hero_video_iframe_raw) {
 ?>
 
 <section
-  class="hero-section flex flex-col items-center justify-center py-16 lg:py-24 bg-[#0c0b09] overflow-hidden"
+  class="hero-section flex flex-col items-center justify-center py-16 lg:py-24 bg-gradient-to-b from-[#7a3d2a] via-[#9b5039] to-[#9b5039] overflow-hidden"
   id="hero" data-aos="fade-up" data-aos-duration="600">
 
   <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center">
 
     <?php if ($hero_show_badge): ?>
-    <span class="inline-block w-fit bg-[rgba(155,80,57,0.2)] text-[#c4704e] rounded-[20px] py-1.5 px-4 text-[11px] tracking-[2px] uppercase mb-6 font-medium">
+    <span class="inline-block w-fit bg-[rgba(255,255,255,0.12)] text-[#d8b582] border border-[rgba(216,181,130,0.35)] rounded-[20px] py-1.5 px-4 text-[11px] tracking-[2px] uppercase mb-6 font-medium">
       <?php echo esc_html($hero_badge_text); ?>
     </span>
     <?php endif; ?>
@@ -81,18 +81,18 @@ if ($hero_video_iframe_raw) {
           <?php echo $hero_video_iframe; ?>
         </div>
       <?php else: ?>
-        <div class="hero-video-placeholder w-full h-full flex flex-col items-center justify-center gap-3 bg-[rgba(216,181,130,0.05)]">
+        <div class="hero-video-placeholder w-full h-full flex flex-col items-center justify-center gap-3 bg-[rgba(12,11,9,0.25)]">
           <div class="play-btn w-[60px] h-[60px] rounded-full border-[1.5px] border-[rgba(216,181,130,0.56)] flex items-center justify-center hover:bg-[#d8b582] hover:border-[#d8b582] transition-all cursor-pointer">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d8b582" stroke-width="1.5"><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
-          <span class="text-[12px] text-[rgba(216,181,130,0.2)] tracking-[2px] uppercase"><?php _e('Competition video coming soon', 'nera-competitions'); ?></span>
+          <span class="text-[12px] text-[rgba(216,181,130,0.85)] tracking-[2px] uppercase"><?php _e('Competition video coming soon', 'nera-competitions'); ?></span>
         </div>
       <?php endif; ?>
     </div>
 
     <!-- Primary CTA - Enter Now (most prominent on page) -->
     <a href="<?php echo esc_url($hero_cta_url); ?>"
-      class="hero-primary mt-8 inline-flex items-center gap-2 px-14 py-5 bg-[#d8b582] text-[#0c0b09] rounded font-bold text-lg tracking-[0.2em] uppercase transition-all hover:bg-[#c4704e] hover:text-[#d8b582]">
+      class="hero-primary mt-8 inline-flex items-center gap-2 px-14 py-5 bg-[#d8b582] text-[#1c1917] rounded font-bold text-lg tracking-[0.2em] uppercase shadow-[0_12px_40px_-12px_rgba(155,80,57,0.35)] transition-all hover:bg-[#9b5039] hover:text-[#d8b582] hover:shadow-[0_16px_44px_-10px_rgba(155,80,57,0.45)] hover:-translate-y-0.5">
       <?php echo esc_html($hero_cta_text); ?>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M5 12h14M12 5l7 7-7 7" />

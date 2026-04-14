@@ -67,11 +67,11 @@ $guide_subtitle =
   __('Win your dream prizes in just three simple steps', 'nera-competitions');
 ?>
 
-<section class="how-to-enter-section py-16 lg:py-24 bg-[#1a1815] relative" id="quick-guide"
+<section class="how-to-enter-section py-16 lg:py-24 bg-gradient-to-b from-[#faf7f2] to-[#fffdfb] relative border-t border-stone-200/70" id="quick-guide"
   data-aos="fade-up">
-  <!-- Optional radial gradient overlay -->
+  <!-- Subtle terracotta wash on cream (rest band after Current Prizes) -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(155,80,57,0.06),transparent_70%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_15%,rgba(155,80,57,0.05),transparent_50%)]"></div>
   </div>
 
   <div class="how-to-enter-inner max-w-[1200px] mx-auto px-6 lg:px-8 relative z-10">
@@ -79,14 +79,14 @@ $guide_subtitle =
     <!-- Section Header (left-aligned) -->
     <div class="text-left mb-12 lg:mb-16">
       <?php if ($guide_tag): ?>
-        <span class="how-to-enter-tag inline-block px-4 py-1.5 mb-4 text-[11px] font-medium uppercase tracking-[2px] rounded-[20px] bg-[rgba(155,80,57,0.2)] text-[#c4704e]">
+        <span class="how-to-enter-tag inline-block px-4 py-1.5 mb-4 text-[11px] font-medium uppercase tracking-[2px] rounded-[20px] bg-[rgba(155,80,57,0.12)] text-[#c4704e] border border-[rgba(216,181,130,0.35)]">
           <?php echo esc_html($guide_tag); ?>
         </span>
       <?php endif; ?>
-      <h2 class="font-heading text-3xl lg:text-4xl xl:text-[44px] font-normal text-[#d8b582] mb-2">
+      <h2 class="font-heading text-3xl lg:text-4xl xl:text-[44px] font-normal text-[#9b5039] mb-2">
         <?php echo esc_html($guide_title); ?>
       </h2>
-      <p class="text-lg text-[rgba(216,181,130,0.56)]">
+      <p class="text-lg text-stone-600">
         <?php echo esc_html($guide_subtitle); ?>
       </p>
     </div>
@@ -95,14 +95,14 @@ $guide_subtitle =
     <div class="how-to-enter-steps grid grid-cols-1 md:grid-cols-3">
       <?php foreach ($steps as $index => $step): ?>
         <div class="how-step how-step-<?php echo (int) $index +
-          1; ?> py-8 px-0 lg:px-10 border-b border-[rgba(216,181,130,0.06)] last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
-          <div class="how-step-num font-heading text-[72px] font-normal leading-none mb-5 text-[rgba(216,181,130,0.06)]">
+          1; ?> py-8 px-0 lg:px-10 border-b border-stone-200/70 last:border-b-0 md:border-b-0 md:border-r md:border-r-stone-200/70 md:last:border-r-0">
+          <div class="how-step-num font-heading text-[72px] font-normal leading-none mb-5 text-[#d8b582]/35">
             <?php echo esc_html($step['number']); ?>
           </div>
-          <h3 class="text-lg font-medium text-[#d8b582] mb-3 tracking-[0.3px]">
+          <h3 class="text-lg font-medium text-stone-900 mb-3 tracking-[0.3px]">
             <?php echo esc_html($step['title']); ?>
           </h3>
-          <p class="text-sm text-[rgba(216,181,130,0.56)] leading-relaxed">
+          <p class="text-sm text-stone-600 leading-relaxed">
             <?php echo esc_html($step['description']); ?>
           </p>
           <?php
@@ -112,7 +112,7 @@ $guide_subtitle =
           $link_target = !empty($link['target']) ? $link['target'] : '';
           if ($link_url): ?>
             <a href="<?php echo esc_url($link_url); ?>"
-              class="how-step-link inline-block mt-3 text-[13px] font-normal !text-[#c4704e] hover:text-[#d8b582] transition-colors"
+              class="how-step-link inline-block mt-3 text-[13px] font-normal !text-[#c4704e] hover:!text-[#9b5039] transition-colors"
               <?php echo $link_target
                 ? ' target="' . esc_attr($link_target) . '" rel="noopener"'
                 : ''; ?>>
