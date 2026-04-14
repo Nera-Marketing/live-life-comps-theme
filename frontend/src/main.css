@@ -432,3 +432,275 @@ button[class*='bg-gradient'][class*='9b5039'] {
     font-size: 28px;
   }
 }
+
+/* ==========================================================================
+   Single product (lottery): layout + dark-surface fixes
+   Parent `lg:grid-cols-12` / `lg:col-span-*` can lose when responsive utilities
+   order shifts; skill-challenge uses light `slate` utilities on dark brand.
+   Earthy canvas: parent `single-product.php` uses `bg-gray-50` on `<main>`; parent
+   bundle may emit literal light grays — force token-based canvas + surfaces.
+   ========================================================================== */
+
+/* Let main stretch full width; inner `.max-w-7xl` still caps content */
+body.nera-single-lottery.single-product #primary.site-main {
+  max-width: none;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--color-background-light) !important;
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product div.product > section:first-of-type {
+  background-color: transparent;
+}
+
+/* Parent light utilities → earthy tokens (only inside product main; modals live outside #primary) */
+body.nera-single-lottery.single-product #primary.site-main .bg-gray-50,
+body.nera-single-lottery.single-product #primary.site-main .bg-slate-50,
+body.nera-single-lottery.single-product #primary.site-main .bg-white {
+  background-color: var(--color-surface) !important;
+}
+
+body.nera-single-lottery.single-product #primary.site-main .border-gray-100,
+body.nera-single-lottery.single-product #primary.site-main .border-gray-200 {
+  border-color: var(--color-gray-200) !important;
+}
+
+body.nera-single-lottery.single-product #primary.site-main .text-gray-300 {
+  color: var(--color-gray-400) !important;
+}
+
+/* Gallery: thumbs + nav chrome */
+body.nera-single-lottery.single-product .product-gallery .bg-gray-100 {
+  background-color: var(--color-gray-100) !important;
+}
+
+body.nera-single-lottery.single-product .product-gallery .text-gray-700 {
+  color: var(--color-text-primary) !important;
+}
+
+body.nera-single-lottery.single-product .product-gallery .swiper-slide img {
+  background-color: var(--color-gray-100);
+}
+
+/* Tabs: prose links + plugin-injected tables */
+body.nera-single-lottery.single-product [data-product-tabs] .prose a {
+  color: var(--color-primary);
+}
+
+body.nera-single-lottery.single-product [data-product-tabs] .prose a:hover {
+  color: var(--color-accent);
+}
+
+body.nera-single-lottery.single-product .tab-panel table,
+body.nera-single-lottery.single-product .tab-panel th,
+body.nera-single-lottery.single-product .tab-panel td {
+  border-color: var(--color-gray-200);
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product .tab-panel thead,
+body.nera-single-lottery.single-product .tab-panel tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+/* Instant Win toggle: replace pale amber card with earthy surface + bronze text */
+body.nera-single-lottery.single-product .instant-wins-section .instant-wins-toggle-shine {
+  background: linear-gradient(
+    135deg,
+    var(--color-gray-100) 0%,
+    var(--color-surface) 55%,
+    var(--color-background-dark) 100%
+  ) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+  --tw-ring-color: var(--color-gray-300);
+}
+
+body.nera-single-lottery.single-product .instant-wins-section .text-gray-900 {
+  color: var(--color-text-primary) !important;
+}
+
+body.nera-single-lottery.single-product .instant-wins-section .text-gray-600 {
+  color: var(--color-text-secondary) !important;
+}
+
+/*
+ * Browse ticket dialog vs gallery lightbox: fixed descendants can stack under the
+ * gallery column’s subtree. Raise purchase column + ticket overlay; cap lightbox.
+ */
+body.nera-single-lottery.single-product div.product > section:first-of-type div.grid > div.order-2 {
+  position: relative;
+  z-index: 100;
+}
+
+body.nera-single-lottery.single-product div.product > section:first-of-type div.grid > div:first-child {
+  position: relative;
+  z-index: 50;
+}
+
+body.nera-single-lottery.single-product .product-gallery > div.fixed.inset-0 {
+  z-index: 60 !important;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog-root {
+  z-index: 9999999 !important;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog-root > .nera-ticket-dialog {
+  z-index: 10000000 !important;
+}
+
+/* Browse ticket dialog open: hide gallery lightbox if Alpine/JS close races (stacking) */
+body.nera-single-lottery.single-product:has(.nera-ticket-dialog-overlay-active) .product-gallery > div.fixed.inset-0 {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  z-index: 0 !important;
+}
+
+/* Desktop: enforce 7 / 5 column split for gallery+tabs | purchase card */
+@media (min-width: 64rem) {
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+  }
+
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid
+    > div:first-child {
+    grid-column: span 7 / span 7;
+    min-width: 0;
+  }
+
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid
+    > div:last-child {
+    grid-column: span 5 / span 5;
+    min-width: 0;
+    align-self: start;
+  }
+
+  /* Sticky purchase column (matches parent reference intent) */
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid
+    > div:last-child
+    > div:first-child {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* Tabs: border uses theme tokens */
+body.nera-single-lottery.single-product [data-product-tabs] .border-gray-200 {
+  border-color: var(--color-gray-200);
+}
+
+/* Tab content readability */
+body.nera-single-lottery.single-product [data-product-tabs] .prose {
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product [data-product-tabs] .prose :where(h1, h2, h3, h4) {
+  color: var(--color-text-primary);
+}
+
+/* Q&A “skill challenge” block: replace light slate panel with earthy surface */
+body.nera-single-lottery.single-product .skill-challenge-wrapper.border-slate-100,
+body.nera-single-lottery.single-product .skill-challenge-wrapper.bg-slate-50 {
+  background-color: var(--color-surface);
+  border-color: var(--color-gray-200);
+}
+
+body.nera-single-lottery.single-product .skill-challenge-wrapper .text-slate-800 {
+  color: var(--color-text-primary);
+}
+
+body.nera-single-lottery.single-product .skill-challenge-wrapper .text-slate-900 {
+  color: var(--color-text-primary);
+}
+
+body.nera-single-lottery.single-product .skill-challenge-wrapper .text-slate-600 {
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-200 {
+  border-color: var(--color-gray-200);
+}
+
+body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-300 {
+  border-color: var(--color-gray-300);
+}
+
+/* ==========================================================================
+   Related competitions: explicit grid + equal-height cards (child Tailwind may
+   not emit sm:/lg: column utilities; whitespace in PHP can break CSS grid).
+   ========================================================================== */
+
+.related-competitions .related-competitions__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 40rem) {
+  .related-competitions .related-competitions__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .related-competitions .related-competitions__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.related-competitions .related-competitions__grid > article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.related-competitions .related-competitions__grid > article > div:last-of-type {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Reserve two title lines so progress + footer align across the row */
+.related-competitions .related-competitions__grid article h3 {
+  min-height: 3.5rem;
+}
+
+.related-competitions .related-competitions__grid article .space-y-4 {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-competitions .related-competitions__grid article .space-y-4 > *:last-child {
+  margin-top: auto;
+}
+
+/* Center crop for featured image backgrounds */
+.related-competitions .related-competitions__grid article .relative.overflow-hidden > a.block > div {
+  background-position: center center;
+  background-size: cover;
+}
