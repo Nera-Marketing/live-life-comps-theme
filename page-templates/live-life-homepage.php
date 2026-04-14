@@ -20,14 +20,13 @@ get_header();
 <main id="main" class="nera-homepage" role="main">
 
   <?php
-  get_template_part('template-parts/homepage/logo-banner');
-  get_template_part('template-parts/homepage/hero-section');
-  get_template_part('template-parts/homepage/credibility-section');
-  get_template_part('template-parts/homepage/account-prompt');
-  get_template_part('template-parts/homepage/welcome-section');
-  get_template_part('template-parts/homepage/featured-competitions');
-  get_template_part('template-parts/homepage/winners-section');
-  get_template_part('template-parts/homepage/quick-guide');
+    get_template_part('template-parts/homepage/logo-banner');
+    get_template_part('template-parts/homepage/hero-section');
+    get_template_part('template-parts/homepage/credibility-section');
+    get_template_part('template-parts/homepage/account-prompt');
+    get_template_part('template-parts/homepage/welcome-section');
+    get_template_part('template-parts/homepage/featured-competitions');
+    get_template_part('template-parts/homepage/quick-guide');
   ?>
 
 </main>

@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_stylesheet_directory() . '/inc/acf-marquee.php';
+require_once get_stylesheet_directory() . '/inc/acf-header.php';
 
 /**
  * Last registered parent production Vite CSS handle (nera-vite-css-0, nera-vite-css-1, …).
@@ -60,12 +61,71 @@ function live_life_prizes_category_colors(): array
     ];
 }
 
+/**
+ * Rotating earthy palette for product_cat slugs not in live_life_prizes_category_colors().
+ * Keeps Alpine filter chips off the parent fallback `#1313ec`.
+ *
+ * @return string[]
+ */
+function live_life_prizes_earthy_category_palette(): array
+{
+    return [
+        '#9b5039',
+        '#c4704e',
+        '#d8b582',
+        '#b89a6a',
+        '#a87d52',
+        '#8b5a3c',
+        '#7d6b4e',
+        '#c9a87c',
+    ];
+}
+
+/**
+ * Full slug → hex map: fixed brand mappings plus every active product_cat term (stable assignment).
+ *
+ * @return array<string, string>
+ */
+function live_life_prizes_category_colors_for_all_terms(): array
+{
+    $base = live_life_prizes_category_colors();
+    $palette = live_life_prizes_earthy_category_palette();
+    $terms = get_terms([
+        'taxonomy' => 'product_cat',
+        'hide_empty' => true,
+        'exclude' => get_option('default_product_cat'),
+    ]);
+    if (empty($terms) || is_wp_error($terms)) {
+        return $base;
+    }
+
+    $slugs = [];
+    foreach ($terms as $term) {
+        $slugs[] = $term->slug;
+    }
+    sort($slugs, SORT_STRING);
+
+    $missing = [];
+    foreach ($slugs as $slug) {
+        if (!isset($base[$slug])) {
+            $missing[] = $slug;
+        }
+    }
+
+    $out = $base;
+    foreach ($missing as $i => $slug) {
+        $out[$slug] = $palette[$i % count($palette)];
+    }
+
+    return $out;
+}
+
 add_filter('nera_competition_card_category_colors', function (): array {
-    return live_life_prizes_category_colors();
+    return live_life_prizes_category_colors_for_all_terms();
 });
 
 add_filter('nera_advanced_filter_category_colors', function (): array {
-    return live_life_prizes_category_colors();
+    return live_life_prizes_category_colors_for_all_terms();
 });
 
 add_filter('nera_competition_card_fallback_accent', function (): string {

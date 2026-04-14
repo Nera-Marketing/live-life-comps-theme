@@ -65,6 +65,30 @@
   --nera-border: var(--color-gray-200);
 }
 
+/*
+ * Product listing / all-competitions: parent hero + trust cards use `bg-slate-50` (light slate
+ * from parent bundle); filter block uses `bg-gray-50`. Scope to main so other pages unchanged.
+ */
+main.nera-product-listing {
+  background-color: var(--color-background-light);
+}
+
+main.nera-product-listing > section.bg-slate-50 {
+  background-color: var(--color-background-light);
+}
+
+.nera-product-listing #advanced-filter-competitions.bg-gray-50 {
+  background-color: var(--color-background-light);
+}
+
+.nera-product-listing section.bg-surface .bg-slate-50 {
+  background-color: var(--color-surface);
+}
+
+.nera-product-listing .border-gray-100 {
+  border-color: var(--color-gray-200);
+}
+
 /* Parent utilities embed fixed indigo hex — redeclare after @theme */
 @utility text-gradient-primary {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
