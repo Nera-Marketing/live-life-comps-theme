@@ -200,6 +200,13 @@ button[class*='bg-gradient'][class*='9b5039'] {
   }
 }
 
+/* Header primary menu: fixed label size (desktop, dropdown, mobile) */
+#site-header nav li.menu-item > a,
+#site-header nav ul.sub-menu a,
+#mobile-menu li.menu-item a {
+  font-size: 13px;
+}
+
 /* ==========================================================================
    Current Prizes / Featured Competitions (Concept B Earthy Editorial)
    Ported from nera-competitions-standard (live-life-prizes reference); parent
