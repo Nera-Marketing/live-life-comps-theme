@@ -83,12 +83,12 @@ if ($max_tickets && $remaining <= 0) {
 }
 
 $badge_text = '';
-$badge_class = 'bg-red-600';
+$badge_class = 'llp-prize-badge';
 
 $primary_badge_text = '';
-$primary_badge_class = 'bg-red-600';
+$primary_badge_class = 'llp-prize-badge';
 $secondary_badge_text = '';
-$secondary_badge_class = 'bg-orange-500';
+$secondary_badge_class = 'llp-prize-badge';
 
 if ($is_related) {
   if ($is_sold_out) {
@@ -97,19 +97,15 @@ if ($is_related) {
     $primary_badge_text = sprintf(__('Last %d Tickets', 'nera-competitions'), $remaining);
   } elseif ($is_new) {
     $primary_badge_text = __('New', 'nera-competitions');
-    $primary_badge_class = 'bg-green-500';
     if ($is_ending_soon) {
       $secondary_badge_text = __('Ending Soon', 'nera-competitions');
-      $secondary_badge_class = 'bg-red-600';
     } elseif ($progress >= 90) {
       $secondary_badge_text = __('Almost Gone', 'nera-competitions');
-      $secondary_badge_class = 'bg-orange-500';
     }
   } elseif ($is_ending_soon) {
     $primary_badge_text = __('Ending Soon', 'nera-competitions');
   } elseif ($progress >= 90) {
     $primary_badge_text = __('Almost Gone', 'nera-competitions');
-    $primary_badge_class = 'bg-orange-500';
   }
 } else {
   if ($is_sold_out) {
@@ -120,10 +116,8 @@ if ($is_related) {
     $badge_text = __('Ending Soon', 'nera-competitions');
   } elseif ($progress >= 90) {
     $badge_text = __('Almost Gone', 'nera-competitions');
-    $badge_class = 'bg-orange-500';
   } elseif ($is_new) {
     $badge_text = __('New', 'nera-competitions');
-    $badge_class = 'bg-green-500';
   }
 }
 ?>
@@ -147,7 +141,7 @@ if ($is_related) {
           <div
             class="<?php echo esc_attr(
               $primary_badge_class,
-            ); ?> rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+            ); ?> rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
             <?php echo esc_html($primary_badge_text); ?>
           </div>
         <?php endif; ?>
@@ -155,7 +149,7 @@ if ($is_related) {
           <div
             class="<?php echo esc_attr(
               $secondary_badge_class,
-            ); ?> rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+            ); ?> rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
             <?php echo esc_html($secondary_badge_text); ?>
           </div>
         <?php endif; ?>
@@ -164,7 +158,7 @@ if ($is_related) {
       <div
         class="absolute top-4 left-4 z-10 <?php echo esc_attr(
           $badge_class,
-        ); ?> text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+        ); ?> text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
         <?php echo esc_html($badge_text); ?>
       </div>
     <?php endif; ?>
