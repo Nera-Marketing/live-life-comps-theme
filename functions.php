@@ -6,6 +6,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once get_stylesheet_directory() . '/inc/acf-marquee.php';
+
 /**
  * Last registered parent production Vite CSS handle (nera-vite-css-0, nera-vite-css-1, …).
  */
@@ -81,6 +83,28 @@ add_action('wp_enqueue_scripts', function (): void {
         null,
     );
 }, 15);
+
+/**
+ * Marquee banner animation (parent Tailwind bundle does not include marquee keyframes).
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    $path = get_stylesheet_directory() . '/marquee-banner.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-marquee-banner',
+        get_stylesheet_directory_uri() . '/marquee-banner.css',
+        [$dep],
+        (string) filemtime($path),
+    );
+}, 105);
 
 /**
  * Last child Vite CSS handle from manifest (for dependent stylesheets).
