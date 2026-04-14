@@ -245,6 +245,69 @@ add_action('wp_enqueue_scripts', function (): void {
 }, 110);
 
 /**
+ * Cart / Checkout / My Account hero strips + account shell (earthy tokens).
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    $on_cart = function_exists('is_cart') && is_cart();
+    $on_checkout = function_exists('is_checkout') && is_checkout()
+        && (!function_exists('is_order_received_page') || !is_order_received_page());
+    $on_account = function_exists('is_account_page') && is_account_page();
+    if (!$on_cart && !$on_checkout && !$on_account) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/woo-hero-earthy-overrides.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+    $deps = [$dep];
+    if ($on_account && wp_style_is('live-life-prizes-account-brand', 'enqueued')) {
+        $deps[] = 'live-life-prizes-account-brand';
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-woo-hero-earthy',
+        get_stylesheet_directory_uri() . '/woo-hero-earthy-overrides.css',
+        $deps,
+        (string) filemtime($path),
+    );
+}, 115);
+
+/**
+ * Checkout: payment methods + wallet balance earthy surfaces (beats parent #fff rules).
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    if (!function_exists('is_checkout') || !is_checkout()) {
+        return;
+    }
+    if (function_exists('is_order_received_page') && is_order_received_page()) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/checkout-wallet-earthy-overrides.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-checkout-wallet-earthy',
+        get_stylesheet_directory_uri() . '/checkout-wallet-earthy-overrides.css',
+        [$dep],
+        (string) filemtime($path),
+    );
+}, 118);
+
+/**
  * Enqueue child Vite build (CSS + JS) from manifest, after parent Tailwind bundle.
  */
 add_action('wp_enqueue_scripts', function (): void {

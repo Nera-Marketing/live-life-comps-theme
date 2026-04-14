@@ -1,0 +1,75 @@
+/**
+ * Live Life Prizes — Earthy hero strips (Cart, Checkout) + My Account shell / dashboard welcome.
+ * Cart/checkout heroes use explicit `.llp-earthy-hero` hooks from child WooCommerce template overrides.
+ * Uses theme tokens from child Vite bundle (:root @theme). Loads after child + account overrides.
+ */
+
+/* --------------------------------------------------------------------------
+   Cart + Checkout: full-bleed page header (beats parent `bg-gray-50` light strip)
+   -------------------------------------------------------------------------- */
+
+.llp-earthy-hero {
+  background: linear-gradient(
+    165deg,
+    var(--color-background-dark) 0%,
+    var(--color-surface) 50%,
+    var(--color-background-dark) 100%
+  ) !important;
+  border-bottom-color: var(--color-gray-200) !important;
+}
+
+/* Icon tile in hero */
+.llp-earthy-hero .rounded-xl.bg-surface {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-gray-200);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* Checkout: progress connector + pending step */
+.llp-earthy-hero--checkout .bg-gray-200:not(.rounded-full) {
+  background-color: var(--color-gray-300) !important;
+}
+
+.llp-earthy-hero--checkout .rounded-full.bg-gray-200 {
+  background-color: var(--color-gray-300) !important;
+}
+
+.llp-earthy-hero--checkout .text-gray-400 {
+  color: var(--color-text-secondary) !important;
+}
+
+/* --------------------------------------------------------------------------
+   My Account: subtle earthy “shell” behind nav + content
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-account.logged-in #primary.site-main {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary) 9%, transparent) 0%,
+    var(--color-background-light) 14rem
+  ) !important;
+}
+
+/* Dashboard welcome hero — terracotta / bronze editorial */
+body.woocommerce-account.logged-in .nera-account-dashboard > div:first-child {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark) 0%,
+    var(--color-primary) 42%,
+    var(--color-accent) 100%
+  ) !important;
+  box-shadow: 0 20px 25px -5px rgba(155, 80, 57, 0.28) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard > div:first-child h1,
+body.woocommerce-account.logged-in .nera-account-dashboard > div:first-child .text-white {
+  color: var(--color-on-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard > div:first-child .text-indigo-100 {
+  color: color-mix(in srgb, var(--color-on-primary) 88%, transparent) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard > div:first-child .bg-surface\/20.backdrop-blur-sm {
+  border-color: color-mix(in srgb, var(--color-on-primary) 35%, transparent) !important;
+}
