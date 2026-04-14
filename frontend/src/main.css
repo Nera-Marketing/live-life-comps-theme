@@ -527,20 +527,22 @@ body.nera-single-lottery.single-product .instant-wins-section .text-gray-600 {
 
 /*
  * Browse ticket dialog vs gallery lightbox: fixed descendants can stack under the
- * gallery column’s subtree. Raise purchase column + ticket overlay; cap lightbox.
+ * gallery column’s subtree. Purchase column z-index stays below #site-header (z-[120]);
+ * lightbox must sit above the header when open.
  */
 body.nera-single-lottery.single-product div.product > section:first-of-type div.grid > div.order-2 {
   position: relative;
-  z-index: 100;
+  /* Below sticky header (z-[120]); keep above in-column siblings for ticket/gallery stacking */
+  z-index: 10;
 }
 
 body.nera-single-lottery.single-product div.product > section:first-of-type div.grid > div:first-child {
   position: relative;
-  z-index: 50;
+  z-index: 1;
 }
 
 body.nera-single-lottery.single-product .product-gallery > div.fixed.inset-0 {
-  z-index: 60 !important;
+  z-index: 130 !important;
 }
 
 body.nera-single-lottery.single-product .nera-ticket-dialog-root {
@@ -675,6 +677,12 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
   flex-direction: column;
   height: 100%;
   min-width: 0;
+}
+
+/* Match page canvas under image; subtle seam from gallery strip */
+.related-competitions .related-competitions__grid > article > .p-6 {
+  background-color: var(--color-background-light);
+  border-top: 1px solid color-mix(in srgb, var(--color-gray-200) 65%, transparent);
 }
 
 .related-competitions .related-competitions__grid > article > div:last-of-type {

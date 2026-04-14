@@ -8,6 +8,8 @@ if (!defined('ABSPATH')) {
 
 require_once get_stylesheet_directory() . '/inc/acf-marquee.php';
 require_once get_stylesheet_directory() . '/inc/acf-header.php';
+require_once get_stylesheet_directory() . '/inc/footer-helpers.php';
+require_once get_stylesheet_directory() . '/inc/footer-widgets-seed.php';
 
 /**
  * Last registered parent production Vite CSS handle (nera-vite-css-0, nera-vite-css-1, …).
@@ -277,6 +279,28 @@ add_action('wp_enqueue_scripts', function (): void {
         (string) filemtime($path),
     );
 }, 115);
+
+/**
+ * Footer — UK layout + bronze/dark styling (loads after child Vite tokens).
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    $path = get_stylesheet_directory() . '/footer-live-life.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-footer',
+        get_stylesheet_directory_uri() . '/footer-live-life.css',
+        [$dep],
+        (string) filemtime($path),
+    );
+}, 119);
 
 /**
  * Checkout: payment methods + wallet balance earthy surfaces (beats parent #fff rules).

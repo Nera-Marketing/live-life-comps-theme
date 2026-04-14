@@ -39,7 +39,7 @@ $cta_secondary_logged_in_url = function_exists('wc_get_account_endpoint_url') ? 
 $logo_secondary_url = function_exists('get_field') ? get_field('logo_secondary', 'option') : null;
 ?>
 
-<header class="sticky top-0 z-50 overflow-visible bg-[#0a0a09] backdrop-blur-sm border-b border-[rgba(216,181,130,0.32)] shadow-sm" id="site-header">
+<header class="sticky top-0 z-[120] overflow-visible bg-[#0a0a09] backdrop-blur-sm border-b border-[rgba(216,181,130,0.32)] shadow-sm" id="site-header">
   <div class="max-w-7xl mx-auto px-4 lg:px-8">
     <nav class="flex items-center justify-between h-16 lg:h-20">
 
