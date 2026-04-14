@@ -32,7 +32,7 @@ if (empty($logo_url)) {
 
 $site_name = get_bloginfo('name');
 ?>
-<section class="logo-banner relative overflow-hidden py-8 lg:py-10 bg-[#0c0b09] border-b border-[rgba(216,181,130,0.15)]" id="logo-banner" data-aos="fade-in" data-aos-duration="1000">
+<section class="logo-banner relative overflow-hidden py-8 lg:py-10 bg-gradient-to-b from-[#7a3d2a] via-[#9b5039] to-[#9b5039] border-b border-[rgba(216,181,130,0.15)]" id="logo-banner" data-aos="fade-in" data-aos-duration="1000">
 
   <!-- Radial glow behind the logo (subtle VLB gold on dark canvas) -->
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">

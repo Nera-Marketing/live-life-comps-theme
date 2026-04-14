@@ -417,3 +417,50 @@ add_action('wp_enqueue_scripts', function (): void {
         true,
     );
 }, 100);
+
+/**
+ * My Account wallet badge: replace parent footer script (no inline indigo gradient).
+ * Appearance is fully controlled by .wallet-balance-badge in account-brand-overrides.css.
+ */
+add_action('init', function (): void {
+    remove_action('wp_footer', 'nera_add_wallet_balance_script', 10);
+}, 20);
+
+function live_life_prizes_wallet_balance_badge_script(): void
+{
+    if (!function_exists('is_account_page') || !is_account_page() || !is_user_logged_in()) {
+        return;
+    }
+
+    if (
+        !function_exists('woo_wallet')
+        || !is_object(woo_wallet())
+        || !is_object(woo_wallet()->wallet)
+    ) {
+        return;
+    }
+
+    $user_id = get_current_user_id();
+    $balance = (float) woo_wallet()->wallet->get_wallet_balance($user_id, 'edit');
+    if ($balance <= 0) {
+        return;
+    }
+
+    $currency_symbol = html_entity_decode(get_woocommerce_currency_symbol(), ENT_QUOTES, 'UTF-8');
+    $formatted_balance = number_format($balance, 2);
+    ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var walletMenuItem = document.querySelector('.woocommerce-MyAccount-navigation-link--woo-wallet a');
+  if (walletMenuItem && !walletMenuItem.querySelector('.wallet-balance-badge')) {
+    var badge = document.createElement('span');
+    badge.className = 'wallet-balance-badge';
+    badge.textContent = <?php echo wp_json_encode($currency_symbol . $formatted_balance); ?>;
+    badge.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;margin-left:8px;border-radius:12px;font-size:11px;font-weight:700;vertical-align:middle;';
+    walletMenuItem.appendChild(badge);
+  }
+});
+</script>
+    <?php
+}
+add_action('wp_footer', 'live_life_prizes_wallet_balance_badge_script', 25);

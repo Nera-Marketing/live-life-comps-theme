@@ -1,7 +1,7 @@
 /**
  * Live Life Prizes — My Account overrides
- * Beats parent wp_head indigo/white (inc/woocommerce.php nera_my_account_styles) and wallet badge inline gradient.
- * Active nav: subtle wash + left rail (no full terracotta “pill” — #1 exception).
+ * Beats parent wp_head indigo/white (inc/woocommerce.php nera_my_account_styles).
+ * Active nav: design #2 — solid terracotta gradient + on-primary text.
  */
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a {
@@ -18,20 +18,28 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a:hove
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-active a {
-  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface)) !important;
-  color: var(--color-text-primary) !important;
-  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-gray-200)) !important;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  color: var(--color-on-primary) !important;
+  border-color: color-mix(in srgb, var(--color-primary-dark) 55%, transparent) !important;
   box-shadow:
-    inset 3px 0 0 var(--color-primary),
-    0 1px 3px 0 rgba(0, 0, 0, 0.22) !important;
+    0 10px 15px -3px color-mix(in srgb, var(--color-primary) 35%, transparent),
+    0 4px 6px -2px rgba(0, 0, 0, 0.35) !important;
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-active a:hover {
-  background: color-mix(in srgb, var(--color-primary) 22%, var(--color-surface)) !important;
-  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-gray-200)) !important;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent) 18%, var(--color-primary)) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-primary-dark)) !important;
   box-shadow:
-    inset 3px 0 0 var(--color-accent),
-    0 4px 6px -1px rgba(0, 0, 0, 0.2) !important;
+    0 14px 22px -4px color-mix(in srgb, var(--color-primary) 42%, transparent),
+    0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-content {
@@ -47,7 +55,7 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
   color: var(--color-text-primary) !important;
 }
 
-/* WooWallet badge — parent sets inline indigo; distinct from nav rows (deeper bronze + rim) */
+/* WooWallet badge — colors here (child replaces parent script’s inline indigo) */
 .wallet-balance-badge {
   background: linear-gradient(
     165deg,

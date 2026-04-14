@@ -1,5 +1,5 @@
 /**
- * Checkout: earthy surfaces for payment methods + wallet balance (beats parent #fff !important).
+ * Checkout: earthy surfaces for payment methods + wallet balance + order notes (beats WC #fff).
  * Depends on child Vite bundle for --color-* tokens.
  */
 
@@ -109,4 +109,29 @@ body.woocommerce-checkout:not(.woocommerce-order-received) button.nera-place-ord
     var(--color-accent)
   ) !important;
   color: var(--color-on-primary) !important;
+}
+
+/* Order notes — match billing/shipping inputs (WooCommerce can force white textarea fill) */
+body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-additional-fields__field-wrapper
+  textarea {
+  background: var(--color-surface) !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-gray-200) !important;
+  border-radius: 0.75rem;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments::placeholder,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-additional-fields__field-wrapper
+  textarea::placeholder {
+  color: color-mix(in srgb, var(--color-gray-500) 75%, var(--color-text-secondary)) !important;
+  opacity: 1;
+}
+
+/* Focus ring: default ring-offset is light — align with dark checkout */
+body.woocommerce-checkout:not(.woocommerce-order-received) textarea:focus-visible {
+  --tw-ring-offset-color: var(--color-background-light);
 }
