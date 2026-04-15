@@ -74,6 +74,8 @@ if (time() - $post_date < 7 * 24 * 60 * 60) {
   $is_new = true;
 }
 
+$is_featured = $product->is_featured();
+
 if ($remaining > 0 && $remaining <= 50) {
   $is_last_tickets = true;
 }
@@ -102,6 +104,11 @@ if ($is_related) {
     } elseif ($progress >= 90) {
       $secondary_badge_text = __('Almost Gone', 'nera-competitions');
     }
+  } elseif ($is_featured) {
+    $primary_badge_text = __('Featured', 'nera-competitions');
+    if ($is_ending_soon) {
+      $secondary_badge_text = __('Ending Soon', 'nera-competitions');
+    }
   } elseif ($is_ending_soon) {
     $primary_badge_text = __('Ending Soon', 'nera-competitions');
   } elseif ($progress >= 90) {
@@ -118,6 +125,8 @@ if ($is_related) {
     $badge_text = __('Almost Gone', 'nera-competitions');
   } elseif ($is_new) {
     $badge_text = __('New', 'nera-competitions');
+  } elseif ($is_featured) {
+    $badge_text = __('Featured', 'nera-competitions');
   }
 }
 ?>
