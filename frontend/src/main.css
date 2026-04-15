@@ -89,6 +89,24 @@ main.nera-product-listing > section.bg-slate-50 {
   border-color: var(--color-gray-200);
 }
 
+/*
+ * Blog posts index + post archives: full-width #primary so terracotta hero spans the viewport.
+ * Parent caps #primary.site-main at max-w-7xl; loop/grid stay inside .container in templates.
+ */
+body.blog #primary.site-main,
+body.category #primary.site-main,
+body.tag #primary.site-main,
+body.date #primary.site-main,
+body.author #primary.site-main {
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
+
 /* Parent utilities embed fixed indigo hex — redeclare after @theme */
 @utility text-gradient-primary {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
