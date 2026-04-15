@@ -829,9 +829,9 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
   background-size: cover;
 }
 
-/* How It Works — earthy particle bokeh (parent Vite uses literal indigo --particle-color) */
+/* How It Works — soft light bokeh on terracotta gradient hero (parent uses --particle-color) */
 .how-it-works-page .how-it-works-section {
-  --particle-color: rgba(155, 80, 57, 0.13);
+  --particle-color: rgba(255, 252, 248, 0.14);
 }
 
 /* CTA: high contrast on terracotta gradient (text-on-primary can fail to compile / inherit dark) */
