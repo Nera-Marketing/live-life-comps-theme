@@ -76,7 +76,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
 ?>
 
 <section
-  class="how-it-works-section relative py-20 lg:py-32 overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-dark"
+  class="how-it-works-section relative py-20 lg:py-32 overflow-hidden bg-llp-hero-terracotta"
   id="how-it-works">
 
   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">

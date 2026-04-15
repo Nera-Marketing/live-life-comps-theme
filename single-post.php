@@ -102,7 +102,7 @@ get_header();
                 </section>
             <?php else: ?>
                 <section
-                  class="blog-single-hero relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-primary via-primary to-primary-dark"
+                  class="blog-single-hero relative overflow-hidden border-b border-white/10 bg-llp-hero-terracotta"
                   aria-label="<?php esc_attr_e('Post header', 'nera-competitions'); ?>">
                   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">
                     <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-white/10 blur-[120px]"></div>

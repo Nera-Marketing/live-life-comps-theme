@@ -59,7 +59,7 @@ if ($hero_video_iframe_raw) {
 ?>
 
 <section
-  class="hero-section flex flex-col items-center justify-center py-16 lg:py-24 bg-gradient-to-b from-[#7a3d2a] via-[#9b5039] to-[#9b5039] overflow-hidden"
+  class="hero-section flex flex-col items-center justify-center py-16 lg:py-24 bg-llp-hero-terracotta-b overflow-hidden"
   id="hero" data-aos="fade-up" data-aos-duration="600">
 
   <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center">

@@ -123,6 +123,26 @@ body.author #primary.site-main {
   background: linear-gradient(135deg, var(--color-background-dark), var(--color-primary));
 }
 
+/* Canonical page-hero terracotta — matches `bg-gradient-to-br from-primary via-primary to-primary-dark` */
+@utility bg-llp-hero-terracotta {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 100%
+  );
+}
+
+/* Homepage / logo banner: top darker, bottom terracotta — matches `bg-gradient-to-b from-primary-dark via-primary to-primary` */
+@utility bg-llp-hero-terracotta-b {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-primary-dark) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary) 100%
+  );
+}
+
 @utility shadow-primary {
   box-shadow: var(--shadow-primary);
 }

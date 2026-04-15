@@ -8,14 +8,33 @@
    Cart + Checkout: full-bleed page header (beats parent `bg-gray-50` light strip)
    -------------------------------------------------------------------------- */
 
+/* Same terracotta system as `bg-llp-hero-terracotta` in child main.css */
 .llp-earthy-hero {
   background: linear-gradient(
-    165deg,
-    var(--color-background-dark) 0%,
-    var(--color-surface) 50%,
-    var(--color-background-dark) 100%
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 100%
   ) !important;
-  border-bottom-color: var(--color-gray-200) !important;
+  border-bottom-color: color-mix(in srgb, var(--color-primary-dark) 88%, black) !important;
+}
+
+/* Titles + meta line — light text on terracotta (parent uses bronze on gray) */
+.llp-earthy-hero .text-text-primary {
+  color: #ffffff !important;
+}
+
+.llp-earthy-hero > .max-w-7xl > .flex:first-child .text-text-secondary {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Checkout: pending step + connector — readable on terracotta */
+.llp-earthy-hero--checkout .text-gray-400 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.llp-earthy-hero--checkout .max-w-md .text-primary.text-xs {
+  color: #fefcf8 !important;
 }
 
 /* Icon tile in hero */
@@ -25,17 +44,13 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* Checkout: progress connector + pending step */
+/* Checkout: progress connector + pending step circles on terracotta */
 .llp-earthy-hero--checkout .bg-gray-200:not(.rounded-full) {
-  background-color: var(--color-gray-300) !important;
+  background-color: rgba(255, 255, 255, 0.38) !important;
 }
 
 .llp-earthy-hero--checkout .rounded-full.bg-gray-200 {
-  background-color: var(--color-gray-300) !important;
-}
-
-.llp-earthy-hero--checkout .text-gray-400 {
-  color: var(--color-text-secondary) !important;
+  background-color: rgba(255, 255, 255, 0.28) !important;
 }
 
 /* --------------------------------------------------------------------------

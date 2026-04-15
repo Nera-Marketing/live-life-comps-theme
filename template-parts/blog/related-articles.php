@@ -67,7 +67,7 @@ $journal_url = $page_for_posts ? get_permalink($page_for_posts) : home_url('/');
 ?>
 
 <section
-    class="blog-related-articles relative overflow-hidden border-t border-white/10 py-12 md:py-16 bg-gradient-to-br from-primary via-primary to-primary-dark"
+    class="blog-related-articles relative overflow-hidden border-t border-white/10 py-12 md:py-16 bg-llp-hero-terracotta"
     aria-label="<?php esc_attr_e('Related articles', 'nera-competitions'); ?>"
 >
   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">

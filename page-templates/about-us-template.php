@@ -43,7 +43,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
 <main id="main" class="nera-about-us-page bg-gray-50 text-text-primary" role="main">
 
   <section
-    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-gradient-to-br from-primary via-primary to-primary-dark"
+    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-llp-hero-terracotta"
     aria-labelledby="about-us-hero-heading">
     <div class="absolute inset-0 z-0 pointer-events-none opacity-30">
       <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-white/10 blur-[120px]"></div>
