@@ -21,7 +21,7 @@ if (empty($faqs)) {
     [
       'question' => __('Is it legal to enter UK?', 'nera-competitions'),
       'answer' => __(
-        'Yes, our competitions are fully legal in the UK. We operate as a prize competition which requires entrants to demonstrate skill by answering a question correctly. This is fully compliant with UK gambling laws and we are registered with the relevant authorities.',
+        'Yes. We operate free prize draws with a paid entry route and a free postal entry route where offered, in line with applicable UK rules. We are a registered UK business and run our draws fairly and transparently.',
         'nera-competitions',
       ),
     ],

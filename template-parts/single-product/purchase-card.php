@@ -317,7 +317,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
       <?php endif; ?>
     </div>
 
-    <!-- Enter Now Form (includes Skill Challenge Q&A) -->
+    <!-- Enter Now Form (includes lottery Q&A when configured) -->
     <div class="px-6 pb-6">
       <script defer>
         document.addEventListener('alpine:init', () => {
@@ -501,7 +501,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           method="post" enctype='multipart/form-data'>
 
           <?php if ($has_qa && $qa_can_display && !empty($questions)): ?>
-            <!-- Skill Challenge Section -->
+            <!-- Lottery Q&A section -->
             <!-- Q&A configured and can display -->
             <div class="bg-slate-50 rounded-xl p-6 skill-challenge-wrapper border border-slate-100">
               <div class="flex items-center gap-3 mb-4">

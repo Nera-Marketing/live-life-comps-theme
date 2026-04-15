@@ -590,7 +590,7 @@ main.nera-homepage .account-prompt-card {
 /* ==========================================================================
    Single product (lottery): layout + dark-surface fixes
    Parent `lg:grid-cols-12` / `lg:col-span-*` can lose when responsive utilities
-   order shifts; skill-challenge uses light `slate` utilities on dark brand.
+   order shifts; lottery Q&A block uses light `slate` utilities on dark brand.
    Earthy canvas: parent `single-product.php` uses `bg-gray-50` on `<main>`; parent
    bundle may emit literal light grays — force token-based canvas + surfaces.
    ========================================================================== */
@@ -776,7 +776,7 @@ body.nera-single-lottery.single-product [data-product-tabs] .prose :where(h1, h2
   color: var(--color-text-primary);
 }
 
-/* Q&A “skill challenge” block: replace light slate panel with earthy surface */
+/* Lottery Q&A block: replace light slate panel with earthy surface */
 body.nera-single-lottery.single-product .skill-challenge-wrapper.border-slate-100,
 body.nera-single-lottery.single-product .skill-challenge-wrapper.bg-slate-50 {
   background-color: var(--color-surface);

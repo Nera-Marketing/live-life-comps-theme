@@ -18,7 +18,7 @@ get_header();
 $hero_title = get_field('hiw_hero_title') ?: get_the_title();
 $hero_subtitle =
   get_field('hiw_hero_subtitle') ?:
-  __('Win your dream prizes in just 4 simple steps', 'nera-competitions');
+  __('Win your dream prizes in just 3 simple steps', 'nera-competitions');
 $hero_badge = get_field('hiw_hero_badge') ?: __('Simple & Fair', 'nera-competitions');
 
 $draw_title = get_field('hiw_draw_title') ?: __('The Draw Process', 'nera-competitions');

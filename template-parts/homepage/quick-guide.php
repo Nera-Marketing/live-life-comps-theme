@@ -35,7 +35,7 @@ if (empty($steps)) {
       'number' => '02',
       'title' => __('Pick Your Prizes', 'nera-competitions'),
       'description' => __(
-        'Browse live competitions and answer the question correctly to qualify your entry.',
+        'Browse live competitions, pick your prizes, and secure your tickets.',
         'nera-competitions',
       ),
       'step_link' => [
