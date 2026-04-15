@@ -19,13 +19,13 @@ $items = get_field('marquee_items', 'option');
 $default_items = [
     'LIVE LIFE PRIZES',
     'PART OF VAN LIFE BUILDS',
+    'PRIZES WITH PURPOSE',
     'WIN LIFE ENRICHING PRIZES',
     'FIXED ODDS & TRANSPARENT DRAWS',
     'SMALL BUSINESS, BIG HEART',
     'SUPPORTING WORTHY CAUSES',
     'GOODBYE THINGS, HELLO EXPERIENCES',
     'RECONNECT WITH NATURE',
-    'LIVE LIFE FULLY',
 ];
 
 if (!$enabled) {
@@ -55,11 +55,11 @@ if (empty($phrases)) {
         foreach ($phrases_doubled as $i => $phrase):
             $is_duplicate = $i >= count($phrases);
         ?>
-            <span class="marquee-item text-[12px] font-medium uppercase tracking-[2px] text-[rgba(216,181,130,0.7)] shrink-0"<?php echo $is_duplicate ? ' aria-hidden="true"' : ''; ?>>
+            <span class="marquee-item text-[11px] font-semibold uppercase tracking-[0.18em] text-[rgba(216,181,130,0.7)] shrink-0"<?php echo $is_duplicate ? ' aria-hidden="true"' : ''; ?>>
                 <?php echo esc_html($phrase); ?>
             </span>
             <?php if ($i < $count - 1): ?>
-                <span class="marquee-sep text-[rgba(216,181,130,0.2)] shrink-0" aria-hidden="true">&#8226;</span>
+                <span class="marquee-sep text-[rgba(216,181,130,0.55)] shrink-0" aria-hidden="true">|</span>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>

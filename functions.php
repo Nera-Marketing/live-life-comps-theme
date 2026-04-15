@@ -178,7 +178,7 @@ add_action('wp_enqueue_scripts', function (): void {
  * Marquee banner animation (parent Tailwind bundle does not include marquee keyframes).
  */
 add_action('wp_enqueue_scripts', function (): void {
-    $path = get_stylesheet_directory() . '/marquee-banner.css';
+    $path = get_stylesheet_directory() . '/assets/css/marquee-banner.css';
     if (!is_readable($path)) {
         return;
     }
@@ -190,7 +190,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style(
         'live-life-prizes-marquee-banner',
-        get_stylesheet_directory_uri() . '/marquee-banner.css',
+        get_stylesheet_directory_uri() . '/assets/css/marquee-banner.css',
         [$dep],
         (string) filemtime($path),
     );
@@ -261,14 +261,14 @@ add_action('wp_enqueue_scripts', function (): void {
         $dep = live_life_prizes_parent_style_dependency();
     }
 
-    $path = get_stylesheet_directory() . '/account-brand-overrides.css';
+    $path = get_stylesheet_directory() . '/assets/css/account-brand-overrides.css';
     if (!is_readable($path)) {
         return;
     }
 
     wp_enqueue_style(
         'live-life-prizes-account-brand',
-        get_stylesheet_directory_uri() . '/account-brand-overrides.css',
+        get_stylesheet_directory_uri() . '/assets/css/account-brand-overrides.css',
         [$dep],
         (string) filemtime($path),
     );
@@ -286,7 +286,7 @@ add_action('wp_enqueue_scripts', function (): void {
         return;
     }
 
-    $path = get_stylesheet_directory() . '/woo-hero-earthy-overrides.css';
+    $path = get_stylesheet_directory() . '/assets/css/woo-hero-earthy-overrides.css';
     if (!is_readable($path)) {
         return;
     }
@@ -302,7 +302,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style(
         'live-life-prizes-woo-hero-earthy',
-        get_stylesheet_directory_uri() . '/woo-hero-earthy-overrides.css',
+        get_stylesheet_directory_uri() . '/assets/css/woo-hero-earthy-overrides.css',
         $deps,
         (string) filemtime($path),
     );
@@ -312,7 +312,7 @@ add_action('wp_enqueue_scripts', function (): void {
  * Footer — UK layout + bronze/dark styling (loads after child Vite tokens).
  */
 add_action('wp_enqueue_scripts', function (): void {
-    $path = get_stylesheet_directory() . '/footer-live-life.css';
+    $path = get_stylesheet_directory() . '/assets/css/footer-live-life.css';
     if (!is_readable($path)) {
         return;
     }
@@ -324,7 +324,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style(
         'live-life-prizes-footer',
-        get_stylesheet_directory_uri() . '/footer-live-life.css',
+        get_stylesheet_directory_uri() . '/assets/css/footer-live-life.css',
         [$dep],
         (string) filemtime($path),
     );
@@ -341,7 +341,7 @@ add_action('wp_enqueue_scripts', function (): void {
         return;
     }
 
-    $path = get_stylesheet_directory() . '/checkout-wallet-earthy-overrides.css';
+    $path = get_stylesheet_directory() . '/assets/css/checkout-wallet-earthy-overrides.css';
     if (!is_readable($path)) {
         return;
     }
@@ -353,7 +353,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style(
         'live-life-prizes-checkout-wallet-earthy',
-        get_stylesheet_directory_uri() . '/checkout-wallet-earthy-overrides.css',
+        get_stylesheet_directory_uri() . '/assets/css/checkout-wallet-earthy-overrides.css',
         [$dep],
         (string) filemtime($path),
     );
@@ -448,7 +448,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
 /**
  * My Account wallet badge: replace parent footer script (no inline indigo gradient).
- * Appearance is fully controlled by .wallet-balance-badge in account-brand-overrides.css.
+ * Appearance is fully controlled by .wallet-balance-badge in assets/css/account-brand-overrides.css.
  */
 add_action('init', function (): void {
     remove_action('wp_footer', 'nera_add_wallet_balance_script', 10);
