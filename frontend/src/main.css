@@ -867,6 +867,45 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
   background-size: cover;
 }
 
+/* Related competitions band — full-width terracotta (parent wraps template in bg-surface section) */
+body.nera-single-lottery.single-product #primary.site-main section:has(.related-competitions) {
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  border-top-color: rgba(216, 181, 130, 0.15) !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  a.inline-flex {
+  border-color: rgba(216, 181, 130, 0.35) !important;
+  color: var(--color-on-primary) !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  a.inline-flex:hover {
+  border-color: var(--color-on-primary) !important;
+  color: #fefcf8 !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  a.inline-flex
+  .material-symbols-outlined {
+  color: inherit;
+}
+
 /* How It Works — soft light bokeh on terracotta gradient hero (parent uses --particle-color) */
 .how-it-works-page .how-it-works-section {
   --particle-color: rgba(255, 252, 248, 0.14);
