@@ -243,3 +243,20 @@ body.woocommerce-cart .woocommerce-cart-form button[name='update_cart']:hover {
   border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-gray-300)) !important;
   background-color: color-mix(in srgb, var(--color-gray-200) 55%, var(--color-surface)) !important;
 }
+
+/* --------------------------------------------------------------------------
+   Cart: fix responsive layout for cart items.
+   The parent theme compiled md:flex/md:hidden as flat rules (no @media wrapper).
+   The child theme's .hidden overrides the parent's flat .md:flex, keeping
+   .cart-item-desktop permanently display:none on desktop. Fix by explicitly
+   re-asserting the correct display values inside proper @media blocks.
+   -------------------------------------------------------------------------- */
+@media (min-width: 48rem) {
+  body.woocommerce-cart .cart-item-desktop { display: flex !important; }
+  body.woocommerce-cart .cart-item-mobile  { display: none  !important; }
+}
+
+@media (max-width: 47.9375rem) {
+  body.woocommerce-cart .cart-item-desktop { display: none  !important; }
+  body.woocommerce-cart .cart-item-mobile  { display: flex  !important; }
+}

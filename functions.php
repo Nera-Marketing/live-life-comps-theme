@@ -11,6 +11,8 @@ require_once get_stylesheet_directory() . '/inc/acf-header.php';
 require_once get_stylesheet_directory() . '/inc/acf-homepage.php';
 require_once get_stylesheet_directory() . '/inc/footer-helpers.php';
 require_once get_stylesheet_directory() . '/inc/footer-widgets-seed.php';
+require_once get_stylesheet_directory() . '/inc/lfw-winners-data.php';
+require_once get_stylesheet_directory() . '/inc/page-seed.php';
 
 /**
  * Last registered parent production Vite CSS handle (nera-vite-css-0, nera-vite-css-1, …).
