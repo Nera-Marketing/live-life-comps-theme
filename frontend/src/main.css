@@ -191,11 +191,11 @@ a.bg-primary:hover {
 }
 
 .hero-primary {
-  color: #1c1917 !important;
+  color: #d8b582 !important;
 }
 
 .hero-primary:hover {
-  color: var(--color-on-primary) !important;
+  color: #e8c896 !important;
 }
 
 .account-prompt-cta,

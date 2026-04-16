@@ -85,13 +85,6 @@ if ($hero_video_iframe_raw) {
     </svg>
   </div>
 
-  <!-- Organic wave transition to canvas background -->
-  <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
-      <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
-    </svg>
-  </div>
-
   <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center relative z-[1]">
 
     <?php if ($hero_show_badge): ?>
@@ -122,7 +115,7 @@ if ($hero_video_iframe_raw) {
 
     <!-- Primary CTA - Enter Now (most prominent on page) -->
     <a href="<?php echo esc_url($hero_cta_url); ?>"
-      class="hero-primary mt-8 inline-flex items-center gap-2 px-14 py-5 bg-[#d8b582] text-[#1c1917] rounded font-bold text-lg tracking-[0.2em] uppercase shadow-[0_12px_40px_-12px_rgba(155,80,57,0.35)] transition-all hover:bg-[#9b5039] hover:text-[#d8b582] hover:shadow-[0_16px_44px_-10px_rgba(155,80,57,0.45)] hover:-translate-y-0.5">
+      class="hero-primary mt-8 inline-flex items-center gap-2 px-14 py-5 bg-[#0c0b09] text-[#d8b582] rounded font-bold text-lg tracking-[0.2em] uppercase shadow-[0_12px_40px_-12px_rgba(0,0,0,0.45)] transition-all hover:bg-stone-900 hover:text-[#e8c896] hover:shadow-[0_16px_44px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-0.5">
       <?php echo esc_html($hero_cta_text); ?>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M5 12h14M12 5l7 7-7 7" />
