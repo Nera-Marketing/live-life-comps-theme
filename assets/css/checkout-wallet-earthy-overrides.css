@@ -52,20 +52,11 @@ body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 > .f
   align-items: stretch !important;
 }
 
-body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 > .flex > .w-full.shrink-0 {
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  flex: 1 1 100% !important;
-}
-
 /* Safeguard: full-width Place order even if parent utilities change again */
-body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 #place_order.nera-place-order-btn,
-body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 button.nera-place-order-btn.btn-checkout {
+body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 #place_order.nera-place-order-btn {
   width: 100% !important;
   min-width: 0 !important;
   max-width: none !important;
-  box-sizing: border-box !important;
 }
 
 /* Wallet quick links: parent uses hover:text-indigo-700 */
