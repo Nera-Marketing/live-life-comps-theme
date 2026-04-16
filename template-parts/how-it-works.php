@@ -27,37 +27,34 @@ $badge = isset($args['badge'])
 
 $default_steps = [
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
-    'title' => __('Create a Free Account', 'nera-competitions'),
-    'description' => __(
+    'icon'           => llp_icon('campfire'),
+    'title'          => __('Create a Free Account', 'nera-competitions'),
+    'description'    => __(
       'Sign up in seconds — you will need an account to enter our free prize draws.',
       'nera-competitions',
     ),
-    'color' => 'from-violet-500 to-purple-600',
-    'bg_color' => 'bg-violet-500/10',
+    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
+    'icon_bg'        => 'rgba(155, 80, 57, 0.12)',
   ],
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>',
-    'title' => __('Pick Your Prizes & Secure Your Tickets', 'nera-competitions'),
-    'description' => __(
+    'icon'           => llp_icon('compass'),
+    'title'          => __('Pick Your Prizes & Secure Your Tickets', 'nera-competitions'),
+    'description'    => __(
       'Browse live competitions, choose your favourites, and secure your entries.',
       'nera-competitions',
     ),
-    'color' => 'from-blue-500 to-cyan-500',
-    'bg_color' => 'bg-blue-500/10',
+    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
+    'icon_bg'        => 'rgba(216, 181, 130, 0.12)',
   ],
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
-    'title' => __('Watch the Live Draw', 'nera-competitions'),
-    'description' => __(
+    'icon'           => llp_icon('sun-horizon'),
+    'title'          => __('Watch the Live Draw', 'nera-competitions'),
+    'description'    => __(
       'Join us on socials for a fully transparent live draw. Winners are chosen fairly and prizes are delivered to you.',
       'nera-competitions',
     ),
-    'color' => 'from-amber-500 to-orange-500',
-    'bg_color' => 'bg-amber-500/10',
+    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
+    'icon_bg'        => 'rgba(196, 112, 78, 0.12)',
   ],
 ];
 
@@ -156,17 +153,16 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
         $step_number = 1;
         foreach ($steps as $step):
 
-          $delay = ($step_number - 1) * 150;
-          $color = isset($step['color']) ? $step['color'] : 'from-primary to-primary-dark';
-          $bg_color = isset($step['bg_color']) ? $step['bg_color'] : 'bg-primary/10';
+          $delay          = ($step_number - 1) * 150;
+          $badge_gradient = isset($step['badge_gradient']) ? $step['badge_gradient'] : 'linear-gradient(to bottom right, #9b5039, #c4704e)';
+          $icon_bg        = isset($step['icon_bg']) ? $step['icon_bg'] : 'rgba(155, 80, 57, 0.12)';
           ?>
           <div class="how-it-works-step relative group" data-animate="fade-in-up" data-delay="<?php echo $delay; ?>">
             <div class="relative h-full pt-4 pr-4">
 
               <div
-                class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br <?php echo esc_attr(
-                  $color,
-                ); ?> rounded-2xl flex items-center justify-center text-on-primary font-bold text-lg shadow-lg shadow-primary/25 rotate-12 group-hover:rotate-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 will-change-transform">
+                class="absolute top-0 right-0 w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary font-bold text-lg shadow-lg shadow-primary/25 rotate-12 group-hover:rotate-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 will-change-transform"
+                style="background: <?php echo esc_attr($badge_gradient); ?>">
                 <?php echo esc_html($step_number); ?>
               </div>
 
@@ -182,9 +178,8 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
 
                 <div class="relative mb-6">
                   <div
-                    class="w-20 h-20 <?php echo esc_attr(
-                      $bg_color,
-                    ); ?> rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform">
+                    class="w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                    style="background-color: <?php echo esc_attr($icon_bg); ?>">
                     <div class="text-text-secondary group-hover:text-primary transition-colors duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]">
                       <?php echo $step['icon']; ?>
                     </div>
@@ -209,9 +204,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
             <?php if ($step_number < count($steps)): ?>
               <div class="flex justify-center py-6 lg:hidden">
                 <div class="flex flex-col items-center gap-1">
-                  <div class="w-0.5 h-8 bg-gradient-to-b <?php echo esc_attr(
-                    $color,
-                  ); ?> rounded-full"></div>
+                  <div class="w-0.5 h-8 rounded-full" style="background: <?php echo esc_attr($badge_gradient); ?>"></div>
                   <svg class="w-5 h-5 text-on-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                   </svg>

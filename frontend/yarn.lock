@@ -41,6 +41,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@phosphor-icons/core@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@phosphor-icons/core/-/core-2.1.1.tgz"
+  integrity sha512-v4ARvrip4qBCImOE5rmPUylOEK4iiED9ZyKjcvzuezqMaiRASCHKcRIuvvxL/twvLpkfnEODCOJp5dM4eZilxQ==
+
 "@rollup/rollup-darwin-arm64@4.60.1":
   version "4.60.1"
   resolved "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.60.1.tgz"

@@ -38,30 +38,44 @@ $postal_title = get_field('hiw_postal_title') ?: __('Free Postal Entry Route', '
 $acf_postal_steps = get_field('hiw_postal_steps');
 $postal_note = get_field('hiw_postal_note');
 
+// Map legacy Material Symbol names to llp_icon() shortnames
+$hiw_icon_map = [
+  'contact_page'     => 'identification-card',
+  'mail'             => 'paper-plane-tilt',
+  'verified_user'    => 'shield-check',
+  'diversity_3'      => 'users',
+  'shield_with_heart'=> 'shield-check',
+  'lock'             => 'lock',
+  'verified'         => 'seal-check',
+  'visibility'       => 'eye',
+  'emoji_events'     => 'trophy',
+  'headset_mic'      => 'chat-teardrop',
+];
+
 $default_postal_steps = [
   [
     'number' => '1',
-    'title' => __('Include Your Details', 'nera-competitions'),
-    'icon' => 'contact_page',
-    'text' => __(
+    'title'  => __('Include Your Details', 'nera-competitions'),
+    'icon'   => 'identification-card',
+    'text'   => __(
       'Send your name, address, date of birth, contact phone number, and the name of the competition you wish to enter.',
       'nera-competitions',
     ),
   ],
   [
     'number' => '2',
-    'title' => __('Send Your Postcard', 'nera-competitions'),
-    'icon' => 'mail',
-    'text' => __(
+    'title'  => __('Send Your Postcard', 'nera-competitions'),
+    'icon'   => 'paper-plane-tilt',
+    'text'   => __(
       'Send your entry on an unenclosed postcard via first or second class post to our registered business address.',
       'nera-competitions',
     ),
   ],
   [
     'number' => '3',
-    'title' => __('We Process It', 'nera-competitions'),
-    'icon' => 'verified_user',
-    'text' => __(
+    'title'  => __('We Process It', 'nera-competitions'),
+    'icon'   => 'shield-check',
+    'text'   => __(
       'Once received, your entry will be processed and included in the draw just like a paid entry.',
       'nera-competitions',
     ),
@@ -91,24 +105,24 @@ $acf_trans_features = get_field('hiw_transparency_features');
 
 $default_trans_features = [
   [
-    'icon' => 'verified_user',
-    'title' => __('Fully Insured', 'nera-competitions'),
+    'icon'        => 'shield-check',
+    'title'       => __('Fully Insured', 'nera-competitions'),
     'description' => __(
       'We are a legally registered UK business, fully insured and compliant with all regulations.',
       'nera-competitions',
     ),
   ],
   [
-    'icon' => 'diversity_3',
-    'title' => __('Community Focused', 'nera-competitions'),
+    'icon'        => 'users',
+    'title'       => __('Community Focused', 'nera-competitions'),
     'description' => __(
       'Our mission is to support our community and provide life-changing opportunities for everyone.',
       'nera-competitions',
     ),
   ],
   [
-    'icon' => 'shield_with_heart',
-    'title' => __('Secure & Safe', 'nera-competitions'),
+    'icon'        => 'lock',
+    'title'       => __('Secure & Safe', 'nera-competitions'),
     'description' => __(
       'We use industry-standard security protocols to ensure your data and entries are always protected.',
       'nera-competitions',
@@ -232,7 +246,8 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
         <?php
         $delay = 0;
         foreach ($postal_steps as $step):
-          $icon = isset($step['icon']) ? $step['icon'] : 'mail';
+          $raw_icon = isset($step['icon']) ? $step['icon'] : 'paper-plane-tilt';
+          $icon_key = isset($hiw_icon_map[$raw_icon]) ? $hiw_icon_map[$raw_icon] : $raw_icon;
           $title = isset($step['title']) ? $step['title'] : '';
           ?>
           <div
@@ -248,10 +263,8 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
               <div class="flex items-start justify-between mb-6">
                 <div class="relative">
                   <div
-                    class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/15">
-                    <span class="material-symbols-outlined text-primary text-4xl" aria-hidden="true"><?php echo esc_html(
-                      $icon,
-                    ); ?></span>
+                    class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/15 text-primary">
+                    <?php echo llp_icon($icon_key, '32'); ?>
                   </div>
                 </div>
                 <div
@@ -319,9 +332,11 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
             class="bg-surface border border-on-primary/15 p-8 rounded-3xl shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
             data-aos="fade-up">
             <div class="text-primary mb-6">
-              <span class="material-symbols-outlined text-5xl" aria-hidden="true"><?php echo esc_html(
-                $feature['icon'],
-              ); ?></span>
+              <?php
+              $feat_icon_raw = isset($feature['icon']) ? $feature['icon'] : 'shield-check';
+              $feat_icon_key = isset($hiw_icon_map[$feat_icon_raw]) ? $hiw_icon_map[$feat_icon_raw] : $feat_icon_raw;
+              echo llp_icon($feat_icon_key, '48');
+              ?>
             </div>
             <h3 class="text-xl font-bold mb-4 text-text-primary">
               <?php echo esc_html($feature['title']); ?>

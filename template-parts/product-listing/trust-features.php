@@ -19,27 +19,24 @@ $section_subtitle = __(
 
 $trust_features = [
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
-    'title' => __('Secure Checkout', 'nera-competitions'),
+    'icon'        => llp_icon('lock'),
+    'title'       => __('Secure Checkout', 'nera-competitions'),
     'description' => __(
       'Your payment details are protected with bank-level encryption.',
       'nera-competitions',
     ),
   ],
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>',
-    'title' => __('Certified Winners', 'nera-competitions'),
+    'icon'        => llp_icon('seal-check'),
+    'title'       => __('Certified Winners', 'nera-competitions'),
     'description' => __(
       'All draws are independently verified and transparent.',
       'nera-competitions',
     ),
   ],
   [
-    'icon' =>
-      '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
-    'title' => __('24/7 Support', 'nera-competitions'),
+    'icon'        => llp_icon('chat-teardrop'),
+    'title'       => __('24/7 Support', 'nera-competitions'),
     'description' => __('Our friendly team is here to help anytime you need.', 'nera-competitions'),
   ],
 ];

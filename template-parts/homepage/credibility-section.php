@@ -11,6 +11,19 @@ if (!defined('ABSPATH')) {
   exit();
 }
 
+// Map legacy Material Symbol names (from ACF) → llp_icon() shortnames
+$icon_map = [
+  'lock'          => 'lock',
+  'verified'      => 'seal-check',
+  'verified_user' => 'shield-check',
+  'visibility'    => 'eye',
+  'emoji_events'  => 'trophy',
+  'headset_mic'   => 'chat-teardrop',
+  'check_circle'  => 'seal-check',
+  'person_add'    => 'users',
+  'diversity_3'   => 'users',
+];
+
 // Default trust items (used when ACF repeater is empty)
 $default_items = [
   ['icon' => 'lock', 'label' => __('Secure Payments', 'nera-competitions')],
@@ -45,9 +58,10 @@ if (empty($credibility_items)) {
       } ?>
       <div class="trust-item flex items-center gap-2.5">
         <span class="inline-flex items-center justify-center w-9 h-9 text-[#d8b582]">
-          <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">
-            <?php echo esc_html($item['icon']); ?>
-          </span>
+          <?php
+          $icon_key = isset($icon_map[$item['icon']]) ? $icon_map[$item['icon']] : $item['icon'];
+          echo llp_icon($icon_key, '22');
+          ?>
         </span>
         <span class="text-[12px] text-[rgba(216,181,130,0.9)] tracking-[1px]">
           <?php echo esc_html($item['label']); ?>
