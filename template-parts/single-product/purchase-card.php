@@ -106,7 +106,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           data-time="<?php echo esc_attr($countdown_date_for_js); ?>">
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-6">
-              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-white"
+              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-on-primary"
                 id="lty_lottery_days">
                 <?php echo esc_html(str_pad($countdown['days'] ?? 0, 2, '0', STR_PAD_LEFT)); ?>
               </span>
@@ -117,7 +117,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-6">
-              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-white"
+              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-on-primary"
                 id="lty_lottery_hours">
                 <?php echo esc_html(str_pad($countdown['hours'] ?? 0, 2, '0', STR_PAD_LEFT)); ?>
               </span>
@@ -128,7 +128,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-6">
-              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-white"
+              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-on-primary"
                 id="lty_lottery_minutes">
                 <?php echo esc_html(str_pad($countdown['minutes'] ?? 0, 2, '0', STR_PAD_LEFT)); ?>
               </span>
@@ -139,7 +139,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-6">
-              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-white"
+              <span class="lty-lottery-timer-content block text-2xl lg:text-3xl font-bold !text-on-primary"
                 id="lty_lottery_seconds">
                 <?php echo esc_html(str_pad($countdown['seconds'] ?? 0, 2, '0', STR_PAD_LEFT)); ?>
               </span>
@@ -154,7 +154,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
         <div class="grid grid-cols-4 gap-3">
           <div class="text-center">
             <div class="bg-primary/40 rounded-xl p-3 lg:p-6">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">00</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">00</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Days', 'nera-competitions'); ?>
@@ -162,7 +162,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary/40 rounded-xl p-3 lg:p-6">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">00</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">00</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Hours', 'nera-competitions'); ?>
@@ -170,7 +170,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary/40 rounded-xl p-3 lg:p-6">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">00</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">00</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Mins', 'nera-competitions'); ?>
@@ -178,7 +178,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary/40 rounded-xl p-3 lg:p-6">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">00</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">00</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Secs', 'nera-competitions'); ?>
@@ -190,7 +190,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
         <div class="grid grid-cols-4 gap-3">
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-4">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">--</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">--</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Days', 'nera-competitions'); ?>
@@ -198,7 +198,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-4">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">--</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">--</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Hours', 'nera-competitions'); ?>
@@ -206,7 +206,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-4">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">--</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">--</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Mins', 'nera-competitions'); ?>
@@ -214,7 +214,7 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
           </div>
           <div class="text-center">
             <div class="bg-primary rounded-xl p-3 lg:p-4">
-              <span class="block text-2xl lg:text-3xl font-bold text-white">--</span>
+              <span class="block text-2xl lg:text-3xl font-bold text-on-primary">--</span>
             </div>
             <span class="block mt-2 text-xs font-semibold text-text-secondary uppercase tracking-wide">
               <?php _e('Secs', 'nera-competitions'); ?>

@@ -70,14 +70,14 @@ $alpine_config = [
                             data-filter-chip="<?php echo esc_attr($item['value']); ?>"
                             class="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 whitespace-nowrap"
                             :class="activeFilter === '<?php echo esc_attr($item['value']); ?>'
-                              ? 'bg-gradient-to-br from-primary to-primary/80 text-white shadow-[0_4px_12px_rgba(19,19,236,0.3)]'
+                              ? 'bg-gradient-to-br from-primary to-primary/80 text-on-primary shadow-[0_4px_12px_rgba(155,80,57,0.3)]'
                               : 'bg-gray-100 text-text-secondary active:bg-gray-200'"
                             @click="setFilter('<?php echo esc_attr($item['value']); ?>')"
                           >
                               <span><?php echo esc_html($item['label']); ?></span>
                               <span
                                 class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold"
-                                :class="activeFilter === '<?php echo esc_attr($item['value']); ?>' ? 'bg-surface/20 text-white' : 'bg-gray-200 text-text-secondary'"
+                                :class="activeFilter === '<?php echo esc_attr($item['value']); ?>' ? 'bg-surface/20 text-on-primary' : 'bg-gray-200 text-text-secondary'"
                               >
                                   <?php echo esc_html((string) $item['count']); ?>
                               </span>
@@ -98,14 +98,14 @@ $alpine_config = [
                             data-filter-item="<?php echo esc_attr($item['value']); ?>"
                             class="relative z-10 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300"
                             :class="activeFilter === '<?php echo esc_attr($item['value']); ?>'
-                              ? 'text-white'
+                              ? 'text-on-primary'
                               : 'text-text-secondary hover:text-text-primary hover:-translate-y-0.5'"
                             @click="setFilter('<?php echo esc_attr($item['value']); ?>')"
                           >
                               <span class="relative z-10"><?php echo esc_html($item['label']); ?></span>
                               <span
                                 class="relative z-10 ml-2 inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full text-xs font-bold transition-all duration-300"
-                                :class="activeFilter === '<?php echo esc_attr($item['value']); ?>' ? 'bg-surface/20 text-white' : 'bg-gray-200 text-text-secondary hover:bg-gray-300'"
+                                :class="activeFilter === '<?php echo esc_attr($item['value']); ?>' ? 'bg-surface/20 text-on-primary' : 'bg-gray-200 text-text-secondary hover:bg-gray-300'"
                               >
                                   <?php echo esc_html((string) $item['count']); ?>
                               </span>
@@ -146,7 +146,7 @@ $alpine_config = [
             <button
                 type="button"
                 @click="loadMore()"
-                class="group relative px-5 py-2.5 md:px-8 md:py-4 bg-gradient-to-br from-primary to-primary/80 text-white rounded-xl font-bold text-sm md:text-base shadow-lg hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+                class="group relative px-5 py-2.5 md:px-8 md:py-4 bg-gradient-to-br from-primary to-primary/80 text-on-primary rounded-xl font-bold text-sm md:text-base shadow-lg hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             >
                 <span class="relative z-10 flex items-center justify-center gap-2 md:gap-3">
                     <span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-y-1">expand_more</span>

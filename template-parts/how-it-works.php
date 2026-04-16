@@ -69,11 +69,11 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
   id="how-it-works">
 
   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">
-    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-white/10 blur-[120px]"></div>
+    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-on-primary/10 blur-[120px]"></div>
     <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-indigo-400/20 blur-[120px]"></div>
   </div>
   <div
-    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15)_0%,transparent_55%)]"
+    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(216,181,130,0.12)_0%,transparent_55%)]"
     aria-hidden="true"></div>
 
   <div class="how-it-works-particles absolute inset-0 overflow-hidden pointer-events-none">
@@ -87,7 +87,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
 
   <div
     class="absolute inset-0 opacity-[0.06]"
-    style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
+    style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23d8b582&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
     aria-hidden="true"></div>
 
   <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
@@ -95,23 +95,23 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
     <div class="text-center mb-16 lg:mb-24 how-it-works-header" data-animate="fade-in-up">
 
       <div
-        class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/10 border border-white/25">
+        class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-on-primary/10 border border-on-primary/25">
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-on-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-on-primary"></span>
         </span>
-        <span class="text-sm font-semibold text-white uppercase tracking-wider"><?php echo esc_html(
+        <span class="text-sm font-semibold text-on-primary uppercase tracking-wider"><?php echo esc_html(
           $badge,
         ); ?></span>
       </div>
 
-      <h2 class="font-heading text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+      <h2 class="font-heading text-4xl lg:text-5xl xl:text-6xl font-bold text-on-primary mb-6 leading-tight">
         <?php echo esc_html($title); ?>
       </h2>
 
-      <div class="w-20 h-1 bg-white/80 mx-auto mb-6 rounded-full" aria-hidden="true"></div>
+      <div class="w-20 h-1 bg-on-primary/80 mx-auto mb-6 rounded-full" aria-hidden="true"></div>
 
-      <p class="text-lg lg:text-xl text-center leading-relaxed font-light italic max-w-2xl mx-auto text-white/85">
+      <p class="text-lg lg:text-xl text-center leading-relaxed font-light italic max-w-2xl mx-auto text-on-primary/85">
         <?php echo esc_html($subtitle); ?>
       </p>
     </div>
@@ -123,7 +123,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path class="how-it-works-path-bg"
             d="M 200 40 Q 500 40 600 40 Q 850 40 1000 40"
-            stroke="rgba(255, 255, 255, 0.28)"
+            stroke="rgba(216, 181, 130, 0.28)"
             stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8" fill="none" />
           <path class="how-it-works-path-animated"
             d="M 200 40 Q 500 40 600 40 Q 850 40 1000 40" stroke="url(#pathGradientHiw)"
@@ -166,17 +166,17 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
               <div
                 class="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br <?php echo esc_attr(
                   $color,
-                ); ?> rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/25 rotate-12 group-hover:rotate-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 will-change-transform">
+                ); ?> rounded-2xl flex items-center justify-center text-on-primary font-bold text-lg shadow-lg shadow-primary/25 rotate-12 group-hover:rotate-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 will-change-transform">
                 <?php echo esc_html($step_number); ?>
               </div>
 
               <div
-                class="how-it-works-card relative h-full bg-surface/95 backdrop-blur-sm rounded-3xl p-8 border border-white/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-white/25 overflow-hidden [contain:layout_paint]">
+                class="how-it-works-card relative h-full bg-surface/95 backdrop-blur-sm rounded-3xl p-8 border border-on-primary/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-on-primary/30 overflow-hidden [contain:layout_paint]">
 
                 <div
                   class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden rounded-3xl">
                   <div
-                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0">
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-on-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0">
                   </div>
                 </div>
 
@@ -212,7 +212,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
                   <div class="w-0.5 h-8 bg-gradient-to-b <?php echo esc_attr(
                     $color,
                   ); ?> rounded-full"></div>
-                  <svg class="w-5 h-5 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-5 h-5 text-on-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                   </svg>
                 </div>
@@ -228,17 +228,24 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
 
     <div class="text-center mt-16 lg:mt-24" data-animate="fade-in-up" data-delay="600">
       <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>"
-        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 group text-white hover:text-white">
+        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 group text-on-primary hover:text-on-primary">
         <span><?php esc_html_e('Start Winning Today', 'nera-competitions'); ?></span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
       </a>
-      <p class="text-sm text-white/75">
+      <p class="text-sm text-on-primary/75">
         <?php esc_html_e('Join thousands of winners • New competitions added daily', 'nera-competitions'); ?>
       </p>
     </div>
 
+  </div>
+
+  <!-- Organic wave transition to canvas background -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
+      <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
+    </svg>
   </div>
 </section>

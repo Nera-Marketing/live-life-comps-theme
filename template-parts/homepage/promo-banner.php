@@ -102,12 +102,12 @@ endif;
         </span>
 
         <!-- Title -->
-        <h2 class="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight !text-white">
+        <h2 class="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight !text-on-primary">
           <?php echo esc_html($banner['title']); ?>
         </h2>
 
         <!-- Description -->
-        <p class="text-base lg:text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
+        <p class="text-base lg:text-lg text-on-primary/80 mb-10 leading-relaxed max-w-lg">
           <?php echo esc_html($banner['description']); ?>
         </p>
 
@@ -135,12 +135,12 @@ endif;
 
                 <!-- Icon Container -->
                 <span
-                  class="flex items-center justify-center w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm text-white group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+                  class="flex items-center justify-center w-14 h-14 rounded-full bg-on-primary/10 backdrop-blur-sm text-on-primary group-hover:bg-on-primary/20 group-hover:scale-110 transition-all duration-300">
                   <?php echo $icon; ?>
                 </span>
 
                 <!-- Label -->
-                <span class="text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300">
+                <span class="text-sm font-medium text-on-primary/80 group-hover:text-on-primary transition-colors duration-300">
                   <?php echo esc_html($label); ?>
                 </span>
 

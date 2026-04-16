@@ -57,7 +57,7 @@ $placeholder_icon_class = $category === 'instant-win' ? 'text-accent/50' : 'text
     </div>
 
     <div class="flex flex-col min-w-0 flex-1 gap-1 justify-center py-0.5">
-        <span class="inline-flex items-center gap-1 self-start <?php echo esc_attr($badge_class); ?> text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">
+        <span class="inline-flex items-center gap-1 self-start <?php echo esc_attr($badge_class); ?> text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">
             <span class="opacity-90" aria-hidden="true">&#9679;</span>
             <?php echo esc_html($category_label); ?>
         </span>

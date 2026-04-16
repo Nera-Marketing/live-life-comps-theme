@@ -274,7 +274,7 @@ $logo_secondary_url = function_exists('get_field') ? get_field('logo_secondary',
       <?php endif; ?>
 
       <a href="<?php echo esc_url($cta_primary_url); ?>"
-        class="block w-full text-center px-6 py-3 bg-gradient-primary text-white font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-md">
+        class="block w-full text-center px-6 py-3 bg-gradient-primary text-on-primary font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-md">
         <?php echo esc_html($cta_primary_text); ?>
       </a>
     </div>

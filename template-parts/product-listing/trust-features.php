@@ -85,11 +85,11 @@ if (function_exists('get_field')) {
   class="trust-features-section relative overflow-hidden py-16 md:py-20 bg-llp-hero-terracotta"
   aria-labelledby="trust-features-heading">
   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">
-    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-white/10 blur-[120px]"></div>
+    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-on-primary/10 blur-[120px]"></div>
     <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-indigo-400/20 blur-[120px]"></div>
   </div>
   <div
-    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15)_0%,transparent_55%)]"
+    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(216,181,130,0.12)_0%,transparent_55%)]"
     aria-hidden="true"></div>
 
   <div class="max-w-[1200px] mx-auto px-4 lg:px-8 relative z-10">
@@ -97,11 +97,11 @@ if (function_exists('get_field')) {
     <div class="text-center mb-12">
       <h2
         id="trust-features-heading"
-        class="text-2xl md:text-3xl font-extrabold text-white tracking-tight font-heading"
+        class="text-2xl md:text-3xl font-extrabold text-on-primary tracking-tight font-heading"
         data-aos="fade-up">
         <?php echo esc_html($section_title); ?>
       </h2>
-      <p class="text-white/80 font-medium mt-2 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <p class="text-on-primary/80 font-medium mt-2 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
         <?php echo esc_html($section_subtitle); ?>
       </p>
     </div>
@@ -109,10 +109,10 @@ if (function_exists('get_field')) {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <?php foreach ($trust_features as $index => $feature): ?>
         <div
-          class="text-center p-8 bg-surface/95 backdrop-blur-sm rounded-2xl border border-white/15 shadow-lg shadow-black/20 hover:border-white/25 hover:shadow-xl hover:shadow-black/30 hover:-translate-y-0.5 transition-all duration-300"
+          class="text-center p-8 bg-surface/95 backdrop-blur-sm rounded-2xl border border-on-primary/15 shadow-lg shadow-black/20 hover:border-on-primary/30 hover:shadow-xl hover:shadow-black/30 hover:-translate-y-0.5 transition-all duration-300"
           data-aos="fade-up" data-aos-delay="<?php echo esc_attr(($index + 1) * 100); ?>">
 
-          <div class="inline-flex items-center justify-center w-16 h-16 bg-white/15 text-on-primary rounded-2xl mb-5">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-on-primary/15 text-on-primary rounded-2xl mb-5">
             <?php echo $feature['icon']; ?>
           </div>
 

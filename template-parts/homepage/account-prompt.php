@@ -42,7 +42,7 @@ $icon = get_field('account_prompt_icon') ?: 'person_add';
     <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-[rgba(216,181,130,0.05)] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
     <!-- Contained card -->
-    <div class="account-prompt-card relative overflow-hidden rounded-2xl lg:rounded-3xl bg-white border border-stone-200/90 shadow-[0_4px_24px_-8px_rgba(28,25,23,0.08)] backdrop-blur-sm group">
+    <div class="account-prompt-card relative overflow-hidden rounded-2xl lg:rounded-3xl bg-surface border border-on-primary/15 shadow-[0_4px_24px_-8px_rgba(28,25,23,0.08)] backdrop-blur-sm group">
 
       <!-- Top gradient strip -->
       <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[rgba(155,80,57,0.4)] to-transparent" aria-hidden="true"></div>
@@ -65,7 +65,7 @@ $icon = get_field('account_prompt_icon') ?: 'person_add';
                 </span>
               </span>
             </div>
-            <p class="text-base lg:text-lg font-medium text-stone-800 tracking-[0.3px] !m-0 leading-relaxed">
+            <p class="text-base lg:text-lg font-medium text-text-primary tracking-[0.3px] !m-0 leading-relaxed">
               <?php echo esc_html($copy); ?>
             </p>
           </div>

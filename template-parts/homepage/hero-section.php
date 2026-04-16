@@ -59,13 +59,43 @@ if ($hero_video_iframe_raw) {
 ?>
 
 <section
-  class="hero-section flex flex-col items-center justify-center py-16 lg:py-24 bg-llp-hero-terracotta-b overflow-hidden"
+  class="hero-section relative flex flex-col items-center justify-center py-16 lg:py-24 bg-llp-hero-terracotta-b overflow-hidden"
   id="hero" data-aos="fade-up" data-aos-duration="600">
 
-  <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+  <!-- Decorative sun motif — echoes the hand-drawn brand logo -->
+  <div class="absolute -top-8 -right-8 lg:top-4 lg:right-4 w-60 h-60 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none z-0" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+      <circle cx="120" cy="120" r="22" fill="#d8b582"/>
+      <path d="M120 97 L119 18" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
+      <path d="M120 143 L121 222" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
+      <path d="M143 120 L222 121" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
+      <path d="M97 120 L18 119" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
+      <path d="M136 104 L199 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M104 136 L41 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M104 104 L41 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M136 136 L199 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M129 99 L152 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M141 111 L192 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M141 129 L192 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M129 141 L152 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M111 141 L88 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M99 129 L48 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M99 111 L48 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M111 99 L88 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- Organic wave transition to canvas background -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
+      <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
+    </svg>
+  </div>
+
+  <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center relative z-[1]">
 
     <?php if ($hero_show_badge): ?>
-    <span class="inline-block w-fit bg-[rgba(255,255,255,0.12)] text-[#d8b582] border border-[rgba(216,181,130,0.35)] rounded-[20px] py-1.5 px-4 text-[11px] tracking-[2px] uppercase mb-6 font-medium">
+    <span class="inline-block w-fit bg-[rgba(216,181,130,0.12)] text-[#d8b582] border border-[rgba(216,181,130,0.35)] rounded-[20px] py-1.5 px-4 text-[11px] tracking-[2px] uppercase mb-6 font-medium">
       <?php echo esc_html($hero_badge_text); ?>
     </span>
     <?php endif; ?>

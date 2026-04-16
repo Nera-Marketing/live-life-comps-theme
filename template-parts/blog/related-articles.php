@@ -67,30 +67,30 @@ $journal_url = $page_for_posts ? get_permalink($page_for_posts) : home_url('/');
 ?>
 
 <section
-    class="blog-related-articles relative overflow-hidden border-t border-white/10 py-12 md:py-16 bg-llp-hero-terracotta"
+    class="blog-related-articles relative overflow-hidden border-t border-on-primary/10 py-12 md:py-16 bg-llp-hero-terracotta"
     aria-label="<?php esc_attr_e('Related articles', 'nera-competitions'); ?>"
 >
   <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">
-    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-white/10 blur-[120px]"></div>
+    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-on-primary/10 blur-[120px]"></div>
     <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-indigo-400/20 blur-[120px]"></div>
   </div>
   <div
-    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15)_0%,transparent_55%)]"
+    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(216,181,130,0.12)_0%,transparent_55%)]"
     aria-hidden="true"></div>
 
   <div class="container relative z-10 mx-auto max-w-7xl px-4">
         <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-                <p class="text-xs font-semibold uppercase tracking-wider text-white/80">
+                <p class="text-xs font-semibold uppercase tracking-wider text-on-primary/80">
                     <?php esc_html_e('More to explore', 'nera-competitions'); ?>
                 </p>
-                <h2 class="font-heading mt-2 text-2xl font-bold text-white md:text-3xl">
+                <h2 class="font-heading mt-2 text-2xl font-bold text-on-primary md:text-3xl">
                     <?php esc_html_e('Related Articles', 'nera-competitions'); ?>
                 </h2>
             </div>
             <a
                 href="<?php echo esc_url($journal_url); ?>"
-                class="inline-flex shrink-0 items-center text-sm font-semibold text-on-primary transition-colors hover:text-white"
+                class="inline-flex shrink-0 items-center text-sm font-semibold text-on-primary transition-colors hover:text-on-primary/70"
             >
                 <?php esc_html_e('View More', 'nera-competitions'); ?>
                 <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

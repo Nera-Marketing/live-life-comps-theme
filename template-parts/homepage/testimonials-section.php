@@ -94,7 +94,7 @@ if (empty($stories)) {
 ); ?>"
                     class="w-full h-full object-cover">
                 <?php else: ?>
-                  <span class="text-xl font-bold text-white">
+                  <span class="text-xl font-bold text-on-primary">
                     <?php echo esc_html(substr($story['name'], 0, 1)); ?>
                   </span>
                 <?php endif; ?>

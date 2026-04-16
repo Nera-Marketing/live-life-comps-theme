@@ -131,7 +131,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
 }
 ?>
 
-<main id="main" class="how-it-works-page bg-gray-50 text-text-primary font-body" role="main">
+<main id="main" class="how-it-works-page bg-background-light text-text-primary font-body" role="main">
 
   <?php
   get_template_part('template-parts/how-it-works', null, [
@@ -142,7 +142,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
   ?>
 
   <section
-    class="py-20 lg:py-32 relative overflow-hidden border-y border-gray-200 bg-white"
+    class="py-20 lg:py-32 relative overflow-hidden border-y border-on-primary/15 bg-background-dark"
     aria-labelledby="hiw-draw-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -155,7 +155,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
             <?php echo esc_html($draw_title); ?>
           </h2>
           <div
-            class="max-w-none prose prose-sm prose-headings:font-heading prose-p:text-text-secondary prose-strong:text-primary leading-relaxed">
+            class="max-w-none prose prose-sm prose-headings:font-heading prose-headings:text-text-primary prose-p:text-text-secondary prose-strong:text-text-primary leading-relaxed">
             <?php if ($draw_content): ?>
               <?php echo wp_kses_post($draw_content); ?>
             <?php else: ?>
@@ -182,7 +182,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
         </div>
         <div class="relative" data-aos="fade-left">
           <?php if (!empty($draw_image_url)): ?>
-            <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-on-primary/15">
               <img
                 src="<?php echo esc_url($draw_image_url); ?>"
                 alt="<?php echo esc_attr($draw_image_alt); ?>"
@@ -192,7 +192,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
             </div>
           <?php else: ?>
             <div
-              class="aspect-video bg-gray-100 rounded-3xl border border-gray-200 flex items-center justify-center">
+              class="aspect-video bg-surface rounded-3xl border border-on-primary/15 flex items-center justify-center">
               <div class="text-center p-8">
                 <div
                   class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -220,10 +220,10 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
     aria-labelledby="hiw-postal-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="text-center mb-16" data-aos="fade-up">
-        <h2 id="hiw-postal-heading" class="font-heading text-4xl lg:text-5xl text-white mb-6">
+        <h2 id="hiw-postal-heading" class="font-heading text-4xl lg:text-5xl text-on-primary mb-6">
           <?php echo esc_html($postal_title); ?>
         </h2>
-        <p class="text-white/80 text-lg">
+        <p class="text-on-primary/80 text-lg">
           <?php esc_html_e('We offer a free entry route via post for all of our competitions.', 'nera-competitions'); ?>
         </p>
       </div>
@@ -236,13 +236,13 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
           $title = isset($step['title']) ? $step['title'] : '';
           ?>
           <div
-            class="group relative bg-surface/95 backdrop-blur-sm border border-white/10 rounded-3xl p-8 overflow-hidden shadow-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
+            class="group relative bg-surface/95 backdrop-blur-sm border border-on-primary/10 rounded-3xl p-8 overflow-hidden shadow-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
             data-aos="fade-up"
             data-aos-delay="<?php echo esc_attr((string) $delay); ?>">
             <div
               class="absolute inset-0 opacity-0 group-hover:opacity-100 overflow-hidden rounded-3xl pointer-events-none transition-opacity duration-300">
               <div
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                class="absolute inset-0 bg-gradient-to-r from-transparent via-on-primary/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
             </div>
             <div class="relative z-10">
               <div class="flex items-start justify-between mb-6">
@@ -255,7 +255,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
                   </div>
                 </div>
                 <div
-                  class="w-10 h-10 rounded-full flex items-center justify-center font-heading font-bold text-sm shrink-0 bg-gradient-to-br from-primary to-primary-dark text-white rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                  class="w-10 h-10 rounded-full flex items-center justify-center font-heading font-bold text-sm shrink-0 bg-gradient-to-br from-primary to-primary-dark text-on-primary rotate-12 group-hover:rotate-0 transition-transform duration-300">
                   <?php echo esc_html((string) $step['number']); ?>
                 </div>
               </div>
@@ -296,7 +296,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
   </section>
 
   <section
-    class="py-20 lg:py-32 relative overflow-hidden border-t border-gray-200 bg-white"
+    class="py-20 lg:py-32 relative overflow-hidden border-t border-on-primary/15 bg-background-light"
     aria-labelledby="hiw-trans-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="text-center mb-16" data-aos="fade-up">
@@ -316,7 +316,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
       <div class="grid md:grid-cols-3 gap-8">
         <?php foreach ($trans_features as $feature): ?>
           <div
-            class="bg-surface border border-gray-200 p-8 rounded-3xl shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
+            class="bg-surface border border-on-primary/15 p-8 rounded-3xl shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
             data-aos="fade-up">
             <div class="text-primary mb-6">
               <span class="material-symbols-outlined text-5xl" aria-hidden="true"><?php echo esc_html(
