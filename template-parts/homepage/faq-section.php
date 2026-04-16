@@ -50,12 +50,12 @@ if (empty($faqs)) {
 }
 ?>
 
-<section class="faq-section py-20 bg-[#0c0b09]" id="faq" data-aos="fade-up">
+<section class="faq-section py-20 bg-gradient-to-b from-[#fffdfb] to-[#faf7f2]" id="faq" data-aos="fade-up">
   <div class="max-w-7xl mx-auto px-4 lg:px-8">
 
     <!-- Section Header -->
     <div class="text-center mb-12">
-      <h2 class="font-heading text-4xl font-semibold text-[#d8b582] leading-tight tracking-tight">
+      <h2 class="font-heading text-4xl font-semibold text-text-primary leading-tight tracking-tight">
         <?php echo esc_html(
           get_field('faq_title') ?: __('Frequently Asked Questions', 'nera-competitions'),
         ); ?>
@@ -65,16 +65,16 @@ if (empty($faqs)) {
     <!-- FAQ Accordion -->
     <div class="max-w-4xl mx-auto" x-data="{ activeAccordion: null }">
       <?php foreach ($faqs as $index => $faq): ?>
-        <div class="faq-item border-b border-[rgba(216,181,130,0.2)]">
+        <div class="faq-item border-b border-primary/20">
           <button
             class="faq-item__question w-full flex justify-between items-center py-6 bg-transparent border-none cursor-pointer text-left focus:outline-none"
             @click="activeAccordion = activeAccordion === <?php echo $index; ?> ? null : <?php echo $index; ?>"
             :aria-expanded="activeAccordion === <?php echo $index; ?>"
             aria-controls="faq-answer-<?php echo esc_attr($index); ?>">
-            <span class="text-base font-semibold text-[#d8b582]"><?php echo esc_html(
+            <span class="text-base font-semibold text-text-primary"><?php echo esc_html(
               $faq['question'],
             ); ?></span>
-            <span class="faq-item__icon transition-transform duration-300 text-[#d8b582]"
+            <span class="faq-item__icon transition-transform duration-300 text-primary"
               :class="{ 'rotate-180': activeAccordion === <?php echo $index; ?> }">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M6 9l6 6 6-6" />
@@ -85,7 +85,7 @@ if (empty($faqs)) {
             $index,
           ); ?>"
             x-show="activeAccordion === <?php echo $index; ?>" x-collapse x-cloak>
-            <p class="pb-6 text-[rgba(216,181,130,0.56)] leading-relaxed"><?php echo esc_html(
+            <p class="pb-6 text-text-secondary leading-relaxed"><?php echo esc_html(
               $faq['answer'],
             ); ?></p>
           </div>
@@ -95,10 +95,10 @@ if (empty($faqs)) {
 
     <!-- Contact Link -->
     <div class="text-center mt-12">
-      <p class="text-[rgba(216,181,130,0.56)]">
+      <p class="text-text-secondary">
         <?php _e('Still have questions?', 'nera-competitions'); ?>
         <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>"
-          class="inline-flex items-center gap-2 text-[#c4704e] font-semibold ml-2 hover:gap-3 hover:text-[#d8b582] transition-all duration-200">
+          class="inline-flex items-center gap-2 text-primary font-semibold ml-2 hover:gap-3 hover:text-accent transition-all duration-200">
           <?php _e('Contact our support team', 'nera-competitions'); ?>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7" />

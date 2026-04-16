@@ -10,6 +10,7 @@ require_once get_stylesheet_directory() . '/inc/icons.php';
 require_once get_stylesheet_directory() . '/inc/acf-marquee.php';
 require_once get_stylesheet_directory() . '/inc/acf-header.php';
 require_once get_stylesheet_directory() . '/inc/acf-homepage.php';
+require_once get_stylesheet_directory() . '/inc/acf-faq-page.php';
 require_once get_stylesheet_directory() . '/inc/footer-helpers.php';
 require_once get_stylesheet_directory() . '/inc/footer-widgets-seed.php';
 require_once get_stylesheet_directory() . '/inc/lfw-winners-data.php';

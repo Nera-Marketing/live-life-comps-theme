@@ -129,7 +129,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
     </div>
   </section>
 
-  <section class="py-16 lg:py-24 border-y border-on-primary/15 bg-background-light" aria-labelledby="about-us-narrative">
+  <section class="py-16 lg:py-24 bg-gradient-to-b from-[#fffdfb] to-[#faf7f2]" aria-labelledby="about-us-narrative">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
       <div id="about-us-narrative" class="sr-only"><?php esc_html_e('Our narrative', 'nera-competitions'); ?></div>
       <div data-aos="fade-up">
@@ -147,7 +147,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
     </div>
   </section>
 
-  <section class="py-16 lg:py-24 bg-background-dark relative overflow-hidden" aria-labelledby="about-us-stories">
+  <section class="py-16 lg:py-24 bg-llp-hero-terracotta relative overflow-hidden" aria-labelledby="about-us-stories">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
       <div class="grid md:grid-cols-2 gap-10 lg:gap-12">
         <div
@@ -195,7 +195,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
     </div>
   </section>
 
-  <section class="py-16 lg:py-24 text-center relative overflow-hidden bg-background-dark" aria-labelledby="about-us-cta-heading">
+  <section class="py-16 lg:py-24 text-center relative overflow-hidden bg-gradient-to-b from-[#faf7f2] to-[#fffdfb]" aria-labelledby="about-us-cta-heading">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.06] to-transparent pointer-events-none"></div>
     <div class="max-w-3xl mx-auto px-4 lg:px-8 relative z-10" data-aos="zoom-in">
       <h2 id="about-us-cta-heading" class="font-heading text-3xl lg:text-4xl mb-6 text-text-primary">

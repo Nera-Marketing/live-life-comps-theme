@@ -17,7 +17,7 @@ $archive_description = get_the_archive_description();
 get_header();
 ?>
 
-<main id="primary" class="site-main bg-gray-50 text-text-primary min-h-screen">
+<main id="primary" class="site-main bg-gradient-to-b from-[#fffdfb] to-[#faf7f2] text-stone-900 min-h-screen">
 
   <section
     class="blog-archive-hero relative overflow-hidden py-16 md:py-20 bg-llp-hero-terracotta"

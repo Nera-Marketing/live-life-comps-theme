@@ -156,7 +156,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
   ?>
 
   <section
-    class="py-20 lg:py-32 relative overflow-hidden border-y border-on-primary/15 bg-background-dark"
+    class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#fffdfb] to-[#faf7f2]"
     aria-labelledby="hiw-draw-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -230,7 +230,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
   </section>
 
   <section
-    class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-primary-dark/35 via-background-dark to-background-dark"
+    class="py-20 lg:py-32 relative overflow-hidden bg-llp-hero-terracotta"
     aria-labelledby="hiw-postal-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="text-center mb-16" data-aos="fade-up">
@@ -309,7 +309,7 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
   </section>
 
   <section
-    class="py-20 lg:py-32 relative overflow-hidden border-t border-on-primary/15 bg-background-light"
+    class="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-[#faf7f2] to-[#fffdfb]"
     aria-labelledby="hiw-trans-heading">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
       <div class="text-center mb-16" data-aos="fade-up">

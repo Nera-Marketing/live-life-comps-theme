@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) {
 
 $variant = isset($variant) && $variant === 'featured' ? 'featured' : 'standard';
 $tone_dark = isset($tone) && $tone === 'dark';
+$tone_cream = isset($tone) && $tone === 'cream';
 
 $content_raw = get_post_field('post_content', get_the_ID());
 $word_count = $content_raw ? str_word_count(wp_strip_all_tags($content_raw)) : 0;
@@ -58,11 +59,26 @@ $card_classes_light =
   'group bg-surface rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow';
 $card_classes_dark =
   'group rounded-2xl border border-gray-700/80 bg-gray-800/90 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-600/80 transition-shadow';
+$card_classes_cream =
+  'group bg-gradient-to-b from-[#fffdfb] to-[#faf7f2] rounded-2xl border border-stone-200 shadow-sm overflow-hidden hover:shadow-md transition-all';
 if ($variant === 'featured') {
-  $card_classes = $card_classes_light;
+  $card_classes = $tone_cream ? $card_classes_cream : $card_classes_light;
 } else {
-  $card_classes = $tone_dark ? $card_classes_dark : $card_classes_light;
+  $card_classes = $tone_dark ? $card_classes_dark : ($tone_cream ? $card_classes_cream : $card_classes_light);
 }
+
+// Text classes for featured variant (cream-aware)
+$featured_meta_cls = $tone_cream
+  ? 'mb-3 text-xs font-medium uppercase tracking-wide text-stone-500'
+  : 'mb-3 text-xs font-medium uppercase tracking-wide text-text-secondary';
+$featured_title_cls = $tone_cream
+  ? 'font-heading mb-4 text-2xl font-bold text-stone-900 transition-colors group-hover:text-primary md:text-3xl lg:text-4xl'
+  : 'font-heading mb-4 text-2xl font-bold text-text-primary transition-colors group-hover:text-primary md:text-3xl lg:text-4xl';
+$featured_excerpt_cls = $tone_cream ? 'mb-6 line-clamp-4 text-stone-600' : 'mb-6 line-clamp-4 text-text-secondary';
+$featured_placeholder_cls = $tone_cream
+  ? 'flex h-full min-h-[12rem] items-center justify-center bg-stone-100 lg:min-h-full'
+  : 'flex h-full min-h-[12rem] items-center justify-center bg-gray-200 lg:min-h-full';
+$featured_placeholder_text = $tone_cream ? 'text-sm text-stone-400' : 'text-sm text-text-secondary';
 ?>
 
 <?php if ($variant === 'featured'): ?>
@@ -85,25 +101,25 @@ if ($variant === 'featured') {
                 ]); ?>
             </a>
         <?php else: ?>
-            <a href="<?php the_permalink(); ?>" class="flex h-full min-h-[12rem] items-center justify-center bg-gray-200 lg:min-h-full">
-                <span class="text-sm text-text-secondary"><?php esc_html_e('No image', 'nera-competitions'); ?></span>
+            <a href="<?php the_permalink(); ?>" class="<?php echo esc_attr($featured_placeholder_cls); ?>">
+                <span class="<?php echo esc_attr($featured_placeholder_text); ?>"><?php esc_html_e('No image', 'nera-competitions'); ?></span>
             </a>
         <?php endif; ?>
     </div>
 
     <div class="flex w-full flex-col justify-center p-6 lg:w-1/2 lg:p-10">
-        <p class="mb-3 text-xs font-medium uppercase tracking-wide text-text-secondary">
+        <p class="<?php echo esc_attr($featured_meta_cls); ?>">
             <?php echo esc_html($date_upper); ?>
             <span class="mx-1" aria-hidden="true">•</span>
             <?php echo esc_html($read_label); ?>
         </p>
         <?php the_title(
-          '<h2 class="font-heading mb-4 text-2xl font-bold text-text-primary transition-colors group-hover:text-primary md:text-3xl lg:text-4xl"><a href="' .
+          '<h2 class="' . esc_attr($featured_title_cls) . '"><a href="' .
             esc_url(get_permalink()) .
             '" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">',
           '</a></h2>',
         ); ?>
-        <div class="mb-6 line-clamp-4 text-text-secondary">
+        <div class="<?php echo esc_attr($featured_excerpt_cls); ?>">
             <?php the_excerpt(); ?>
         </div>
         <a href="<?php the_permalink(); ?>" class="mt-auto inline-flex w-fit items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
@@ -120,20 +136,30 @@ if ($variant === 'featured') {
 <?php
 $meta_cls = $tone_dark
   ? 'mb-2 text-[11px] font-medium uppercase tracking-wide text-gray-400 sm:text-xs'
-  : 'mb-2 text-[11px] font-medium uppercase tracking-wide text-text-secondary sm:text-xs';
+  : ($tone_cream
+    ? 'mb-2 text-[11px] font-medium uppercase tracking-wide text-stone-500 sm:text-xs'
+    : 'mb-2 text-[11px] font-medium uppercase tracking-wide text-text-secondary sm:text-xs');
 $title_cls =
   'font-heading mb-3 text-lg font-bold transition-colors sm:text-xl group-hover:text-primary ' .
-  ($tone_dark ? 'text-gray-100' : 'text-text-primary');
+  ($tone_dark ? 'text-gray-100' : ($tone_cream ? 'text-stone-900' : 'text-text-primary'));
 $title_link_cls = $tone_dark
   ? 'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800'
-  : 'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
+  : ($tone_cream
+    ? 'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white'
+    : 'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2');
 $excerpt_cls = $tone_dark
   ? 'mb-4 line-clamp-3 flex-1 text-sm text-gray-400'
-  : 'mb-4 line-clamp-3 flex-1 text-sm text-text-secondary';
+  : ($tone_cream
+    ? 'mb-4 line-clamp-3 flex-1 text-sm text-stone-600'
+    : 'mb-4 line-clamp-3 flex-1 text-sm text-text-secondary');
 $placeholder_cls = $tone_dark
   ? 'flex h-full items-center justify-center bg-gray-700'
-  : 'flex h-full items-center justify-center bg-gray-200';
-$placeholder_text_cls = $tone_dark ? 'text-sm text-gray-400' : 'text-sm text-text-secondary';
+  : ($tone_cream
+    ? 'flex h-full items-center justify-center bg-stone-100'
+    : 'flex h-full items-center justify-center bg-gray-200');
+$placeholder_text_cls = $tone_dark
+  ? 'text-sm text-gray-400'
+  : ($tone_cream ? 'text-sm text-stone-400' : 'text-sm text-text-secondary');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($card_classes . ' flex h-full flex-col'); ?>>

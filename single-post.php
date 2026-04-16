@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 
-<main id="primary" class="site-main bg-gray-50 text-text-primary min-h-screen">
+<main id="primary" class="site-main bg-gradient-to-b from-[#fffdfb] to-[#faf7f2] text-stone-900 min-h-screen">
 
     <?php while (have_posts()):
       the_post();
@@ -161,7 +161,7 @@ get_header();
                 </section>
             <?php endif; ?>
 
-            <div class="bg-background-light border-y border-on-primary/15 py-10 md:py-14">
+            <div class="bg-gradient-to-b from-[#fffdfb] to-[#faf7f2] py-10 md:py-14">
                 <div class="container mx-auto max-w-7xl px-4">
 
                     <div
