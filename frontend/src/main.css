@@ -107,6 +107,89 @@ body.author #primary.site-main {
   padding-top: 0;
 }
 
+/*
+ * Default template pages (parent page.php): full-bleed cream on body — parent caps #primary.site-main at max-w-7xl,
+ * so a background on main alone leaves dark gutters. Main stays transparent; text color stays on main (not body).
+ * Cart/checkout/account: woo-hero-earthy-overrides.css sets body/.site-main with !important where needed.
+ */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) {
+  background-image: linear-gradient(to bottom, #fffdfb, #faf7f2);
+  background-color: #fffdfb;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main {
+  background-image: none;
+  background-color: transparent;
+  color: rgb(28 25 23);
+}
+
+/* Parent page.php: featured image wrapper has no margin before title — add breathing room */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  article.has-post-thumbnail
+  > div:first-child {
+  margin-bottom: 3rem;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  article
+  > header
+  h1 {
+  font-family: var(--font-heading), ui-serif, Georgia, serif;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  :where(p, li, td, th) {
+  color: var(--color-text-secondary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  :where(h1, h2, h3, h4) {
+  font-family: var(--font-heading), ui-serif, Georgia, serif;
+  color: var(--color-text-primary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose a {
+  color: var(--color-accent);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose a:hover {
+  text-decoration: underline;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose strong {
+  color: var(--color-text-primary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose blockquote {
+  border-left-color: color-mix(in srgb, var(--color-on-primary) 25%, transparent);
+  color: var(--color-text-secondary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .page-links {
+  border-top-color: rgb(231 229 228);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .page-links
+  span[class*='bg-gray-'] {
+  background-color: rgb(245 245 244) !important;
+  color: rgb(28 25 23);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .page-links
+  span[class*='hover:bg-gray-']:hover {
+  background-color: rgb(228 228 226) !important;
+}
+
 /* Parent utilities embed fixed indigo hex — redeclare after @theme */
 @utility text-gradient-primary {
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);

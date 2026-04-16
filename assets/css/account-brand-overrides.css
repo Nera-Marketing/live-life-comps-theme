@@ -49,8 +49,8 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-content {
   box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.45) !important;
 }
 
-body.woocommerce-account.logged-in .entry-title,
-body.woocommerce-account.logged-in .page-title,
+/* Page title is now inside the terracotta header strip — handled by woo-hero-earthy-overrides.css */
+/* WC content headings sit on the dark surface card (bg-surface), keep warm bronze */
 body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
   color: var(--color-text-primary) !important;
 }
@@ -67,4 +67,11 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--color-on-primary) 12%, transparent),
     0 2px 6px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Beat global/theme link underlines (e.g. Astra) — scoped to WC My Account shell only */
+body.woocommerce-account .woocommerce a:hover,
+body.woocommerce-account .woocommerce a:focus,
+body.woocommerce-account .woocommerce a:focus-visible {
+  text-decoration: none !important;
 }

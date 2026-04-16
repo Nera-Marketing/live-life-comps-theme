@@ -54,11 +54,56 @@
 }
 
 /* --------------------------------------------------------------------------
-   My Account: page shell — design #2 flat near-black (minimal hue wash)
+   Cart / Checkout / My Account: cream canvas, full-page width.
+   Body itself gets the gradient; all intermediate wrappers (#page, #content,
+   .site-main) are made transparent so nothing clips or darkens the canvas.
+   The hero elements (.llp-earthy-hero) keep their own terracotta gradient
+   because it is applied directly on the element, not inherited.
    -------------------------------------------------------------------------- */
 
-body.woocommerce-account.logged-in #primary.site-main {
-  background: var(--color-background-light) !important;
+body.woocommerce-cart,
+body.woocommerce-checkout:not(.woocommerce-order-received),
+body.woocommerce-account.logged-in {
+  background: linear-gradient(to bottom, #fffdfb, #faf7f2) !important;
+  background-color: #fffdfb !important;
+}
+
+body.woocommerce-cart #page,
+body.woocommerce-cart #content,
+body.woocommerce-cart .site-content,
+body.woocommerce-cart .site-main,
+body.woocommerce-checkout:not(.woocommerce-order-received) #page,
+body.woocommerce-checkout:not(.woocommerce-order-received) #content,
+body.woocommerce-checkout:not(.woocommerce-order-received) .site-content,
+body.woocommerce-checkout:not(.woocommerce-order-received) .site-main,
+body.woocommerce-account.logged-in #page,
+body.woocommerce-account.logged-in #content,
+body.woocommerce-account.logged-in .site-content,
+body.woocommerce-account.logged-in .site-main {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* My Account: page title → full-width terracotta header strip */
+body.woocommerce-account .site-main article > header {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  max-width: none !important;
+  margin-bottom: 0 !important;
+  padding: 2.5rem 1.5rem !important;
+  overflow: hidden !important;
+}
+
+body.woocommerce-account .site-main article > header h1 {
+  color: var(--color-on-primary) !important;
 }
 
 /* Dashboard welcome hero — design #2: subtle terracotta → deep brown */
