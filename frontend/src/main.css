@@ -705,26 +705,32 @@ main.nera-homepage .prizes .prize-bar {
   background: rgba(155, 80, 57, 0.1);
 }
 
-/* How To Enter = light band; terracotta hover on cream */
-main.nera-homepage .how-to-enter-section .how-step-link:hover {
+/* How To Enter = light band; terracotta hover on cream (homepage + single product) */
+main.nera-homepage .how-to-enter-section .how-step-link:hover,
+main.site-main .how-to-enter-section .how-step-link:hover {
   color: #9b5039 !important;
 }
 
-main.nera-homepage .how-to-enter-section .how-step-social-link {
+main.nera-homepage .how-to-enter-section .how-step-social-link,
+main.site-main .how-to-enter-section .how-step-social-link {
   color: #9b5039;
 }
 
 main.nera-homepage .how-to-enter-section .how-step-social-link:hover,
-main.nera-homepage .how-to-enter-section .how-step-social-link:focus-visible {
+main.nera-homepage .how-to-enter-section .how-step-social-link:focus-visible,
+main.site-main .how-to-enter-section .how-step-social-link:hover,
+main.site-main .how-to-enter-section .how-step-social-link:focus-visible {
   color: #c4704e;
 }
 
-main.nera-homepage .how-to-enter-section .how-step-social-link svg {
+main.nera-homepage .how-to-enter-section .how-step-social-link svg,
+main.site-main .how-to-enter-section .how-step-social-link svg {
   flex-shrink: 0;
 }
 
 /* Font Awesome `<i>` inside step social buttons (ACF Font Awesome field) */
-main.nera-homepage .how-to-enter-section .how-step-social-link i {
+main.nera-homepage .how-to-enter-section .how-step-social-link i,
+main.site-main .how-to-enter-section .how-step-social-link i {
   font-size: 1.125rem;
   line-height: 1;
   flex-shrink: 0;
