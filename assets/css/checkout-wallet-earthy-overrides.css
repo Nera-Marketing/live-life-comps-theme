@@ -59,14 +59,13 @@ body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 #pla
   max-width: none !important;
 }
 
-/* Wallet quick links: parent uses hover:text-indigo-700 */
-body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance a.text-primary:hover,
-body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance a.hover\:text-indigo-700:hover {
+/* Wallet quick links */
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance a.text-primary:hover {
   color: var(--color-accent) !important;
 }
 
-/* Order summary: wallet balance card — warm dark gradient (replaces cool indigo-50 strip) */
-body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance {
+/* Order summary: wallet balance card — warm dark gradient */
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance {
   background: linear-gradient(
     165deg,
     color-mix(in srgb, var(--color-primary) 14%, var(--color-surface)) 0%,
@@ -74,16 +73,6 @@ body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance 
     var(--color-background-dark) 100%
   ) !important;
   border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-gray-200)) !important;
-}
-
-/* Partial payment strip in order review (parent uses to-indigo-50) */
-body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals [class*='to-indigo-50'] {
-  background-image: linear-gradient(
-    to right,
-    color-mix(in srgb, var(--color-primary) 8%, transparent),
-    color-mix(in srgb, var(--color-accent) 6%, var(--color-surface))
-  ) !important;
-  border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-gray-200)) !important;
 }
 
 /* Wallet payment row highlight (was indigo in parent inline <style>) */
