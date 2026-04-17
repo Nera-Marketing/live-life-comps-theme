@@ -7,10 +7,14 @@
  * @package Nera_Competitions
  *
  * Available variables:
- * $args['steps']     - Array of steps (optional, uses default if not provided)
- * $args['title']     - Section title (optional)
- * $args['subtitle']  - Section subtitle (optional)
- * $args['badge']     - Badge label next to pulse dot (optional)
+ * $args['steps']           - Array of steps (optional, uses default if not provided)
+ * $args['title']           - Section title (optional)
+ * $args['subtitle']        - Section subtitle (optional)
+ * $args['badge']           - Badge label next to pulse dot (optional)
+ * $args['cta_button_text'] - CTA button label (optional)
+ * $args['cta_url']         - CTA button URL (optional)
+ * $args['cta_target']      - Link target e.g. _blank (optional)
+ * $args['cta_footer_text'] - Small line under CTA (optional)
  */
 
 if (!defined('ABSPATH')) {
@@ -25,40 +29,28 @@ $badge = isset($args['badge'])
   ? $args['badge']
   : __('Simple Process', 'nera-competitions');
 
-$default_steps = [
-  [
-    'icon'           => llp_icon('campfire'),
-    'title'          => __('Create a Free Account', 'nera-competitions'),
-    'description'    => __(
-      'Sign up in seconds — you will need an account to enter our free prize draws.',
-      'nera-competitions',
-    ),
-    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
-    'icon_bg'        => 'rgba(155, 80, 57, 0.12)',
-  ],
-  [
-    'icon'           => llp_icon('compass'),
-    'title'          => __('Pick Your Prizes & Secure Your Tickets', 'nera-competitions'),
-    'description'    => __(
-      'Browse live competitions, choose your favourites, and secure your entries.',
-      'nera-competitions',
-    ),
-    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
-    'icon_bg'        => 'rgba(216, 181, 130, 0.12)',
-  ],
-  [
-    'icon'           => llp_icon('sun-horizon'),
-    'title'          => __('Watch the Live Draw', 'nera-competitions'),
-    'description'    => __(
-      'Join us on socials for a fully transparent live draw. Winners are chosen fairly and prizes are delivered to you.',
-      'nera-competitions',
-    ),
-    'badge_gradient' => 'linear-gradient(to bottom right, #9b5039, #c4704e)',
-    'icon_bg'        => 'rgba(196, 112, 78, 0.12)',
-  ],
-];
+$default_steps = live_life_prizes_get_hiw_default_hero_steps();
+$steps =
+  isset($args['steps']) && is_array($args['steps']) && !empty($args['steps'])
+    ? $args['steps']
+    : $default_steps;
 
-$steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $default_steps;
+$cta_button_text = isset($args['cta_button_text'])
+  ? $args['cta_button_text']
+  : __('Start Winning Today', 'nera-competitions');
+$cta_url = isset($args['cta_url']) ? $args['cta_url'] : '';
+if ($cta_url === '' && function_exists('wc_get_page_id')) {
+  $cta_url = (string) get_permalink(wc_get_page_id('shop'));
+}
+if ($cta_url === '') {
+  $cta_url = home_url('/');
+}
+$cta_footer_text = isset($args['cta_footer_text'])
+  ? $args['cta_footer_text']
+  : __('Join thousands of winners • New competitions added daily', 'nera-competitions');
+$cta_target = isset($args['cta_target']) ? (string) $args['cta_target'] : '';
+
+$hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 ?>
 
 <section
@@ -148,7 +140,7 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
         </svg>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 <?php echo esc_attr($hiw_grid_cols); ?> gap-6 lg:gap-8">
         <?php
         $step_number = 1;
         foreach ($steps as $step):
@@ -220,16 +212,16 @@ $steps = isset($args['steps']) && is_array($args['steps']) ? $args['steps'] : $d
     </div>
 
     <div class="text-center mt-16 lg:mt-24" data-animate="fade-in-up" data-delay="600">
-      <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>"
-        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 group text-on-primary hover:text-on-primary">
-        <span><?php esc_html_e('Start Winning Today', 'nera-competitions'); ?></span>
+      <a href="<?php echo esc_url($cta_url); ?>"
+        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 group text-on-primary hover:text-on-primary"<?php echo $cta_target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+        <span><?php echo esc_html($cta_button_text); ?></span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
       </a>
       <p class="text-sm text-on-primary/75">
-        <?php esc_html_e('Join thousands of winners • New competitions added daily', 'nera-competitions'); ?>
+        <?php echo esc_html($cta_footer_text); ?>
       </p>
     </div>
 
