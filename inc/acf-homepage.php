@@ -301,6 +301,33 @@ acf_add_local_field_group([
             'type' => 'text',
         ],
         [
+            'key' => 'field_llp_home_guide_live_draw_socials',
+            'label' => 'Live draw — social links',
+            'name' => 'guide_live_draw_social_links',
+            'type' => 'repeater',
+            'instructions' => 'Icon buttons on step 3 (Watch the Live Draw). Pick a Font Awesome brand icon and set the URL. Leave empty to use built-in Facebook/Instagram SVG defaults. Rows saved with the old “platform” field keep working until re-saved.',
+            'layout' => 'table',
+            'button_label' => 'Add link',
+            'sub_fields' => [
+                [
+                    'key' => 'field_llp_home_guide_ld_social_icon',
+                    'label' => 'Icon',
+                    'name' => 'social_icon',
+                    'type' => 'font-awesome',
+                    'icon_sets' => ['brands'],
+                    'save_format' => 'object',
+                    'enqueue_fa' => 1,
+                    'allow_null' => 1,
+                ],
+                [
+                    'key' => 'field_llp_home_guide_ld_url',
+                    'label' => 'URL',
+                    'name' => 'url',
+                    'type' => 'url',
+                ],
+            ],
+        ],
+        [
             'key' => 'field_llp_home_guide_steps',
             'label' => 'Steps',
             'name' => 'guide_steps',
