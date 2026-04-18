@@ -57,12 +57,13 @@
  * Product listing / all-competitions: parent template uses `bg-slate-50` on the hero `<section>`.
  * Live Life skin: terracotta gradient + on-primary typography (replaces child PHP override).
  */
-main.nera-product-listing {
-  background-color: var(--color-background-light);
+main.nera-product-listing,
+main.nera-winners-page {
+  @apply bg-white;
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type,
-main.nera-shop-page > section.bg-slate-50:first-of-type {
+main.nera-product-listing > section.bg-background-light:first-of-type,
+main.nera-shop-page > section.bg-background-light:first-of-type {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -75,8 +76,8 @@ main.nera-shop-page > section.bg-slate-50:first-of-type {
   );
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type::before,
-main.nera-shop-page > section.bg-slate-50:first-of-type::before {
+main.nera-product-listing > section.bg-background-light:first-of-type::before,
+main.nera-shop-page > section.bg-background-light:first-of-type::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -92,8 +93,8 @@ main.nera-shop-page > section.bg-slate-50:first-of-type::before {
     radial-gradient(circle at 110% 110%, rgba(129, 140, 248, 0.2) 0%, transparent 40%);
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type::after,
-main.nera-shop-page > section.bg-slate-50:first-of-type::after {
+main.nera-product-listing > section.bg-background-light:first-of-type::after,
+main.nera-shop-page > section.bg-background-light:first-of-type::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -106,26 +107,26 @@ main.nera-shop-page > section.bg-slate-50:first-of-type::after {
   );
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type > div,
-main.nera-shop-page > section.bg-slate-50:first-of-type > div {
+main.nera-product-listing > section.bg-background-light:first-of-type > div,
+main.nera-shop-page > section.bg-background-light:first-of-type > div {
   position: relative;
   z-index: 10;
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type h1,
-main.nera-shop-page > section.bg-slate-50:first-of-type h1 {
+main.nera-product-listing > section.bg-background-light:first-of-type h1,
+main.nera-shop-page > section.bg-background-light:first-of-type h1 {
   color: var(--color-on-primary);
 }
 
-main.nera-product-listing > section.bg-slate-50:first-of-type p,
-main.nera-shop-page > section.bg-slate-50:first-of-type p {
+main.nera-product-listing > section.bg-background-light:first-of-type p,
+main.nera-shop-page > section.bg-background-light:first-of-type p {
   color: color-mix(in srgb, var(--color-on-primary) 85%, transparent);
   font-style: italic;
   font-weight: 300;
 }
 
 .nera-product-listing #advanced-filter-competitions.bg-gray-50 {
-  background-color: var(--color-background-light);
+  @apply bg-white;
 }
 
 .nera-product-listing section.bg-surface .bg-slate-50 {
