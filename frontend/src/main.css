@@ -840,13 +840,31 @@ main.nera-homepage .account-prompt-card {
    bundle may emit literal light grays — force token-based canvas + surfaces.
    ========================================================================== */
 
+/*
+ * Cart-style canvas: warm white page background; wrappers transparent so the
+ * dark product shell reads as a panel on white (not full-bleed white main).
+ */
+body.nera-single-lottery.single-product {
+  background: linear-gradient(to bottom, #fffdfb, #faf7f2) !important;
+  background-color: #fffdfb !important;
+}
+
+body.nera-single-lottery.single-product #page,
+body.nera-single-lottery.single-product #content,
+body.nera-single-lottery.single-product .site-content {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
 /* Let main stretch full width; inner `.max-w-7xl` still caps content */
 body.nera-single-lottery.single-product #primary.site-main {
   max-width: none;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: var(--color-background-light) !important;
+  /* Page canvas is white; dark panels sit inside columns (not full-bleed main) */
+  background-color: transparent !important;
+  background-image: none !important;
   color: var(--color-text-secondary);
 }
 
@@ -982,6 +1000,34 @@ body.nera-single-lottery.single-product div.product > section:first-of-type div.
   z-index: 1;
 }
 
+/*
+ * Left column = gallery + tabs as one dark card (matches purchase `bg-surface rounded-2xl shadow-xl`).
+ * Below `lg`, parent uses `max-lg:contents` so the wrapper does not paint — style direct grid rows.
+ */
+@media (max-width: 63.999rem) {
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid
+    > div.order-1,
+  body.nera-single-lottery.single-product
+    div.product
+    > section:first-of-type
+    > div.max-w-7xl
+    > div.grid
+    > div.order-3 {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 1rem;
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.18),
+      0 8px 10px -6px rgba(0, 0, 0, 0.14);
+    padding: 1rem;
+    overflow: hidden;
+  }
+}
+
 body.nera-single-lottery.single-product .product-gallery > div.fixed.inset-0 {
   z-index: 130 !important;
 }
@@ -1023,6 +1069,14 @@ body.nera-single-lottery.single-product:has(.nera-ticket-dialog-overlay-active) 
     > div:first-child {
     grid-column: span 7 / span 7;
     min-width: 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 1rem;
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.18),
+      0 8px 10px -6px rgba(0, 0, 0, 0.14);
+    padding: 1.25rem;
+    overflow: hidden;
   }
 
   body.nera-single-lottery.single-product
