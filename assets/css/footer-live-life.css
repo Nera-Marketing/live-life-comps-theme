@@ -189,12 +189,27 @@
   max-width: 48rem;
 }
 
-.llp-footer-legal p + p {
+/* Spacing between disclaimer + copyright block (paragraph and/or WYSIWYG wrapper) */
+.llp-footer-legal > * + * {
   margin-top: 0.5rem;
 }
 
 .llp-footer-bottom-right {
   flex-shrink: 0;
+}
+
+/* Theme Settings → Footer → Bottom Right Content (WYSIWYG, e.g. payment icons) */
+.llp-footer-bottom-right-acf {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.llp-footer-bottom-right-acf img {
+  height: auto;
+  max-height: 28px;
+  width: auto;
 }
 
 .llp-footer-vlb-badge {

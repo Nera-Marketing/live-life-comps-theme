@@ -24,6 +24,19 @@ $nav_discover = array_merge($nav_args_base, [
     'container_class' => 'menu-primary-container',
 ]);
 
+// Theme Settings → Footer (ACF options; parent `nera-competitions-standard` registers fields).
+$footer_legal_disclaimer = '';
+$footer_copyright_html = '';
+$footer_bottom_right_html = '';
+if (function_exists('get_field')) {
+    $footer_legal_disclaimer = get_field('footer_legal_disclaimer', 'option');
+    $footer_copyright_html = get_field('footer_copyright', 'option');
+    $footer_bottom_right_html = get_field('footer_bottom_right', 'option');
+}
+$footer_legal_disclaimer = is_string($footer_legal_disclaimer) ? $footer_legal_disclaimer : '';
+$footer_copyright_html = is_string($footer_copyright_html) ? $footer_copyright_html : '';
+$footer_bottom_right_html = is_string($footer_bottom_right_html) ? $footer_bottom_right_html : '';
+
 ?>
 <footer class="llp-site-footer" id="site-footer">
 
@@ -107,17 +120,39 @@ $nav_discover = array_merge($nav_args_base, [
 
     <div class="llp-footer-bottom">
         <div class="llp-footer-legal">
-            <p class="m-0"><?php esc_html_e('UK residents only 18+. Live Life Prizes operates as a prize draw. No purchase necessary. Free postal route available. T&Cs apply. All entrants have an equal chance to win regardless of how they enter.', 'live-life-prizes'); ?></p>
             <p class="m-0"><?php
-                echo esc_html(sprintf(
-                    /* translators: %s: year */
-                    __('© %s All Rights Reserved. Van Life Builds Ltd trading as Live Life Prizes. Company Registration Number: 14663089', 'live-life-prizes'),
-                    (string) gmdate('Y')
-                ));
+                if (trim($footer_legal_disclaimer) !== '') {
+                    echo nl2br(esc_html(str_replace('{year}', (string) gmdate('Y'), $footer_legal_disclaimer)), false);
+                } else {
+                    esc_html_e('UK residents only 18+. Live Life Prizes operates as a prize draw. No purchase necessary. Free postal route available. T&Cs apply. All entrants have an equal chance to win regardless of how they enter.', 'live-life-prizes');
+                }
             ?></p>
+            <?php if (trim($footer_copyright_html) !== '') : ?>
+                <div class="m-0 llp-footer-copyright-acf">
+                    <?php
+                    echo wp_kses_post(
+                        str_replace('{year}', (string) gmdate('Y'), $footer_copyright_html)
+                    );
+                    ?>
+                </div>
+            <?php else : ?>
+                <p class="m-0"><?php
+                    echo esc_html(sprintf(
+                        /* translators: %s: year */
+                        __('© %s All Rights Reserved. Van Life Builds Ltd trading as Live Life Prizes. Company Registration Number: 14663089', 'live-life-prizes'),
+                        (string) gmdate('Y')
+                    ));
+                ?></p>
+            <?php endif; ?>
         </div>
         <div class="llp-footer-bottom-right">
-            <span class="llp-footer-vlb-badge"><?php esc_html_e('Part of Van Life Builds', 'live-life-prizes'); ?></span>
+            <?php if (trim($footer_bottom_right_html) !== '') : ?>
+                <div class="llp-footer-bottom-right-acf">
+                    <?php echo wp_kses_post(str_replace('{year}', (string) gmdate('Y'), $footer_bottom_right_html)); ?>
+                </div>
+            <?php else : ?>
+                <span class="llp-footer-vlb-badge"><?php esc_html_e('Part of Van Life Builds', 'live-life-prizes'); ?></span>
+            <?php endif; ?>
         </div>
     </div>
 
