@@ -1,6 +1,9 @@
 <?php
 /**
- * One-time seed: published page at /winners/ using the child Winners template.
+ * One-time seed: create published page at /winners/ if missing (default child Winners template).
+ *
+ * Does not override `_wp_page_template` on an existing page so admins can switch to
+ * Nera Winners (Dynamic) or any other template without it reverting on `init`.
  *
  * @package Live_Life_Prizes
  */
@@ -22,11 +25,6 @@ function live_life_prizes_maybe_seed_winners_page(): void
     if ($existing instanceof WP_Post) {
         if (!get_option('live_life_prizes_winners_page_seeded')) {
             update_option('live_life_prizes_winners_page_seeded', 1, true);
-        }
-
-        $tpl = (string) get_post_meta($existing->ID, '_wp_page_template', true);
-        if ($tpl !== 'page-templates/winners-template.php') {
-            update_post_meta($existing->ID, '_wp_page_template', 'page-templates/winners-template.php');
         }
 
         return;
