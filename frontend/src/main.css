@@ -59,18 +59,24 @@
  */
 main.nera-product-listing,
 main.nera-winners-page,
-main.nera-winners-dynamic-page {
+main.nera-winners-dynamic-page,
+main.nera-closed-prizes-page,
+main.nera-entry-list-listing {
   @apply bg-white;
 }
 
 /*
  * Dynamic Winners: terracotta hero (same as product listing); second section = white main content.
  */
-main.nera-winners-dynamic-page > section.bg-background-light:nth-of-type(2) {
+main.nera-winners-dynamic-page > section.bg-background-light:nth-of-type(2),
+main.nera-closed-prizes-page > section.bg-background-light:nth-of-type(2),
+main.nera-entry-list-listing > section.bg-background-light:nth-of-type(2) {
   background-color: #fff;
 }
 
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type .rounded-full.bg-gray-100 {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type .rounded-full.bg-gray-100,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type .rounded-full.bg-gray-100,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type .rounded-full.bg-gray-100 {
   background-color: color-mix(in srgb, var(--color-on-primary) 18%, transparent);
   color: var(--color-on-primary);
   border: 1px solid color-mix(in srgb, var(--color-on-primary) 40%, transparent);
@@ -83,7 +89,9 @@ main.nera-winners-dynamic-page article.group p.border-t.border-gray-100.line-cla
 
 main.nera-product-listing > section.bg-background-light:first-of-type,
 main.nera-shop-page > section.bg-background-light:first-of-type,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -98,7 +106,9 @@ main.nera-winners-dynamic-page > section.bg-background-light:first-of-type {
 
 main.nera-product-listing > section.bg-background-light:first-of-type::before,
 main.nera-shop-page > section.bg-background-light:first-of-type::before,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::before {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::before,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type::before,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -116,7 +126,9 @@ main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::befo
 
 main.nera-product-listing > section.bg-background-light:first-of-type::after,
 main.nera-shop-page > section.bg-background-light:first-of-type::after,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::after {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::after,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type::after,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -131,20 +143,26 @@ main.nera-winners-dynamic-page > section.bg-background-light:first-of-type::afte
 
 main.nera-product-listing > section.bg-background-light:first-of-type > div,
 main.nera-shop-page > section.bg-background-light:first-of-type > div,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type > div {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type > div,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type > div,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type > div {
   position: relative;
   z-index: 10;
 }
 
 main.nera-product-listing > section.bg-background-light:first-of-type h1,
 main.nera-shop-page > section.bg-background-light:first-of-type h1,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type h1 {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type h1,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type h1,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type h1 {
   color: var(--color-on-primary);
 }
 
 main.nera-product-listing > section.bg-background-light:first-of-type p,
 main.nera-shop-page > section.bg-background-light:first-of-type p,
-main.nera-winners-dynamic-page > section.bg-background-light:first-of-type p {
+main.nera-winners-dynamic-page > section.bg-background-light:first-of-type p,
+main.nera-closed-prizes-page > section.bg-background-light:first-of-type p,
+main.nera-entry-list-listing > section.bg-background-light:first-of-type p {
   color: color-mix(in srgb, var(--color-on-primary) 85%, transparent);
   font-style: italic;
   font-weight: 300;
