@@ -841,12 +841,17 @@ main.nera-homepage .account-prompt-card {
    ========================================================================== */
 
 /*
- * Cart-style canvas: warm white page background; wrappers transparent so the
- * dark product shell reads as a panel on white (not full-bleed white main).
+ * Terracotta page canvas (matches .llp-earthy-hero / listing hero); wrappers
+ * transparent so dark gallery + purchase panels read as cards on the gradient.
  */
 body.nera-single-lottery.single-product {
-  background: linear-gradient(to bottom, #fffdfb, #faf7f2) !important;
-  background-color: #fffdfb !important;
+  background: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary) 50%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  background-color: var(--color-primary) !important;
 }
 
 body.nera-single-lottery.single-product #page,
@@ -862,7 +867,7 @@ body.nera-single-lottery.single-product #primary.site-main {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  /* Page canvas is white; dark panels sit inside columns (not full-bleed main) */
+  /* Body carries terracotta canvas; dark panels sit inside columns */
   background-color: transparent !important;
   background-image: none !important;
   color: var(--color-text-secondary);
