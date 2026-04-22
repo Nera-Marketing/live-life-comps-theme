@@ -1310,3 +1310,8 @@ body.woocommerce-account.logged-out input[type='checkbox'] {
   background-color: #ffffff;
   border-color: color-mix(in srgb, var(--color-primary) 28%, #d4c4a0);
 }
+
+/* Entry list modal — hide "Open full page" button */
+[x-show="modalPayload.fallback_url"] {
+  display: none !important;
+}
