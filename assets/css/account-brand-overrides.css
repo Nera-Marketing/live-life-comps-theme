@@ -2,19 +2,22 @@
  * Live Life Prizes — My Account overrides
  * Beats parent wp_head indigo/white (inc/woocommerce.php nera_my_account_styles).
  * Active nav: design #2 — solid terracotta gradient + on-primary text.
+ * Surface mode: warm cream, matching the cart page aesthetic.
  */
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a {
-  background: var(--color-surface) !important;
-  color: var(--color-text-secondary) !important;
-  border-color: var(--color-gray-200) !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25) !important;
+  background: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  color: var(--color-primary-dark) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 18%, #e8dcc0) !important;
+  box-shadow:
+    0 1px 3px 0 rgba(155, 80, 57, 0.10),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 8%, transparent) !important;
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link a:hover {
-  background: var(--color-secondary) !important;
-  border-color: var(--color-gray-300) !important;
-  color: var(--color-text-primary) !important;
+  background: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #e8dcc0) !important;
+  color: var(--color-primary) !important;
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-active a {
@@ -43,24 +46,24 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-navigation-link.is-act
 }
 
 body.woocommerce-account.logged-in .woocommerce-MyAccount-content {
-  background: var(--color-surface) !important;
-  border-color: var(--color-gray-200) !important;
-  color: var(--color-text-primary) !important;
-  box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.45) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-primary-dark) !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
 }
 
-/* Page title is now inside the terracotta header strip — handled by woo-hero-earthy-overrides.css */
-/* WC content headings sit on the dark surface card (bg-surface), keep warm bronze */
+/* WC content headings sit on the cream canvas */
 body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
-  color: var(--color-text-primary) !important;
+  color: var(--color-primary-dark) !important;
 }
 
-/* WooWallet badge — colors here (child replaces parent script’s inline indigo) */
+/* WooWallet badge — colors here (child replaces parent script's inline indigo) */
 .wallet-balance-badge {
   background: linear-gradient(
     165deg,
-    color-mix(in srgb, var(--color-primary-dark) 88%, #0a0908) 0%,
-    color-mix(in srgb, var(--color-primary) 35%, var(--color-background-light)) 100%
+    color-mix(in srgb, var(--color-primary) 90%, #0a0908) 0%,
+    color-mix(in srgb, var(--color-primary) 50%, var(--color-background-light)) 100%
   ) !important;
   color: var(--color-on-primary) !important;
   border: 1px solid color-mix(in srgb, var(--color-accent) 65%, var(--color-gray-300)) !important;

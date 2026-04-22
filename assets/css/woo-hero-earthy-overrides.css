@@ -103,124 +103,183 @@ body.woocommerce-account .site-main article > header {
 }
 
 body.woocommerce-account .site-main article > header h1 {
-  color: var(--color-on-primary) !important;
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
-   Dashboard welcome hero — design #2: subtle terracotta → deep brown
-   Child specificity (body.logged-in .ncs-dashboard-welcome = 0-3-1) beats
-   parent utilities (0-1-0) — no !important needed on .ncs-* hook rules.
+   Dashboard welcome hero — terracotta gradient banner on cream canvas
    -------------------------------------------------------------------------- */
 
 body.woocommerce-account.logged-in .ncs-dashboard-welcome {
   background: linear-gradient(
-    125deg,
-    color-mix(in srgb, var(--color-primary) 78%, var(--color-background-dark)) 0%,
-    var(--color-background-dark) 55%,
-    var(--color-secondary) 100%
-  );
-  box-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.5);
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  box-shadow: 0 8px 28px -10px rgba(155, 80, 57, 0.35);
 }
 
 body.woocommerce-account.logged-in .ncs-dashboard-welcome h1,
 body.woocommerce-account.logged-in .ncs-dashboard-welcome .text-white {
-  color: var(--color-on-primary);
+  color: #ffffff;
 }
 
 body.woocommerce-account.logged-in .ncs-dashboard-welcome .bg-surface\/20.backdrop-blur-sm {
   border-color: color-mix(in srgb, var(--color-on-primary) 35%, transparent);
 }
 
+/* Decorative blur circles inside gradient headers must stay transparent —
+   the global bg-surface cream override would otherwise create a white bloom. */
+body.woocommerce-account.logged-in .blur-3xl.bg-surface {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 /* --------------------------------------------------------------------------
-   My Account dashboard: stat card icon tiles — all three use terracotta gradient
+   My Account: warm cream mode — all surface cards match the cart aesthetic.
+   bg-surface → warm cream panel, bg-gray-50 → lighter cream row.
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-account.logged-in .bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Order/item rows (bg-gray-50) → lighter cream */
+body.woocommerce-account.logged-in .nera-account-dashboard .bg-gray-50,
+body.woocommerce-account.logged-in .nera-account-orders .bg-gray-50,
+body.woocommerce-account.logged-in .nera-view-order .bg-gray-50 {
+  background-color: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard .hover\:bg-gray-100:hover,
+body.woocommerce-account.logged-in .nera-account-orders .hover\:bg-gray-100:hover,
+body.woocommerce-account.logged-in .nera-view-order .hover\:bg-gray-100:hover {
+  background-color: color-mix(in srgb, #fffdfb 62%, var(--color-primary)) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Stat card icon tiles — accent (brighter orange) → primary
    -------------------------------------------------------------------------- */
 
 body.woocommerce-account.logged-in .ncs-stat-card__icon {
   background: linear-gradient(
     135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
+    var(--color-accent) 0%,
+    var(--color-primary) 100%
   );
 }
 
-/* Account status "Active" pill — muted forest / bronze (not bright success-green) */
+/* "Active" account status pill — vibrant green on cream */
 body.woocommerce-account.logged-in .ncs-stat-card .bg-success-bg {
-  background-color: color-mix(in srgb, #1a3d2e 52%, var(--color-surface));
-  color: color-mix(in srgb, #a8c4b0 72%, var(--color-on-primary));
-  border-color: color-mix(in srgb, #2f4f3c 48%, var(--color-gray-200));
+  background-color: color-mix(in srgb, var(--color-success) 20%, #fffdfb);
+  color: color-mix(in srgb, var(--color-success) 85%, #145235);
+  border-color: color-mix(in srgb, var(--color-success) 40%, #e8dcc0);
 }
 
 /* --------------------------------------------------------------------------
-   My Account dashboard + orders: earthy order status badges
-   Uses .ncs-order-status--{status} hooks added in Phase C.
+   Order status badges — warm tints on cream background.
+   Badges carry both .ncs-order-status--{status} AND .bg-{semantic}-bg classes;
+   override the semantic utility so the parent's indigo info palette is replaced.
    -------------------------------------------------------------------------- */
 
+/* Fix parent theme's indigo "Processing" info color → warm terracotta */
+body.woocommerce-account.logged-in .bg-info-bg {
+  background-color: color-mix(in srgb, var(--color-accent) 20%, #fffdfb) !important;
+}
+body.woocommerce-account.logged-in .text-info-text {
+  color: var(--color-primary) !important;
+}
+body.woocommerce-account.logged-in .border-info-border {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, #e8dcc0) !important;
+}
+
+/* ncs-order-status hooks (orders page) */
 body.woocommerce-account.logged-in .ncs-order-status--processing {
-  background-color: color-mix(in srgb, var(--color-primary) 26%, var(--color-surface));
-  color: color-mix(in srgb, var(--color-accent) 38%, var(--color-text-primary));
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-gray-200));
+  background-color: color-mix(in srgb, var(--color-accent) 20%, #fffdfb);
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-accent) 40%, #e8dcc0);
 }
 
 body.woocommerce-account.logged-in .ncs-order-status--completed {
-  background-color: color-mix(in srgb, var(--color-success) 20%, var(--color-surface));
-  color: color-mix(in srgb, var(--color-success) 75%, var(--color-text-primary));
-  border-color: color-mix(in srgb, var(--color-success) 35%, var(--color-gray-200));
+  background-color: color-mix(in srgb, var(--color-success) 20%, #fffdfb);
+  color: color-mix(in srgb, var(--color-success) 85%, #145235);
+  border-color: color-mix(in srgb, var(--color-success) 40%, #e8dcc0);
 }
 
 body.woocommerce-account.logged-in .ncs-order-status--pending,
 body.woocommerce-account.logged-in .ncs-order-status--on-hold {
-  background-color: color-mix(in srgb, var(--color-warning) 22%, var(--color-surface));
-  color: color-mix(in srgb, var(--color-warning) 80%, var(--color-text-primary));
-  border-color: color-mix(in srgb, var(--color-warning) 40%, var(--color-gray-200));
+  background-color: color-mix(in srgb, var(--color-warning) 20%, #fffdfb);
+  color: color-mix(in srgb, var(--color-warning) 85%, #7a3d00);
+  border-color: color-mix(in srgb, var(--color-warning) 40%, #e8dcc0);
 }
 
 body.woocommerce-account.logged-in .ncs-order-status--cancelled,
 body.woocommerce-account.logged-in .ncs-order-status--failed {
-  background-color: color-mix(in srgb, var(--color-danger) 20%, var(--color-surface));
-  color: color-mix(in srgb, var(--color-danger) 75%, var(--color-text-primary));
-  border-color: color-mix(in srgb, var(--color-danger) 38%, var(--color-gray-200));
+  background-color: color-mix(in srgb, var(--color-danger) 18%, #fffdfb);
+  color: color-mix(in srgb, var(--color-danger) 85%, #7a0000);
+  border-color: color-mix(in srgb, var(--color-danger) 38%, #e8dcc0);
 }
 
-/* Orders page: card header strip (pastel gray gradient → warm depth) */
+/* Orders page: card header strip → warm cream gradient */
 body.woocommerce-account.logged-in
   .nera-account-orders
   .border-b.border-gray-200.bg-gradient-to-r.from-gray-50 {
   background: linear-gradient(
     to right,
-    color-mix(in srgb, var(--color-gray-100) 90%, var(--color-primary) 4%) 0%,
-    color-mix(in srgb, var(--color-gray-100) 72%, var(--color-background-light) 28%) 100%
-  );
+    color-mix(in srgb, #fffdfb 72%, var(--color-primary)) 0%,
+    color-mix(in srgb, #fffdfb 62%, var(--color-primary)) 100%
+  ) !important;
 }
 
 /* --------------------------------------------------------------------------
-   Dashboard / orders: force warm typography on dark panels
-   Child specificity (body.logged-in .scope .text-gray-9xx = 0-3-1) beats
-   parent utilities (0-1-0).
+   Typography on cream — dark terracotta instead of bronze or cold gray
    -------------------------------------------------------------------------- */
 
 body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-900,
-body.woocommerce-account.logged-in .nera-account-orders .text-gray-900 {
-  color: var(--color-text-primary);
+body.woocommerce-account.logged-in .nera-account-orders .text-gray-900,
+body.woocommerce-account.logged-in .nera-view-order .text-gray-900 {
+  color: var(--color-primary-dark) !important;
 }
 
 body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-800,
-body.woocommerce-account.logged-in .nera-account-orders .text-gray-800 {
-  color: var(--color-gray-800);
+body.woocommerce-account.logged-in .nera-account-orders .text-gray-800,
+body.woocommerce-account.logged-in .nera-view-order .text-gray-800 {
+  color: color-mix(in srgb, var(--color-primary-dark) 88%, #8a6040) !important;
 }
 
 body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-700,
-body.woocommerce-account.logged-in .nera-account-orders .text-gray-700 {
-  color: var(--color-gray-700);
+body.woocommerce-account.logged-in .nera-account-orders .text-gray-700,
+body.woocommerce-account.logged-in .nera-view-order .text-gray-700 {
+  color: var(--color-primary) !important;
 }
 
 body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-600,
-body.woocommerce-account.logged-in .nera-account-orders .text-gray-600 {
-  color: var(--color-text-secondary);
+body.woocommerce-account.logged-in .nera-account-orders .text-gray-600,
+body.woocommerce-account.logged-in .nera-view-order .text-gray-600 {
+  color: var(--color-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-400,
+body.woocommerce-account.logged-in .nera-account-orders .text-gray-400,
+body.woocommerce-account.logged-in .nera-view-order .text-gray-400 {
+  color: color-mix(in srgb, var(--color-primary) 40%, #c8b89a) !important;
 }
 
 body.woocommerce-account.logged-in .nera-account-dashboard .border-gray-100,
-body.woocommerce-account.logged-in .nera-account-orders .border-gray-100 {
-  border-color: var(--color-gray-200);
+body.woocommerce-account.logged-in .nera-account-orders .border-gray-100,
+body.woocommerce-account.logged-in .nera-view-order .border-gray-100 {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-account-dashboard .border-gray-200,
+body.woocommerce-account.logged-in .nera-account-orders .border-gray-200,
+body.woocommerce-account.logged-in .nera-view-order .border-gray-200 {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, #e8dcc0) !important;
 }
 
 /* --------------------------------------------------------------------------
