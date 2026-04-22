@@ -1,31 +1,167 @@
 /**
- * Checkout: earthy surfaces for payment methods + wallet balance + order notes (beats WC #fff).
+ * Checkout: earthy cream surfaces matching the cart page.
+ * Loads at priority 118, after woo-hero-earthy-overrides.css (115).
  * Depends on child Vite bundle for --color-* tokens.
  */
 
-/* Parent nera-competitions-standard forces #ffffff on these — override with theme surfaces */
+/* --------------------------------------------------------------------------
+   Checkout: warm-cream panels — ALL .bg-surface on the checkout page body.
+   Catches: billing card, payment card, coupon toggle, login-required card.
+   The hero icon tile (also .bg-surface) is restored to dark immediately below.
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Hero icon tile — restore to dark. Uses body.woocommerce-checkout prefix to get specificity
+   0-4-1 vs broad cream rule's 0-3-1, so it wins regardless of declaration order. */
+body.woocommerce-checkout .llp-earthy-hero .rounded-xl.bg-surface {
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-gray-200) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Order Review sidebar: root div is .nera-cart-totals (no bg-surface on it) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Checkout: dark-terracotta text on cream panels
+   Scoped to form.checkout + .nera-cart-totals so hero white text is untouched.
+   Also covers .bg-surface scope for coupon toggle text outside form.checkout.
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) form.checkout .text-text-primary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .text-text-primary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .bg-surface .text-text-primary {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) form.checkout .text-text-secondary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .text-text-secondary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .bg-surface .text-text-secondary {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Checkout: terracotta-tinted dividers inside panels
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) form.checkout .bg-gray-100,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .bg-gray-100 {
+  background-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) form.checkout .border-gray-100,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .border-gray-100 {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Checkout: light form inputs — billing / shipping fields
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='text'],
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='email'],
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='tel'],
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details select {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='text']::placeholder,
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='email']::placeholder,
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input[type='tel']::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details input:focus,
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details select:focus {
+  border-color: var(--color-primary) !important;
+}
+
+/* Coupon code text input */
+body.woocommerce-checkout:not(.woocommerce-order-received) input#coupon_code {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+
+/* Country / Region: WooCommerce replaces the native <select> with Select2 custom divs */
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details .select2-selection {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details .select2-selection__rendered {
+  color: #3d2418 !important;
+}
+
+/* Select2 dropdown list when opened */
+body.woocommerce-checkout:not(.woocommerce-order-received) .select2-dropdown {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .select2-results__option {
+  color: #3d2418;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .select2-results__option--highlighted,
+body.woocommerce-checkout:not(.woocommerce-order-received) .select2-results__option[aria-selected='true'] {
+  background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Checkout: product image thumbnails in order review
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .bg-gray-50 {
+  background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals .border-gray-100 {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e0cdb0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Payment methods: cream instead of dark var(--color-surface)
+   -------------------------------------------------------------------------- */
+
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_methods,
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_methods li {
-  background: var(--color-surface) !important;
-  background-color: var(--color-surface) !important;
+  background: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method {
-  background: var(--color-surface) !important;
-  background-color: var(--color-surface) !important;
-  border-color: var(--color-gray-200) !important;
+  background: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #e0cdb0) !important;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method:hover {
-  background: var(--color-gray-100) !important;
-  background-color: var(--color-gray-100) !important;
+  background: color-mix(in srgb, #fffdfb 76%, var(--color-primary)) !important;
+  background-color: color-mix(in srgb, #fffdfb 76%, var(--color-primary)) !important;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method.active {
-  background: var(--color-gray-100) !important;
-  background-color: var(--color-gray-100) !important;
-  border-color: var(--color-gray-300) !important;
-  --tw-ring-color: var(--color-gray-300);
+  background: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 38%, #d8c4a0) !important;
+  --tw-ring-color: color-mix(in srgb, var(--color-primary) 30%, #d8c4a0);
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box,
@@ -33,7 +169,7 @@ body.woocommerce-checkout:not(.woocommerce-order-received)
   .woocommerce-checkout-payment
   .payment_box
   .nera-wallet-gateway-description {
-  background-color: var(--color-surface) !important;
+  background-color: color-mix(in srgb, #fffdfb 80%, var(--color-primary)) !important;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received)
@@ -43,55 +179,73 @@ body.woocommerce-checkout:not(.woocommerce-order-received)
   accent-color: var(--color-primary);
 }
 
-/*
- * Payment methods card: stack terms + Place order full-width (child previously overrode
- * parent PHP that used md:flex-row side-by-side).
- */
+/* --------------------------------------------------------------------------
+   Payment layout: terms + Place order stacked full-width
+   -------------------------------------------------------------------------- */
+
 body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 > .flex {
   flex-direction: column !important;
   align-items: stretch !important;
 }
 
-/* Safeguard: full-width Place order even if parent utilities change again */
 body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 #place_order.nera-place-order-btn {
   width: 100% !important;
   min-width: 0 !important;
   max-width: none !important;
 }
 
-/* Wallet quick links */
+/* --------------------------------------------------------------------------
+   Wallet balance card: warm cream instead of dark gradient
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance {
+  background: color-mix(in srgb, #fffdfb 80%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 35%, #d8c4a0) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-primary {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-secondary {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
 body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance a.text-primary:hover {
   color: var(--color-accent) !important;
 }
 
-/* Order summary: wallet balance card — warm dark gradient */
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance {
-  background: linear-gradient(
-    165deg,
-    color-mix(in srgb, var(--color-primary) 14%, var(--color-surface)) 0%,
-    var(--color-surface) 55%,
-    var(--color-background-dark) 100%
-  ) !important;
-  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-gray-200)) !important;
+/* Inner info box uses bg-surface/80 (opacity variant) — not caught by the broad .bg-surface rule */
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .backdrop-blur-sm {
+  background-color: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
 }
 
-/* Wallet payment row highlight (was indigo in parent inline <style>) */
+/* --------------------------------------------------------------------------
+   Wallet payment highlighted row: cream bg, terracotta border, star badge unchanged
+   -------------------------------------------------------------------------- */
+
 body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted {
   position: relative;
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)) 0%,
-    color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)) 100%
+    color-mix(in srgb, var(--color-primary) 18%, #fffdfb) 0%,
+    color-mix(in srgb, var(--color-accent) 10%, #fffdfb) 100%
   ) !important;
-  border: 2px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-gray-200)) !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 35%, #d8c4a0) !important;
   border-radius: 12px !important;
   padding: 16px !important;
   transition: all 0.3s ease !important;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-gray-300)) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 55%, #c8a880) !important;
+  box-shadow: 0 4px 14px rgba(155, 80, 57, 0.2) !important;
+}
+
+/* Wallet payment label text: use primary (terracotta) so it reads clearly on cream */
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted .gateway-title {
+  color: var(--color-primary) !important;
+  font-weight: 600;
 }
 
 body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted::before {
@@ -111,7 +265,10 @@ body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-
   box-shadow: 0 2px 8px rgba(155, 80, 57, 0.45);
 }
 
-/* Place order — full terracotta gradient (no cool tail) */
+/* --------------------------------------------------------------------------
+   Place order button: terracotta gradient (unchanged)
+   -------------------------------------------------------------------------- */
+
 body.woocommerce-checkout:not(.woocommerce-order-received) #place_order.nera-place-order-btn,
 body.woocommerce-checkout:not(.woocommerce-order-received) button.nera-place-order-btn.btn-checkout {
   background-image: linear-gradient(
@@ -122,15 +279,18 @@ body.woocommerce-checkout:not(.woocommerce-order-received) button.nera-place-ord
   color: var(--color-on-primary) !important;
 }
 
-/* Order notes — match billing/shipping inputs (WooCommerce can force white textarea fill) */
+/* --------------------------------------------------------------------------
+   Order notes textarea: white on cream panel
+   -------------------------------------------------------------------------- */
+
 body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments,
 body.woocommerce-checkout:not(.woocommerce-order-received)
   .woocommerce-additional-fields__field-wrapper
   textarea {
-  background: var(--color-surface) !important;
-  background-color: var(--color-surface) !important;
-  color: var(--color-text-primary) !important;
-  border-color: var(--color-gray-200) !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #3d2418 !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
   border-radius: 0.75rem;
 }
 
@@ -138,11 +298,10 @@ body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments::plac
 body.woocommerce-checkout:not(.woocommerce-order-received)
   .woocommerce-additional-fields__field-wrapper
   textarea::placeholder {
-  color: color-mix(in srgb, var(--color-gray-500) 75%, var(--color-text-secondary)) !important;
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
   opacity: 1;
 }
 
-/* Focus ring: default ring-offset is light — align with dark checkout */
 body.woocommerce-checkout:not(.woocommerce-order-received) textarea:focus-visible {
-  --tw-ring-offset-color: var(--color-background-light);
+  --tw-ring-offset-color: #fffdfb;
 }

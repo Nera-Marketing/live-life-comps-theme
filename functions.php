@@ -497,3 +497,38 @@ document.addEventListener('DOMContentLoaded', function() {
     <?php
 }
 add_action('wp_footer', 'live_life_prizes_wallet_balance_badge_script', 25);
+
+/**
+ * Disable parent theme virtual route /competition-website-by-nera-marketing/ (Live Life Prizes only).
+ */
+add_action(
+    'after_setup_theme',
+    static function (): void {
+        if (!function_exists('nera_register_attribution_route')) {
+            return;
+        }
+
+        remove_action('init', 'nera_register_attribution_route');
+        remove_action('init', 'nera_maybe_flush_attribution_rewrites', 20);
+        remove_filter('query_vars', 'nera_register_attribution_query_var');
+        remove_filter('template_include', 'nera_maybe_load_attribution_template', 99);
+        remove_filter('pre_get_document_title', 'nera_attribution_document_title');
+    },
+    100,
+);
+
+/**
+ * Rebuild rewrite rules once so the removed attribution slug does not keep matching from the DB cache.
+ */
+add_action(
+    'init',
+    static function (): void {
+        if (get_option('live_life_prizes_attribution_route_disabled_flush_v1')) {
+            return;
+        }
+
+        flush_rewrite_rules(false);
+        update_option('live_life_prizes_attribution_route_disabled_flush_v1', 1, true);
+    },
+    99,
+);

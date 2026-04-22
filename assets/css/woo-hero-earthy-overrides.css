@@ -309,3 +309,263 @@ body.woocommerce-cart .woocommerce-cart-form button[name='update_cart']:hover {
   body.woocommerce-cart .cart-item-desktop { display: none  !important; }
   body.woocommerce-cart .cart-item-mobile  { display: flex  !important; }
 }
+
+/* --------------------------------------------------------------------------
+   Login / Register: light warm-cream canvas — matches cart & checkout aesthetic
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-account.logged-out {
+  background: linear-gradient(to bottom, #faf5f0, #f5ede8) !important;
+  background-color: #faf5f0 !important;
+}
+
+body.woocommerce-account.logged-out #page,
+body.woocommerce-account.logged-out #content,
+body.woocommerce-account.logged-out .site-content,
+body.woocommerce-account.logged-out .site-main,
+body.woocommerce-account.logged-out article,
+body.woocommerce-account.logged-out .entry-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Outer template wrapper: bg-gray-50 (= #141210 in earthy theme) → transparent */
+body.woocommerce-account.logged-out .woocommerce > div,
+body.woocommerce-account.logged-out .min-h-screen {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Heading + description above the form card — dark earthy on cream */
+body.woocommerce-account.logged-out .max-w-4xl h1 {
+  color: var(--color-primary-dark) !important;
+}
+body.woocommerce-account.logged-out .max-w-4xl p {
+  color: color-mix(in srgb, var(--color-primary-dark) 70%, #8a6040) !important;
+}
+
+/* Badge pill — terracotta tint on cream */
+body.woocommerce-account.logged-out .bg-primary\/10 {
+  background-color: color-mix(in srgb, var(--color-primary) 10%, #fff5f0) !important;
+  color: var(--color-primary-dark) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #e8d8c8) !important;
+}
+body.woocommerce-account.logged-out .bg-primary\/10 .text-primary {
+  color: var(--color-primary) !important;
+}
+body.woocommerce-account.logged-out .bg-primary\/10 .material-symbols-outlined {
+  color: var(--color-primary) !important;
+}
+
+/* Form card shadow — bg and border set via inline style in template */
+body.woocommerce-account.logged-out .llp-login-card {
+  box-shadow:
+    0 4px 32px -8px rgba(155, 80, 57, 0.14),
+    0 1px 4px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Text inside the card — dark terracotta for contrast on cream */
+body.woocommerce-account.logged-out .llp-login-card .text-text-primary,
+body.woocommerce-account.logged-out .llp-login-card label {
+  color: var(--color-primary-dark) !important;
+}
+body.woocommerce-account.logged-out .llp-login-card .text-text-secondary {
+  color: color-mix(in srgb, var(--color-primary-dark) 62%, #8a6040) !important;
+}
+
+/* Tab bar: inactive button warm cream */
+body.woocommerce-account.logged-out .flex.border-b button.bg-gray-50 {
+  background-color: color-mix(in srgb, #fffdfb 80%, var(--color-primary)) !important;
+  color: color-mix(in srgb, var(--color-primary-dark) 70%, #8a6040) !important;
+}
+body.woocommerce-account.logged-out .flex.border-b button.bg-gray-50:hover {
+  background-color: color-mix(in srgb, #fffdfb 68%, var(--color-primary)) !important;
+}
+
+/* Tab bar: divider line between tabs */
+body.woocommerce-account.logged-out .flex.border-b {
+  border-color: color-mix(in srgb, var(--color-primary) 25%, #e0d0ba) !important;
+}
+
+/* Input fields on light card — white bg, 1px warm border (matches checkout Image #12) */
+body.woocommerce-account.logged-out input[type='text'],
+body.woocommerce-account.logged-out input[type='email'],
+body.woocommerce-account.logged-out input[type='password'] {
+  background-color: #ffffff !important;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+body.woocommerce-account.logged-out input[type='text']::placeholder,
+body.woocommerce-account.logged-out input[type='email']::placeholder,
+body.woocommerce-account.logged-out input[type='password']::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+body.woocommerce-account.logged-out input[type='text']:focus,
+body.woocommerce-account.logged-out input[type='email']:focus,
+body.woocommerce-account.logged-out input[type='password']:focus {
+  border-color: var(--color-primary) !important;
+}
+
+/* Checkbox */
+body.woocommerce-account.logged-out input[type='checkbox'] {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #d4c4a0) !important;
+}
+
+/* Links (Lost password, terms) */
+body.woocommerce-account.logged-out .llp-login-card a.text-primary,
+body.woocommerce-account.logged-out .llp-login-card .text-primary {
+  color: var(--color-primary) !important;
+}
+body.woocommerce-account.logged-out .llp-login-card a.text-primary:hover {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Password strength bars base state — warm on cream */
+body.woocommerce-account.logged-out [data-bar] {
+  background-color: color-mix(in srgb, var(--color-primary) 12%, #e0d0ba) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Cart: warm cream surface cards — replace dark bg-surface on cream canvas
+   -------------------------------------------------------------------------- */
+
+/* Primary content card + sidebar panels */
+body.woocommerce-cart .bg-surface,
+body.woocommerce-cart .nera-cart-totals,
+body.woocommerce-cart .nera-cart-coupon {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Empty cart state card */
+body.woocommerce-cart .nera-cart-empty-state {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+}
+
+/* Empty cart main icon circle: replace dark gray-50 end-stop with cream */
+body.woocommerce-cart .nera-cart-empty-state .rounded-full.border.border-gray-100 {
+  background: linear-gradient(
+    to bottom right,
+    #ffffff,
+    color-mix(in srgb, #fffdfb 72%, var(--color-primary))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 15%, #e8dcc0) !important;
+}
+
+/* Empty cart main icon: ensure icon is vertically centered */
+body.woocommerce-cart .nera-cart-empty-state .w-20.h-20.rounded-full .material-symbols-outlined {
+  line-height: 1 !important;
+}
+
+/* Trust badge icon wrappers: force square circle + centred icon */
+body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full {
+  width: 3rem !important;
+  height: 3rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full .material-symbols-outlined {
+  line-height: 1 !important;
+  font-size: 1.25rem !important;
+}
+
+/* Cart item rows — lighter warm tint above the card bg */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item {
+  background-color: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #e0cdb0) !important;
+  box-shadow:
+    0 2px 10px -4px rgba(155, 80, 57, 0.18),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 10%, transparent) !important;
+}
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, #e0cdb0) !important;
+  box-shadow:
+    0 4px 16px -6px rgba(155, 80, 57, 0.28),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 18%, transparent) !important;
+}
+
+/* Cart item padding — more breathing room */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item {
+  padding: 1.25rem !important;
+}
+
+/* Cart item all text-text-primary — dark terracotta on cream (covers headings + qty number) */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .text-text-primary {
+  color: var(--color-primary-dark) !important;
+}
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item h3 a:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Cart item secondary text — readable on cream */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .text-text-secondary {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
+/* Price chips — warm on lighter item bg */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .bg-gray-50 {
+  background-color: color-mix(in srgb, #fffdfb 62%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+
+/* Quantity control chrome */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .nera-cart-quantity {
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #d8c4a0) !important;
+  background-color: color-mix(in srgb, #fffdfb 60%, var(--color-primary)) !important;
+}
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .nera-cart-quantity .border-gray-200 {
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+/* Quantity input value — dark so it's readable on cream */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item .nera-cart-quantity input {
+  color: var(--color-primary-dark) !important;
+  background-color: transparent !important;
+}
+/* +5 / +10 bulk buttons — dark terracotta on cream */
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item [data-qty-increment] {
+  color: var(--color-primary) !important;
+}
+body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item [data-qty-increment]:hover {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Dividers inside the "Your Selections" card */
+body.woocommerce-cart .divide-gray-100 > * + * {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+/* Card headings — dark terracotta on cream */
+body.woocommerce-cart .bg-surface h2.text-text-primary,
+body.woocommerce-cart .nera-cart-totals h3.text-text-primary {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Cart totals secondary text — warm readable */
+body.woocommerce-cart .nera-cart-totals .text-text-secondary {
+  color: color-mix(in srgb, var(--color-primary-dark) 62%, #8a6040) !important;
+}
+
+/* Horizontal rule inside totals */
+body.woocommerce-cart .nera-cart-totals .bg-gray-100 {
+  background-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+/* Update Cart button — match lighter panel */
+body.woocommerce-cart .woocommerce-cart-form button[name='update_cart'] {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, #d4c0a0) !important;
+  color: var(--color-primary-dark) !important;
+  background-color: color-mix(in srgb, #fffdfb 70%, var(--color-primary)) !important;
+  box-shadow: 0 2px 8px -2px rgba(155, 80, 57, 0.18) !important;
+}
+body.woocommerce-cart .woocommerce-cart-form button[name='update_cart']:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 50%, #d4c0a0) !important;
+  background-color: color-mix(in srgb, #fffdfb 58%, var(--color-primary)) !important;
+}

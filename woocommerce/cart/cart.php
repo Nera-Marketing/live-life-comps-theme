@@ -64,7 +64,7 @@ defined('ABSPATH') || exit();
               </h2>
 
               <!-- Loop through cart items -->
-              <div class="space-y-4 divide-y divide-gray-100 -mx-6 px-6 md:divide-y-0 md:mx-0 md:px-0">
+              <div class="space-y-3">
               <?php foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $_product = apply_filters(
                   'woocommerce_cart_item_product',

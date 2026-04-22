@@ -94,7 +94,7 @@ if ($hero_video_iframe_raw) {
     <?php endif; ?>
 
     <!-- Video frame (gold border, glow) -->
-    <div class="w-full aspect-[16/9] rounded-xl overflow-hidden border-2 border-[#d8b582] shadow-[0_0_40px_rgba(216,181,130,0.2)] relative">
+    <div class="w-full aspect-[16/9] rounded-xl overflow-hidden relative" style="border: 6px solid #d8b582; box-shadow: 10px 12px 0 rgba(155,80,57,0.8), 0 0 50px rgba(216,181,130,0.25);">
       <?php if ($hero_media_type === 'image' && $hero_image): ?>
         <img src="<?php echo esc_url($hero_image); ?>" alt="" class="w-full h-full object-cover">
       <?php elseif ($hero_media_type === 'video' && $hero_video): ?>

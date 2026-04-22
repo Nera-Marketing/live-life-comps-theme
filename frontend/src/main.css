@@ -1269,3 +1269,44 @@ body.nera-single-lottery.single-product
 .how-it-works-page .how-it-works-cta svg {
   color: inherit;
 }
+
+/* Cart — text-primary uses the darker terracotta primary on the cart page */
+body.woocommerce-cart {
+  --color-text-primary: var(--color-primary);
+}
+
+/* Cart — Apply coupon button uses primary color */
+body.woocommerce-cart button[name="apply_coupon"] {
+  @apply bg-primary text-on-primary hover:bg-primary-dark;
+}
+
+/* Cart — individual item cards with rounded corners */
+body.woocommerce-cart .ncs-cart-item {
+  @apply rounded-2xl border border-gray-200 p-4;
+  background-color: color-mix(in srgb, var(--color-surface) 50%, var(--color-gray-200) 50%);
+}
+
+body.woocommerce-cart .ncs-cart-item .cart-item-mobile {
+  @apply py-0;
+}
+
+body.woocommerce-cart .ncs-cart-item .cart-item-desktop {
+  @apply py-0;
+}
+
+/* ============================================================
+   My Account — logged-out: input fields white bg, warm border
+   ============================================================ */
+
+body.woocommerce-account.logged-out input[type='text'],
+body.woocommerce-account.logged-out input[type='email'],
+body.woocommerce-account.logged-out input[type='password'] {
+  background-color: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0);
+  color: #3d2418;
+}
+
+body.woocommerce-account.logged-out input[type='checkbox'] {
+  background-color: #ffffff;
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #d4c4a0);
+}
