@@ -1,0 +1,137 @@
+/**
+ * Checkout: earthy surfaces for payment methods + wallet balance + order notes (beats WC #fff).
+ * Depends on child Vite bundle for --color-* tokens.
+ */
+
+/* Parent nera-competitions-standard forces #ffffff on these — override with theme surfaces */
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_methods,
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_methods li {
+  background: var(--color-surface) !important;
+  background-color: var(--color-surface) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method {
+  background: var(--color-surface) !important;
+  background-color: var(--color-surface) !important;
+  border-color: var(--color-gray-200) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method:hover {
+  background: var(--color-gray-100) !important;
+  background-color: var(--color-gray-100) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .wc_payment_method.active {
+  background: var(--color-gray-100) !important;
+  background-color: var(--color-gray-100) !important;
+  border-color: var(--color-gray-300) !important;
+  --tw-ring-color: var(--color-gray-300);
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-checkout-payment
+  .payment_box
+  .nera-wallet-gateway-description {
+  background-color: var(--color-surface) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-checkout-payment
+  .wc_payment_method
+  input[type='radio'] {
+  accent-color: var(--color-primary);
+}
+
+/* Order summary: wallet balance card — warm dark gradient (replaces cool indigo-50 strip) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-primary) 14%, var(--color-surface)) 0%,
+    var(--color-surface) 55%,
+    var(--color-background-dark) 100%
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-gray-200)) !important;
+}
+
+/* Partial payment strip in order review (parent uses to-indigo-50) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-cart-totals [class*='to-indigo-50'] {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-primary) 8%, transparent),
+    color-mix(in srgb, var(--color-accent) 6%, var(--color-surface))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-gray-200)) !important;
+}
+
+/* Wallet payment row highlight (was indigo in parent inline <style>) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 12%, var(--color-surface)) 0%,
+    color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)) 100%
+  ) !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-gray-200)) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-gray-300)) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-payment-highlighted::before {
+  content: '★';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%) !important;
+  color: var(--color-on-primary) !important;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(155, 80, 57, 0.45);
+}
+
+/* Place order — full terracotta gradient (no cool tail) */
+body.woocommerce-checkout:not(.woocommerce-order-received) #place_order.nera-place-order-btn,
+body.woocommerce-checkout:not(.woocommerce-order-received) button.nera-place-order-btn.btn-checkout {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-accent)
+  ) !important;
+  color: var(--color-on-primary) !important;
+}
+
+/* Order notes — match billing/shipping inputs (WooCommerce can force white textarea fill) */
+body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-additional-fields__field-wrapper
+  textarea {
+  background: var(--color-surface) !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-gray-200) !important;
+  border-radius: 0.75rem;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) #order_comments::placeholder,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-additional-fields__field-wrapper
+  textarea::placeholder {
+  color: color-mix(in srgb, var(--color-gray-500) 75%, var(--color-text-secondary)) !important;
+  opacity: 1;
+}
+
+/* Focus ring: default ring-offset is light — align with dark checkout */
+body.woocommerce-checkout:not(.woocommerce-order-received) textarea:focus-visible {
+  --tw-ring-offset-color: var(--color-background-light);
+}

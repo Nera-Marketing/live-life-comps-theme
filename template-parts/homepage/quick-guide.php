@@ -72,7 +72,7 @@ $guide_subtitle =
 $guide_live_draw_social_links = get_field('guide_live_draw_social_links', $acf_post_id);
 ?>
 
-<section class="how-to-enter-section py-16 lg:py-24 bg-gradient-to-b from-[#faf7f2] to-[#fffdfb] relative border-t border-stone-200/70" id="quick-guide"
+<section class="how-to-enter-section py-16 lg:py-24 bg-gradient-to-b from-[#faf7f2] to-[#fffdfb] relative border-t border-stone-200/70 rounded-2xl overflow-hidden" id="quick-guide"
   data-aos="fade-up">
   <!-- Subtle terracotta wash on cream (rest band after Current Prizes) -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">

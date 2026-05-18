@@ -1,0 +1,24 @@
+/**
+ * Marquee banner — horizontal scroll (matches nera-competitions-standard main.css).
+ */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track {
+    flex-shrink: 0;
+    min-width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}

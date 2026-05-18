@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "remote": "ssh -i ~/.ssh/id_rsa_minhle -p 18765 u23-sfsdg5vpopq1@c1108063.sgvps.net"
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1",
