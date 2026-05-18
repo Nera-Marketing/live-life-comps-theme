@@ -16,6 +16,8 @@
   --color-background-light: #0c0b09;
   --color-background-dark: #141310;
   --color-surface: #1e1c18;
+  /* Light strip behind grids / advanced filter — dark child keeps cards on `--color-surface`. */
+  --color-section-canvas: #ffffff;
   --color-accent: #c4704e;
   --color-on-primary: #d8b582;
   --color-success: #10b981;
@@ -71,7 +73,7 @@ main.nera-entry-list-listing {
 main.nera-winners-dynamic-page > section.bg-background-light:nth-of-type(2),
 main.nera-closed-prizes-page > section.bg-background-light:nth-of-type(2),
 main.nera-entry-list-listing > section.bg-background-light:nth-of-type(2) {
-  background-color: #fff;
+  background-color: var(--color-section-canvas);
 }
 
 main.nera-winners-dynamic-page > section.bg-background-light:first-of-type .rounded-full.bg-gray-100,
@@ -168,8 +170,19 @@ main.nera-entry-list-listing > section.bg-background-light:first-of-type p {
   font-weight: 300;
 }
 
-.nera-product-listing #advanced-filter-competitions.bg-gray-50 {
-  @apply bg-white;
+.nera-product-listing #advanced-filter-competitions.bg-surface {
+  background-color: var(--color-section-canvas);
+}
+
+/*
+ * Entry list + closed prizes + winners grids: wrapper section uses `bg-surface` (dark token). Hero is gradient, not `bg-background-light`,
+ * so nth-of-type(2) white rule above does not apply — force light canvas for the grid wrapper only.
+ */
+main.nera-entry-list-listing > section.bg-surface,
+main.nera-closed-prizes-page > section.bg-surface,
+main.nera-winners-dynamic-page > section.bg-surface,
+main.nera-winners-page > section.bg-surface {
+  background-color: var(--color-section-canvas);
 }
 
 .nera-product-listing section.bg-surface .bg-slate-50 {
@@ -1309,6 +1322,11 @@ body.woocommerce-account.logged-out input[type='password'] {
 body.woocommerce-account.logged-out input[type='checkbox'] {
   background-color: #ffffff;
   border-color: color-mix(in srgb, var(--color-primary) 28%, #d4c4a0);
+}
+
+/* My Wallet — force heading dark on light account pages */
+body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-wallet-header h2 {
+  color: var(--color-text-primary) !important;
 }
 
 /* Entry list modal — hide "Open full page" button */

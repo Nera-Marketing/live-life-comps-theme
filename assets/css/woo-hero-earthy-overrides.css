@@ -242,7 +242,10 @@ body.woocommerce-account.logged-in
 
 body.woocommerce-account.logged-in .nera-account-dashboard .text-gray-900,
 body.woocommerce-account.logged-in .nera-account-orders .text-gray-900,
-body.woocommerce-account.logged-in .nera-view-order .text-gray-900 {
+body.woocommerce-account.logged-in .nera-view-order .text-gray-900,
+body.woocommerce-account.logged-in .nera-edit-account .text-gray-900,
+body.woocommerce-account.logged-in .nera-edit-account h2,
+body.woocommerce-account.logged-in .nera-edit-account h3 {
   color: var(--color-primary-dark) !important;
 }
 
@@ -627,4 +630,58 @@ body.woocommerce-cart .woocommerce-cart-form button[name='update_cart'] {
 body.woocommerce-cart .woocommerce-cart-form button[name='update_cart']:hover {
   border-color: color-mix(in srgb, var(--color-primary) 50%, #d4c0a0) !important;
   background-color: color-mix(in srgb, #fffdfb 58%, var(--color-primary)) !important;
+}
+
+/* --------------------------------------------------------------------------
+   My Account — Edit address: match Country/Region (select / Select2) to text inputs
+   Parent uses bg-surface on selects; inputs use Tailwind border-2 only (light field).
+   Mirrors checkout #customer_details field chrome in checkout-wallet-earthy-overrides.css
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='text'],
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='email'],
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='tel'],
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='number'],
+body.woocommerce-account.logged-in .nera-edit-address .form-row select {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='text']:focus,
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='email']:focus,
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='tel']:focus,
+body.woocommerce-account.logged-in .nera-edit-address .form-row input[type='number']:focus,
+body.woocommerce-account.logged-in .nera-edit-address .form-row select:focus {
+  border-color: var(--color-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-address .select2-container .select2-selection--single {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-address .select2-container .select2-selection--single .select2-selection__rendered {
+  color: #3d2418 !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-address .select2-container--focus .select2-selection--single,
+body.woocommerce-account.logged-in .nera-edit-address .select2-container--open .select2-selection--single {
+  border-color: var(--color-primary) !important;
+}
+
+/* Select2 list is portaled to body — scope to account, not checkout */
+body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-dropdown {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+}
+
+body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__option {
+  color: #3d2418;
+}
+
+body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__option--highlighted,
+body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__option[aria-selected='true'] {
+  background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  color: var(--color-primary-dark) !important;
 }
