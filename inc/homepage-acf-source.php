@@ -90,7 +90,9 @@ function live_life_prizes_output_quick_guide_before_related_competitions($produc
         return;
     }
 
+    echo '<div class="mb-8 lg:mb-12">';
     get_template_part('template-parts/homepage/quick-guide');
+    echo '</div>';
 }
 
 add_action('nera_before_related_competitions', 'live_life_prizes_output_quick_guide_before_related_competitions', 10, 1);
