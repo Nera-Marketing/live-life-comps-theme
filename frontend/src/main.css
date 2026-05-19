@@ -1265,7 +1265,8 @@ body.nera-single-lottery.single-product
   color: inherit;
 }
 
-/* How It Works — soft light bokeh on terracotta gradient hero (parent uses --particle-color) */
+/* Homepage hero + How It Works — soft light bokeh on terracotta (parent uses --particle-color) */
+.hero-section,
 .how-it-works-page .how-it-works-section {
   --particle-color: rgba(255, 252, 248, 0.14);
 }
