@@ -129,12 +129,35 @@
   flex-direction: row !important;
 }
 
-/* Dark circle + warm ring + muted gold icons (reference: dark canvas, tan icon, brown-grey ring) */
-.llp-site-footer .wp-block-social-link a {
+/* Neutralize WP core per-network brand fills (e.g. Facebook #0866ff on the li) */
+.llp-site-footer .wp-block-social-links .wp-block-social-link.wp-social-link {
+  background: transparent;
+  color: inherit;
+}
+
+.llp-site-footer .wp-block-social-links:not(.is-style-logos-only) :is(
+  .wp-social-link-facebook,
+  .wp-social-link-instagram,
+  .wp-social-link-youtube
+) {
+  background: transparent;
+  color: inherit;
+}
+
+.llp-site-footer .wp-block-social-links.is-style-logos-only :is(
+  .wp-social-link-facebook,
+  .wp-social-link-instagram,
+  .wp-social-link-youtube
+) {
+  color: inherit;
+}
+
+/* Dark circle + terracotta ring + muted gold icons */
+.llp-site-footer .wp-block-social-link :is(a, .wp-block-social-link-anchor) {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 9999px;
-  border: 1px solid color-mix(in srgb, var(--color-gray-300) 72%, var(--color-background-light));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 65%, var(--color-text-secondary));
   background: var(--color-background-dark);
   display: flex;
   align-items: center;
@@ -146,14 +169,14 @@
     background-color 0.2s ease;
 }
 
-.llp-site-footer .wp-block-social-link a:hover,
-.llp-site-footer .wp-block-social-link a:focus-visible {
-  border-color: color-mix(in srgb, var(--color-text-primary) 38%, var(--color-gray-300));
+.llp-site-footer .wp-block-social-link :is(a, .wp-block-social-link-anchor):hover,
+.llp-site-footer .wp-block-social-link :is(a, .wp-block-social-link-anchor):focus-visible {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-text-primary));
   color: var(--color-text-primary);
   background: color-mix(in srgb, var(--color-background-dark) 70%, var(--color-surface));
 }
 
-.llp-site-footer .wp-block-social-link a:focus-visible {
+.llp-site-footer .wp-block-social-link :is(a, .wp-block-social-link-anchor):focus-visible {
   outline: 2px solid color-mix(in srgb, var(--color-text-primary) 45%, transparent);
   outline-offset: 2px;
 }
