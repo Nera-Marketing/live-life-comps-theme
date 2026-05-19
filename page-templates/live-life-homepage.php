@@ -24,7 +24,7 @@ get_header();
     get_template_part('template-parts/homepage/hero-section');
     get_template_part('template-parts/homepage/welcome-section');
     get_template_part('template-parts/homepage/featured-competitions');
-    get_template_part('template-parts/homepage/quick-guide');
+    get_template_part('template-parts/homepage/quick-guide', null, ['rounded' => false]);
   ?>
 
 </main>

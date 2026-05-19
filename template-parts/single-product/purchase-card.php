@@ -80,13 +80,13 @@ $is_manual_ticket = method_exists($product, 'is_manual_ticket') ? $product->is_m
     <div class="px-6 pb-6">
       <div class="flex items-center gap-2 mb-3">
         <?php if ($is_expired): ?>
-          <span class="material-symbols-outlined text-gray-400 text-lg">lock</span>
-          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">
+          <span class="material-symbols-outlined text-text-secondary text-lg">lock</span>
+          <span class="text-xs font-bold text-text-secondary uppercase tracking-wider">
             <?php _e('Competition Closed', 'nera-competitions'); ?>
           </span>
         <?php else: ?>
-          <span class="material-symbols-outlined text-red-500 text-lg">schedule</span>
-          <span class="text-xs font-bold text-red-500 uppercase tracking-wider">
+          <span class="material-symbols-outlined text-on-primary text-lg">schedule</span>
+          <span class="text-xs font-bold text-on-primary uppercase tracking-wider">
             <?php _e('Closes In', 'nera-competitions'); ?>
           </span>
         <?php endif; ?>
