@@ -5,6 +5,7 @@
 
 .llp-site-footer {
   --llp-footer-bronze: var(--color-text-primary);
+  --llp-footer-heading: var(--color-primary);
   --llp-footer-bronze-muted: var(--color-text-secondary);
   --llp-footer-border: color-mix(in srgb, var(--color-text-primary) 14%, transparent);
   --llp-footer-surface: var(--color-background-light);
@@ -53,7 +54,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--llp-footer-bronze);
+  color: var(--llp-footer-heading);
   margin: 0 0 0.5rem;
 }
 
