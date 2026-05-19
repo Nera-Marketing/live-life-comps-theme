@@ -121,12 +121,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
       </div>
     </div>
 
-    <!-- Organic wave transition to canvas background -->
-    <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
-        <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
-      </svg>
-    </div>
+    <?php get_template_part('template-parts/llp-organic-wave', null, ['position' => 'bottom', 'context' => 'hero']); ?>
   </section>
 
   <section class="py-16 lg:py-24 bg-gradient-to-b from-[#fffdfb] to-[#faf7f2]" aria-labelledby="about-us-narrative">

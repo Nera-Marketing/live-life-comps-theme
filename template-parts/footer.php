@@ -40,6 +40,8 @@ $footer_bottom_right_html = is_string($footer_bottom_right_html) ? $footer_botto
 ?>
 <footer class="llp-site-footer" id="site-footer">
 
+    <?php get_template_part('template-parts/llp-organic-wave', null, ['position' => 'bottom', 'context' => 'footer']); ?>
+
     <div class="llp-footer-grid">
         <div class="llp-footer-col llp-footer-col--brand footer-col footer-brand">
             <?php
