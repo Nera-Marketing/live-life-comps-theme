@@ -62,6 +62,7 @@
 main.nera-product-listing,
 main.nera-winners-page,
 main.nera-winners-dynamic-page,
+main.nera-winners-entry-list-page,
 main.nera-closed-prizes-page,
 main.nera-entry-list-listing {
   @apply bg-white;
@@ -181,6 +182,7 @@ main.nera-entry-list-listing > section.bg-background-light:first-of-type p {
 main.nera-entry-list-listing > section.bg-surface,
 main.nera-closed-prizes-page > section.bg-surface,
 main.nera-winners-dynamic-page > section.bg-surface,
+main.nera-winners-entry-list-page > section.bg-surface,
 main.nera-winners-page > section.bg-surface {
   background-color: var(--color-section-canvas);
 }
@@ -1362,6 +1364,12 @@ body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-walle
   z-index: 0;
 }
 
+/* First section bg extends through header wave overlap band */
+#content.site-content > main > *:first-child,
+#content.site-content > #primary > *:first-child {
+  padding-top: var(--llp-wave-safe-inset);
+}
+
 /* Last section bg extends through footer wave overlap band */
 #content.site-content > main > *:last-child,
 #content.site-content > #primary > *:last-child {
@@ -1373,6 +1381,7 @@ body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-walle
 #content.site-content > main.nera-product-listing > section.bg-surface:last-of-type,
 #content.site-content > main.nera-shop-page > section.bg-surface:last-of-type,
 #content.site-content > main.nera-entry-list-listing > section.bg-surface:last-of-type,
-#content.site-content > main.nera-winners-dynamic-page > section.bg-surface:last-of-type {
+#content.site-content > main.nera-winners-dynamic-page > section.bg-surface:last-of-type,
+#content.site-content > main.nera-winners-entry-list-page > section.bg-surface:last-of-type {
   padding-bottom: var(--llp-wave-safe-inset);
 }

@@ -62,3 +62,28 @@ function llp_icon(string $name, string $size = '32'): string
     $paths[$name]
   );
 }
+
+/**
+ * Material Symbols ligature for About Us story column headings.
+ *
+ * @param string $title Column title from ACF.
+ */
+function llp_about_story_icon(string $title): string
+{
+  $key = strtolower(wp_strip_all_tags($title));
+
+  if (str_contains($key, 'heart')) {
+    return 'favorite';
+  }
+  if (preg_match('/\b(prize|prizes|draw|win|winner|gift|competition)\b/', $key)) {
+    return 'emoji_events';
+  }
+  if (preg_match('/\b(purpose|drive|value|vision|idea|insight)\b/', $key)) {
+    return 'lightbulb';
+  }
+  if (preg_match('/\b(story|community|journey|health|autism|people)\b/', $key)) {
+    return 'groups';
+  }
+
+  return 'auto_stories';
+}
