@@ -202,6 +202,32 @@ add_action('wp_enqueue_scripts', function (): void {
 }, 105);
 
 /**
+ * How It Works page — style WYSIWYG links inside hero step title/description.
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    if (!is_page_template('page-templates/how-it-works-template.php')) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/assets/css/how-it-works.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-how-it-works',
+        get_stylesheet_directory_uri() . '/assets/css/how-it-works.css',
+        [$dep],
+        (string) filemtime($path),
+    );
+}, 105);
+
+/**
  * Last child Vite CSS handle from manifest (for dependent stylesheets).
  */
 function live_life_prizes_get_last_child_vite_css_handle(): ?string

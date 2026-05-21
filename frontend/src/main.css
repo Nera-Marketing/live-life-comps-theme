@@ -4,6 +4,7 @@
  */
 
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @source "../../**/*.php";
 @source "../assets/**/*.js";
@@ -16,6 +17,8 @@
   --color-background-light: #0c0b09;
   --color-background-dark: #141310;
   --color-surface: #1e1c18;
+  /* Light strip behind grids / advanced filter — dark child keeps cards on `--color-surface`. */
+  --color-section-canvas: #ffffff;
   --color-accent: #c4704e;
   --color-on-primary: #d8b582;
   --color-success: #10b981;
@@ -60,6 +63,7 @@
 main.nera-product-listing,
 main.nera-winners-page,
 main.nera-winners-dynamic-page,
+main.nera-winners-entry-list-page,
 main.nera-closed-prizes-page,
 main.nera-entry-list-listing {
   @apply bg-white;
@@ -71,7 +75,7 @@ main.nera-entry-list-listing {
 main.nera-winners-dynamic-page > section.bg-background-light:nth-of-type(2),
 main.nera-closed-prizes-page > section.bg-background-light:nth-of-type(2),
 main.nera-entry-list-listing > section.bg-background-light:nth-of-type(2) {
-  background-color: #fff;
+  background-color: var(--color-section-canvas);
 }
 
 main.nera-winners-dynamic-page > section.bg-background-light:first-of-type .rounded-full.bg-gray-100,
@@ -168,8 +172,20 @@ main.nera-entry-list-listing > section.bg-background-light:first-of-type p {
   font-weight: 300;
 }
 
-.nera-product-listing #advanced-filter-competitions.bg-gray-50 {
-  @apply bg-white;
+.nera-product-listing #advanced-filter-competitions.bg-surface {
+  background-color: var(--color-section-canvas);
+}
+
+/*
+ * Entry list + closed prizes + winners grids: wrapper section uses `bg-surface` (dark token). Hero is gradient, not `bg-background-light`,
+ * so nth-of-type(2) white rule above does not apply — force light canvas for the grid wrapper only.
+ */
+main.nera-entry-list-listing > section.bg-surface,
+main.nera-closed-prizes-page > section.bg-surface,
+main.nera-winners-dynamic-page > section.bg-surface,
+main.nera-winners-entry-list-page > section.bg-surface,
+main.nera-winners-page > section.bg-surface {
+  background-color: var(--color-section-canvas);
 }
 
 .nera-product-listing section.bg-surface .bg-slate-50 {
@@ -212,6 +228,30 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #pr
   background-image: none;
   background-color: transparent;
   color: rgb(28 25 23);
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 0 !important;
+}
+
+@media (min-width: 64rem) {
+  body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main {
+    padding-top: 0 !important;
+  }
+}
+
+/* Default-template hero: extra height so terracotta band matches the visual weight of /faq/ + /current-prizes/ */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main > section:first-of-type {
+  padding-top: calc(var(--llp-wave-safe-inset) + 2.5rem);
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 48rem) {
+  body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main > section:first-of-type {
+    padding-top: calc(var(--llp-wave-safe-inset) + 4rem);
+    padding-bottom: 7rem;
+  }
 }
 
 /* Parent page.php: featured image wrapper has no margin before title — add breathing room */
@@ -1252,7 +1292,8 @@ body.nera-single-lottery.single-product
   color: inherit;
 }
 
-/* How It Works — soft light bokeh on terracotta gradient hero (parent uses --particle-color) */
+/* Homepage hero + How It Works — soft light bokeh on terracotta (parent uses --particle-color) */
+.hero-section,
 .how-it-works-page .how-it-works-section {
   --particle-color: rgba(255, 252, 248, 0.14);
 }
@@ -1311,7 +1352,61 @@ body.woocommerce-account.logged-out input[type='checkbox'] {
   border-color: color-mix(in srgb, var(--color-primary) 28%, #d4c4a0);
 }
 
+/* My Wallet — force heading dark on light account pages */
+body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-wallet-header h2 {
+  color: var(--color-text-primary) !important;
+}
+
 /* Entry list modal — hide "Open full page" button */
 [x-show="modalPayload.fallback_url"] {
   display: none !important;
+}
+
+/* Site-wide organic wave dividers — anchored on header/footer (out of flow) */
+:root {
+  --llp-wave-bookend-height: 4rem;
+  --llp-wave-content-gap: 3.5rem;
+  --llp-wave-safe-inset: calc(
+    var(--llp-wave-bookend-height) + var(--llp-wave-content-gap)
+  );
+}
+
+#site-header {
+  position: relative;
+}
+
+.llp-organic-wave--header,
+.llp-organic-wave--footer {
+  line-height: 0;
+}
+
+.llp-site-footer {
+  position: relative;
+}
+
+#content.site-content {
+  position: relative;
+  z-index: 0;
+}
+
+/* First section bg extends through header wave overlap band */
+#content.site-content > main > *:first-child,
+#content.site-content > #primary > *:first-child {
+  padding-top: var(--llp-wave-safe-inset);
+}
+
+/* Last section bg extends through footer wave overlap band */
+#content.site-content > main > *:last-child,
+#content.site-content > #primary > *:last-child {
+  padding-bottom: var(--llp-wave-safe-inset);
+}
+
+/* Listing grids: minimum gap above footer wave on small viewports */
+#content.site-content > main.nera-closed-prizes-page > section.bg-surface:last-of-type,
+#content.site-content > main.nera-product-listing > section.bg-surface:last-of-type,
+#content.site-content > main.nera-shop-page > section.bg-surface:last-of-type,
+#content.site-content > main.nera-entry-list-listing > section.bg-surface:last-of-type,
+#content.site-content > main.nera-winners-dynamic-page > section.bg-surface:last-of-type,
+#content.site-content > main.nera-winners-entry-list-page > section.bg-surface:last-of-type {
+  padding-bottom: var(--llp-wave-safe-inset);
 }

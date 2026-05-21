@@ -40,6 +40,8 @@ $footer_bottom_right_html = is_string($footer_bottom_right_html) ? $footer_botto
 ?>
 <footer class="llp-site-footer" id="site-footer">
 
+    <?php get_template_part('template-parts/llp-organic-wave', null, ['position' => 'bottom', 'context' => 'footer']); ?>
+
     <div class="llp-footer-grid">
         <div class="llp-footer-col llp-footer-col--brand footer-col footer-brand">
             <?php
@@ -153,6 +155,12 @@ $footer_bottom_right_html = is_string($footer_bottom_right_html) ? $footer_botto
             <?php else : ?>
                 <span class="llp-footer-vlb-badge"><?php esc_html_e('Part of Van Life Builds', 'live-life-prizes'); ?></span>
             <?php endif; ?>
+            <span class="llp-footer-age-badge" role="img" aria-label="<?php esc_attr_e('18+ only', 'live-life-prizes'); ?>">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+                    <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                    <text x="28" y="36" font-family="inherit" font-size="20" font-weight="700" fill="currentColor" text-anchor="middle">18+</text>
+                </svg>
+            </span>
         </div>
     </div>
 

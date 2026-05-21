@@ -28,6 +28,8 @@ $story_left_title = get_field('about_story_left_title') ?: __('Our story', 'nera
 $story_left_content = get_field('about_story_left_content');
 $story_right_title = get_field('about_story_right_title') ?: __('What drives us', 'nera-competitions');
 $story_right_content = get_field('about_story_right_content');
+$story_left_icon = llp_about_story_icon($story_left_title);
+$story_right_icon = llp_about_story_icon($story_right_title);
 
 $cta_heading = get_field('about_cta_heading') ?: __('Join the community', 'nera-competitions');
 $cta_description = get_field('about_cta_description') ?: __(
@@ -51,28 +53,6 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
     </div>
     <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(216,181,130,0.12)_0%,transparent_55%)]"></div>
 
-    <!-- Decorative sun motif — echoes the hand-drawn brand logo -->
-    <div class="absolute top-1/2 right-[8%] -translate-y-1/2 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.07] pointer-events-none z-0" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
-        <circle cx="120" cy="120" r="22" fill="#d8b582"/>
-        <path d="M120 97 L119 18" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-        <path d="M120 143 L121 222" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-        <path d="M143 120 L222 121" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-        <path d="M97 120 L18 119" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-        <path d="M136 104 L199 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M104 136 L41 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M104 104 L41 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M136 136 L199 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M129 99 L152 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M141 111 L192 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M141 129 L192 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M129 141 L152 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M111 141 L88 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M99 129 L48 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M99 111 L48 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M111 99 L88 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </div>
 
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10 w-full">
       <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
@@ -121,12 +101,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
       </div>
     </div>
 
-    <!-- Organic wave transition to canvas background -->
-    <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
-        <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
-      </svg>
-    </div>
+    <?php get_template_part('template-parts/llp-organic-wave', null, ['position' => 'bottom', 'context' => 'hero']); ?>
   </section>
 
   <section class="py-16 lg:py-24 bg-gradient-to-b from-[#fffdfb] to-[#faf7f2]" aria-labelledby="about-us-narrative">
@@ -156,7 +131,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
           <div class="flex items-center gap-4 mb-6">
             <div
               class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary">
-              <span class="material-symbols-outlined text-2xl" aria-hidden="true">groups</span>
+              <span class="material-symbols-outlined text-2xl" aria-hidden="true"><?php echo esc_html($story_left_icon); ?></span>
             </div>
             <h2 class="font-heading text-2xl lg:text-3xl text-text-primary">
               <?php echo esc_html($story_left_title); ?>
@@ -177,7 +152,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
           <div class="flex items-center gap-4 mb-6">
             <div
               class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary">
-              <span class="material-symbols-outlined text-2xl" aria-hidden="true">lightbulb</span>
+              <span class="material-symbols-outlined text-2xl" aria-hidden="true"><?php echo esc_html($story_right_icon); ?></span>
             </div>
             <h2 class="font-heading text-2xl lg:text-3xl text-text-primary">
               <?php echo esc_html($story_right_title); ?>

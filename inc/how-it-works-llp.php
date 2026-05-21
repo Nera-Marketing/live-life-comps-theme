@@ -137,3 +137,26 @@ function live_life_prizes_get_hiw_merged_hero_steps($acf_rows): array
 
   return $merged;
 }
+
+/**
+ * Promote the How It Works step title/description sub-fields to WYSIWYG editors
+ * so authors can embed links and basic inline formatting. Parent ACF registration
+ * stays untouched; we override the field shape at load time from the child.
+ */
+add_filter('acf/load_field/key=field_hiw_hero_step_title', function ($field) {
+  $field['type']         = 'wysiwyg';
+  $field['tabs']         = 'visual';
+  $field['toolbar']      = 'basic';
+  $field['media_upload'] = 0;
+  $field['delay']        = 1;
+  return $field;
+});
+
+add_filter('acf/load_field/key=field_hiw_hero_step_description', function ($field) {
+  $field['type']         = 'wysiwyg';
+  $field['tabs']         = 'visual';
+  $field['toolbar']      = 'basic';
+  $field['media_upload'] = 0;
+  $field['delay']        = 1;
+  return $field;
+});

@@ -28,5 +28,4 @@ if (!defined('ABSPATH')) {
 
         <?php get_template_part('template-parts/marquee-banner'); ?>
         <?php get_template_part('template-parts/header'); ?>
-
         <div id="content" class="site-content">

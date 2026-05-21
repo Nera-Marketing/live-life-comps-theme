@@ -232,6 +232,7 @@ acf_add_local_field_group([
             'label' => 'Badge',
             'name' => 'welcome_badge',
             'type' => 'text',
+            'default_value' => 'From the Founders',
         ],
         [
             'key' => 'field_llp_home_welcome_title',

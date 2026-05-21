@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "remote": "ssh -i ~/.ssh/id_rsa_minhle -p 18765 u23-sfsdg5vpopq1@c1108063.sgvps.net"
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.0",
     "tailwindcss": "^4.1.0",
     "vite": "^6.0.0"

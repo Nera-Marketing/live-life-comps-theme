@@ -62,28 +62,27 @@ if ($hero_video_iframe_raw) {
   class="hero-section relative flex flex-col items-center justify-center py-16 lg:py-24 bg-llp-hero-terracotta-b overflow-hidden"
   id="hero" data-aos="fade-up" data-aos-duration="600">
 
-  <!-- Decorative sun motif — echoes the hand-drawn brand logo -->
-  <div class="absolute -top-8 -right-8 lg:top-4 lg:right-4 w-60 h-60 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none z-0" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
-      <circle cx="120" cy="120" r="22" fill="#d8b582"/>
-      <path d="M120 97 L119 18" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-      <path d="M120 143 L121 222" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-      <path d="M143 120 L222 121" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-      <path d="M97 120 L18 119" stroke="#d8b582" stroke-width="3" stroke-linecap="round"/>
-      <path d="M136 104 L199 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M104 136 L41 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M104 104 L41 41" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M136 136 L199 199" stroke="#d8b582" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M129 99 L152 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M141 111 L192 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M141 129 L192 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M129 141 L152 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M111 141 L88 192" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M99 129 L48 152" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M99 111 L48 88" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-      <path d="M111 99 L88 48" stroke="#d8b582" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-30" aria-hidden="true">
+    <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-on-primary/10 blur-[120px]"></div>
+    <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-indigo-400/20 blur-[120px]"></div>
   </div>
+  <div
+    class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(216,181,130,0.12)_0%,transparent_55%)]"
+    aria-hidden="true"></div>
+
+  <div class="how-it-works-particles absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+  </div>
+
+  <div
+    class="absolute inset-0 opacity-[0.06]"
+    style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23d8b582&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
+    aria-hidden="true"></div>
 
   <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center relative z-[1]">
 
@@ -93,8 +92,9 @@ if ($hero_video_iframe_raw) {
     </span>
     <?php endif; ?>
 
-    <!-- Video frame (gold border, glow) -->
-    <div class="w-full aspect-[16/9] rounded-xl overflow-hidden relative" style="border: 6px solid #d8b582; box-shadow: 10px 12px 0 rgba(155,80,57,0.8), 0 0 50px rgba(216,181,130,0.25);">
+    <!-- Video frame: outer = border + shadow; inner = true 16:9 (border on same box as aspect distorts embed ratio). -->
+    <div class="w-full rounded-xl overflow-hidden" style="border: 6px solid #d8b582; box-shadow: 10px 12px 0 rgba(155,80,57,0.8), 0 0 50px rgba(216,181,130,0.25);">
+      <div class="w-full aspect-[16/9] overflow-hidden relative rounded-md">
       <?php if ($hero_media_type === 'image' && $hero_image): ?>
         <img src="<?php echo esc_url($hero_image); ?>" alt="" class="w-full h-full object-cover">
       <?php elseif ($hero_media_type === 'video' && $hero_video): ?>
@@ -111,6 +111,7 @@ if ($hero_video_iframe_raw) {
           <span class="text-[12px] text-[rgba(216,181,130,0.85)] tracking-[2px] uppercase"><?php _e('Competition video coming soon', 'nera-competitions'); ?></span>
         </div>
       <?php endif; ?>
+      </div>
     </div>
 
     <!-- Primary CTA - Enter Now (most prominent on page) -->

@@ -50,7 +50,7 @@ $site_name = get_bloginfo('name');
     <!-- Logo -->
     <a href="<?php echo esc_url(home_url('/')); ?>" class="block flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#d8b582]/50 rounded">
       <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($site_name); ?>"
-        class="max-h-[100px] lg:max-h-[250px] w-auto object-contain mx-auto">
+        class="max-h-[192px] lg:max-h-[250px] w-auto object-contain mx-auto">
     </a>
 
     <!-- Right flanking line -->

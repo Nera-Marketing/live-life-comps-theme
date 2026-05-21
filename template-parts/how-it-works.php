@@ -181,13 +181,22 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
                     aria-hidden="true"></div>
                 </div>
 
-                <h3 class="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                  <?php echo esc_html($step['title']); ?>
+                <h3 class="llp-hiw-step__title text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                  <?php echo wp_kses(
+                    trim(preg_replace('#^<p>(.*)</p>\s*$#s', '$1', wpautop($step['title']))),
+                    [
+                      'a'      => ['href' => [], 'title' => [], 'target' => [], 'rel' => []],
+                      'strong' => [],
+                      'em'     => [],
+                      'br'     => [],
+                      'span'   => ['class' => []],
+                    ]
+                  ); ?>
                 </h3>
 
-                <p class="text-text-secondary leading-relaxed text-sm">
-                  <?php echo esc_html($step['description']); ?>
-                </p>
+                <div class="llp-hiw-step__desc text-text-secondary leading-relaxed text-sm">
+                  <?php echo wp_kses_post(wpautop($step['description'])); ?>
+                </div>
 
               </div>
 
@@ -227,10 +236,5 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 
   </div>
 
-  <!-- Organic wave transition to canvas background -->
-  <div class="absolute bottom-0 left-0 right-0 z-10 pointer-events-none leading-none" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none" class="block w-full h-12">
-      <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#0c0b09"/>
-    </svg>
-  </div>
+  <?php get_template_part('template-parts/llp-organic-wave', null, ['position' => 'bottom', 'context' => 'hero']); ?>
 </section>
