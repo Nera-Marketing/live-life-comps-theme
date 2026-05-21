@@ -39,7 +39,7 @@ $welcome_image = get_field('welcome_image');
     <div class="space-y-6 welcome-text-content">
 
       <!-- Avatar + Badge row -->
-      <div class="flex items-center gap-4">
+      <div class="flex flex-col-reverse items-start gap-4 lg:flex-row lg:items-center">
         <!-- Passport-style circular avatar (thumbnail) -->
         <div class="w-48 h-48 rounded-full overflow-hidden shrink-0 bg-stone-100">
           <?php if ($welcome_image && isset($welcome_image['url'])): ?>
