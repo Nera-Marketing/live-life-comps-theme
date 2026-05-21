@@ -4,6 +4,7 @@
  */
 
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @source "../../**/*.php";
 @source "../assets/**/*.js";
@@ -227,6 +228,30 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #pr
   background-image: none;
   background-color: transparent;
   color: rgb(28 25 23);
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 0 !important;
+}
+
+@media (min-width: 64rem) {
+  body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main {
+    padding-top: 0 !important;
+  }
+}
+
+/* Default-template hero: extra height so terracotta band matches the visual weight of /faq/ + /current-prizes/ */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main > section:first-of-type {
+  padding-top: calc(var(--llp-wave-safe-inset) + 2.5rem);
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 48rem) {
+  body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main > section:first-of-type {
+    padding-top: calc(var(--llp-wave-safe-inset) + 4rem);
+    padding-bottom: 7rem;
+  }
 }
 
 /* Parent page.php: featured image wrapper has no margin before title — add breathing room */
