@@ -76,27 +76,13 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
             $img_url = is_array($hero_image) ? ($hero_image['url'] ?? '') : $hero_image;
             $img_alt = is_array($hero_image) ? ($hero_image['alt'] ?? '') : '';
             ?>
-            <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] relative ring-1 ring-inset ring-on-primary/10">
-              <img
-                src="<?php echo esc_url($img_url); ?>"
-                alt="<?php echo esc_attr($img_alt); ?>"
-                class="w-full !h-full object-cover"
-                loading="eager"
-                decoding="async" />
-            </div>
-          <?php else : ?>
-            <div
-              class="aspect-[4/5] rounded-2xl flex items-center justify-center relative overflow-hidden bg-on-primary/10 ring-1 ring-on-primary/15">
-              <div class="absolute inset-0 bg-gradient-to-tr from-on-primary/5 to-transparent"></div>
-              <span class="text-sm italic text-on-primary/40 relative z-[1]">
-                <?php esc_html_e('Image placeholder', 'nera-competitions'); ?>
-              </span>
-            </div>
+            <img
+              src="<?php echo esc_url($img_url); ?>"
+              alt="<?php echo esc_attr($img_alt); ?>"
+              class="w-full object-cover rounded-2xl"
+              loading="eager"
+              decoding="async" />
           <?php endif; ?>
-
-          <div
-            class="absolute -bottom-4 -right-4 w-full h-full rounded-2xl -z-10 hidden lg:block border border-on-primary/20"
-            aria-hidden="true"></div>
         </div>
       </div>
     </div>
