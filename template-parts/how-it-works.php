@@ -181,13 +181,22 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
                     aria-hidden="true"></div>
                 </div>
 
-                <h3 class="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                  <?php echo esc_html($step['title']); ?>
+                <h3 class="llp-hiw-step__title text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                  <?php echo wp_kses(
+                    trim(preg_replace('#^<p>(.*)</p>\s*$#s', '$1', wpautop($step['title']))),
+                    [
+                      'a'      => ['href' => [], 'title' => [], 'target' => [], 'rel' => []],
+                      'strong' => [],
+                      'em'     => [],
+                      'br'     => [],
+                      'span'   => ['class' => []],
+                    ]
+                  ); ?>
                 </h3>
 
-                <p class="text-text-secondary leading-relaxed text-sm">
-                  <?php echo esc_html($step['description']); ?>
-                </p>
+                <div class="llp-hiw-step__desc text-text-secondary leading-relaxed text-sm">
+                  <?php echo wp_kses_post(wpautop($step['description'])); ?>
+                </div>
 
               </div>
 
