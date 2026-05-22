@@ -180,12 +180,10 @@ $extra_images = max(0, count($gallery_images) - $visible_thumbs);
     $related_ids = nera_get_related_lottery_products($product_id, 4);
     if (!empty($related_ids)): ?>
       <section class="llp-related-competitions-band p-6 lg:p-8 rounded-2xl">
-        <div>
-          <?php get_template_part('template-parts/single-product/related-competitions', null, [
-            'product' => $product,
-            'related_ids' => $related_ids,
-          ]); ?>
-        </div>
+        <?php get_template_part('template-parts/single-product/related-competitions', null, [
+          'product' => $product,
+          'related_ids' => $related_ids,
+        ]); ?>
       </section>
     <?php endif;
     ?>

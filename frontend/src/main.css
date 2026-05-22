@@ -1225,29 +1225,11 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* ==========================================================================
-   Related competitions: explicit grid + equal-height cards (child Tailwind may
-   not emit sm:/lg: column utilities; whitespace in PHP can break CSS grid).
+   Related competitions: use parent Tailwind grid classes on inner .grid wrapper.
+   Child CSS here handles card alignment/polish only.
    ========================================================================== */
 
-.related-competitions .related-competitions__grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-@media (min-width: 40rem) {
-  .related-competitions .related-competitions__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 64rem) {
-  .related-competitions .related-competitions__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-.related-competitions .related-competitions__grid > article {
+.related-competitions > .grid > article {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1255,12 +1237,12 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* Match page canvas under image; subtle seam from gallery strip */
-.related-competitions .related-competitions__grid > article > .p-6 {
+.related-competitions > .grid > article > .p-6 {
   background-color: var(--color-background-light);
   border-top: 1px solid color-mix(in srgb, var(--color-gray-200) 65%, transparent);
 }
 
-.related-competitions .related-competitions__grid > article > div:last-of-type {
+.related-competitions > .grid > article > div:last-of-type {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -1268,22 +1250,22 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* Reserve two title lines so progress + footer align across the row */
-.related-competitions .related-competitions__grid article h3 {
+.related-competitions > .grid > article h3 {
   min-height: 3.5rem;
 }
 
-.related-competitions .related-competitions__grid article .space-y-4 {
+.related-competitions > .grid > article .space-y-4 {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
 
-.related-competitions .related-competitions__grid article .space-y-4 > *:last-child {
+.related-competitions > .grid > article .space-y-4 > *:last-child {
   margin-top: auto;
 }
 
 /* Center crop for featured image backgrounds */
-.related-competitions .related-competitions__grid article .relative.overflow-hidden > a.block > div {
+.related-competitions > .grid > article .relative.overflow-hidden > a.block > div {
   background-position: center center;
   background-size: cover;
 }
@@ -1325,26 +1307,6 @@ body.nera-single-lottery.single-product
   .related-competitions
   p {
   color: #57534e;
-}
-
-/* 4-card grid wrapper panel only — cards keep default bg-surface */
-body.nera-single-lottery.single-product
-  #primary.site-main
-  section.llp-related-competitions-band
-  .llp-related-competitions__grid,
-body.nera-single-lottery.single-product
-  #primary.site-main
-  section.llp-related-competitions-band
-  .related-competitions__grid,
-body.nera-single-lottery.single-product
-  #primary.site-main
-  section:has(.related-competitions)
-  .related-competitions__grid {
-  padding: 1.25rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(155, 80, 57, 0.18);
-  background: linear-gradient(180deg, #efe6dc 0%, #f8f4ee 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* View All footer only — do not match card Buy Tickets (also inline-flex + bg-primary) */
@@ -1400,12 +1362,14 @@ body.nera-single-lottery.single-product
 body.nera-single-lottery.single-product
   #primary.site-main
   section.llp-related-competitions-band
-  .related-competitions__grid
+  .related-competitions
+  > article
   a.bg-primary,
 body.nera-single-lottery.single-product
   #primary.site-main
   section:has(.related-competitions)
-  .related-competitions__grid
+  .related-competitions
+  > article
   a.bg-primary {
   color: var(--color-on-primary) !important;
 }
@@ -1413,12 +1377,14 @@ body.nera-single-lottery.single-product
 body.nera-single-lottery.single-product
   #primary.site-main
   section.llp-related-competitions-band
-  .related-competitions__grid
+  .related-competitions
+  > article
   a.bg-primary:hover,
 body.nera-single-lottery.single-product
   #primary.site-main
   section:has(.related-competitions)
-  .related-competitions__grid
+  .related-competitions
+  > article
   a.bg-primary:hover {
   color: #fefcf8 !important;
 }
@@ -1429,16 +1395,18 @@ body.nera-single-lottery.single-product
   --particle-color: rgba(255, 252, 248, 0.14);
 }
 
-/* CTA: high contrast on terracotta gradient (text-on-primary can fail to compile / inherit dark) */
-.how-it-works-page .how-it-works-cta {
-  color: #fefcf8;
+/* CTA: dark canvas on terracotta section (matches hero-primary; fights global link rules) */
+.how-it-works-section .how-it-works-cta {
+  background-color: var(--color-background-light);
+  color: var(--color-on-primary);
 }
 
-.how-it-works-page .how-it-works-cta:hover {
-  color: #ffffff;
+.how-it-works-section .how-it-works-cta:hover {
+  background-color: var(--color-secondary);
+  color: #e8c896;
 }
 
-.how-it-works-page .how-it-works-cta svg {
+.how-it-works-section .how-it-works-cta svg {
   color: inherit;
 }
 
