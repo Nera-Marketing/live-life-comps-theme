@@ -97,7 +97,9 @@ function closeActiveGalleryLightboxes() {
   window.dispatchEvent(escapeEvent);
 
   requestAnimationFrame(() => {
-    document.body.style.overflow = '';
+    if (!document.querySelector('.nera-ticket-dialog-overlay-active')) {
+      document.body.style.overflow = '';
+    }
   });
 }
 

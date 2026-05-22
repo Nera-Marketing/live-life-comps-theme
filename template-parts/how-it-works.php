@@ -222,7 +222,7 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 
     <div class="text-center mt-16 lg:mt-24" data-animate="fade-in-up" data-delay="600">
       <a href="<?php echo esc_url($cta_url); ?>"
-        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 group text-on-primary hover:text-on-primary"<?php echo $cta_target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+        class="how-it-works-cta inline-flex mb-5 items-center gap-3 px-8 py-4 bg-background-light font-semibold rounded-2xl shadow-lg shadow-black/40 hover:shadow-xl hover:shadow-black/50 hover:bg-secondary hover:-translate-y-1 transition-all duration-300 group text-on-primary hover:text-on-primary"<?php echo $cta_target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
         <span><?php echo esc_html($cta_button_text); ?></span>
         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">

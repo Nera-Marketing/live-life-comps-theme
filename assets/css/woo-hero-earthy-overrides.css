@@ -120,8 +120,10 @@ body.woocommerce-account.logged-in .ncs-dashboard-welcome {
 }
 
 body.woocommerce-account.logged-in .ncs-dashboard-welcome h1,
-body.woocommerce-account.logged-in .ncs-dashboard-welcome .text-white {
-  color: #ffffff;
+body.woocommerce-account.logged-in .ncs-dashboard-welcome .text-white,
+body.woocommerce-account.logged-in .ncs-dashboard-welcome .text-secondary,
+body.woocommerce-account.logged-in .ncs-dashboard-welcome p.text-secondary {
+  color: #ffffff !important;
 }
 
 body.woocommerce-account.logged-in .ncs-dashboard-welcome .bg-surface\/20.backdrop-blur-sm {
@@ -683,5 +685,12 @@ body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__
 body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__option--highlighted,
 body.woocommerce-account.logged-in:not(.woocommerce-checkout) .select2-results__option[aria-selected='true'] {
   background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* Woo Wallet plugin header — dark title on cream panel (beats template !text-white) */
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-my-wallet-container .woo-wallet-header h2,
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-header h2.\!text-white,
+body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-header h2[class*='text-white'] {
   color: var(--color-primary-dark) !important;
 }

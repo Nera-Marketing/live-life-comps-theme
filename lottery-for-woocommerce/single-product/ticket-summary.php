@@ -33,6 +33,7 @@ if (method_exists($product, 'get_lty_maximum_tickets_per_order')) {
       this.ticketOpen = true;
     }
   }"
+  x-effect="document.body.style.overflow = ticketOpen ? 'hidden' : ''"
   class="nera-ticket-picker-wrap">
 
   <button

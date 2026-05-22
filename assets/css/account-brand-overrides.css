@@ -58,6 +58,13 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-content > h2 {
   color: var(--color-primary-dark) !important;
 }
 
+/* Woo Wallet plugin header — dark title on cream panel (beats template !text-white) */
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-my-wallet-container .woo-wallet-header h2,
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-header h2.\!text-white,
+body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-header h2[class*='text-white'] {
+  color: var(--color-primary-dark) !important;
+}
+
 /* WooWallet badge — colors here (child replaces parent script's inline indigo) */
 .wallet-balance-badge {
   background: linear-gradient(

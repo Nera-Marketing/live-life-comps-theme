@@ -280,6 +280,22 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   #primary.site-main
   .prose
+  ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  ul
+  li::marker {
+  color: var(--color-text-secondary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
   :where(h1, h2, h3, h4) {
   font-family: var(--font-heading), ui-serif, Georgia, serif;
   color: var(--color-text-primary);
@@ -486,27 +502,31 @@ button[class*='bg-gradient'][class*='9b5039'] {
 /*
  * Entry-list participant modal: “Tickets sold” + “Draw” tiles (parent bg-secondary/40 reads grey on dark theme).
  */
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div {
-  background-color: color-mix(
-    in srgb,
-    var(--color-on-primary) 24%,
-    var(--color-gray-900)
-  ) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div {
+  background-color: var(--color-gray-100) !important;
   background-image: none !important;
-  border-color: color-mix(in srgb, var(--color-gray-200) 55%, var(--color-on-primary) 22%) !important;
+  border-color: color-mix(in srgb, var(--color-on-primary) 32%, var(--color-gray-200)) !important;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary {
-  color: var(--color-gray-400) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary {
+  color: var(--color-on-primary) !important;
   font-weight: 700;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary {
-  color: var(--color-primary-dark) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary {
+  color: #fefcf8 !important;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary {
-  color: var(--color-primary-dark) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary {
+  color: var(--color-accent) !important;
 }
 
 /* ==========================================================================
@@ -885,6 +905,9 @@ main.nera-homepage .account-prompt-card {
  * transparent so dark gallery + purchase panels read as cards on the gradient.
  */
 body.nera-single-lottery.single-product {
+  /* Parent Vite bundle loads after child and redefines @theme tokens on :root. */
+  --color-text-primary: #d8b582;
+  --color-text-secondary: #a89572;
   background: linear-gradient(
     to bottom right,
     var(--color-primary) 0%,
@@ -901,7 +924,7 @@ body.nera-single-lottery.single-product .site-content {
   background-image: none !important;
 }
 
-/* Let main stretch full width; inner `.max-w-7xl` still caps content */
+/* Let main stretch full width; div.product capped below */
 body.nera-single-lottery.single-product #primary.site-main {
   max-width: none;
   width: 100%;
@@ -911,6 +934,13 @@ body.nera-single-lottery.single-product #primary.site-main {
   background-color: transparent !important;
   background-image: none !important;
   color: var(--color-text-secondary);
+}
+
+/* Constrain product content to 7xl while #primary stays full-width for gradient */
+body.nera-single-lottery.single-product #primary.site-main div.product {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.nera-single-lottery.single-product div.product > section:first-of-type {
@@ -1009,6 +1039,14 @@ body.nera-single-lottery.single-product .tab-panel tbody tr:nth-child(even) {
   background-color: var(--color-surface);
 }
 
+/* Instant Win section wrapper: parent uses px-4 lg:px-0 — flush at all breakpoints */
+body.nera-single-lottery.single-product
+  section[aria-label='Instant win prizes']
+  > div.w-full.min-w-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Instant Win toggle: replace pale amber card with earthy surface + bronze text */
 body.nera-single-lottery.single-product .instant-wins-section .instant-wins-toggle-shine {
   background: linear-gradient(
@@ -1085,6 +1123,53 @@ body.nera-single-lottery.single-product .nera-ticket-dialog-root > .nera-ticket-
   z-index: 10000000 !important;
 }
 
+body.nera-single-lottery.single-product .nera-ticket-dialog {
+  max-height: 70dvh;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog__body .lty-lottery-ticket-container {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog__body .lty-lottery-ticket-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 85%, black);
+}
+
 /* Browse ticket dialog open: hide gallery lightbox if Alpine/JS close races (stacking) */
 body.nera-single-lottery.single-product:has(.nera-ticket-dialog-overlay-active) .product-gallery > div.fixed.inset-0 {
   visibility: hidden !important;
@@ -1158,6 +1243,14 @@ body.nera-single-lottery.single-product [data-product-tabs] .prose {
   color: var(--color-text-secondary);
 }
 
+body.nera-single-lottery.single-product [data-product-tabs] .prose :where(p, li) {
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product [data-product-tabs] .prose :where(strong) {
+  color: var(--color-text-primary);
+}
+
 body.nera-single-lottery.single-product [data-product-tabs] .prose :where(h1, h2, h3, h4) {
   color: var(--color-text-primary);
 }
@@ -1190,29 +1283,11 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* ==========================================================================
-   Related competitions: explicit grid + equal-height cards (child Tailwind may
-   not emit sm:/lg: column utilities; whitespace in PHP can break CSS grid).
+   Related competitions: use parent Tailwind grid classes on inner .grid wrapper.
+   Child CSS here handles card alignment/polish only.
    ========================================================================== */
 
-.related-competitions .related-competitions__grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-@media (min-width: 40rem) {
-  .related-competitions .related-competitions__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 64rem) {
-  .related-competitions .related-competitions__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-.related-competitions .related-competitions__grid > article {
+.related-competitions > .grid > article {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1220,12 +1295,12 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* Match page canvas under image; subtle seam from gallery strip */
-.related-competitions .related-competitions__grid > article > .p-6 {
+.related-competitions > .grid > article > .p-6 {
   background-color: var(--color-background-light);
   border-top: 1px solid color-mix(in srgb, var(--color-gray-200) 65%, transparent);
 }
 
-.related-competitions .related-competitions__grid > article > div:last-of-type {
+.related-competitions > .grid > article > div:last-of-type {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -1233,63 +1308,143 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
 }
 
 /* Reserve two title lines so progress + footer align across the row */
-.related-competitions .related-competitions__grid article h3 {
+.related-competitions > .grid > article h3 {
   min-height: 3.5rem;
 }
 
-.related-competitions .related-competitions__grid article .space-y-4 {
+.related-competitions > .grid > article .space-y-4 {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
 
-.related-competitions .related-competitions__grid article .space-y-4 > *:last-child {
+.related-competitions > .grid > article .space-y-4 > *:last-child {
   margin-top: auto;
 }
 
 /* Center crop for featured image backgrounds */
-.related-competitions .related-competitions__grid article .relative.overflow-hidden > a.block > div {
+.related-competitions > .grid > article .relative.overflow-hidden > a.block > div {
   background-position: center center;
   background-size: cover;
 }
 
-/* Related competitions band — full-width terracotta (parent wraps template in bg-surface section) */
+/* Related competitions — cream band on terracotta single-product canvas */
+body.nera-single-lottery.single-product #primary.site-main section.llp-related-competitions-band,
 body.nera-single-lottery.single-product #primary.site-main section:has(.related-competitions) {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    to bottom right,
-    var(--color-primary) 0%,
-    var(--color-primary) 50%,
-    var(--color-primary-dark) 100%
-  ) !important;
-  border-top-color: rgba(216, 181, 130, 0.15) !important;
+  margin-top: 2rem;
+  background-color: #fffefb !important;
+  background-image: linear-gradient(180deg, #f5efe6 0%, #faf7f2 45%, #fffefb 100%) !important;
+  border-top: 1px solid rgba(216, 181, 130, 0.45) !important;
+  border-color: rgba(155, 80, 57, 0.12) !important;
+  box-shadow:
+    0 -4px 24px -8px rgba(12, 11, 9, 0.12),
+    0 12px 40px -16px rgba(12, 11, 9, 0.18);
 }
 
 body.nera-single-lottery.single-product
   #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  h2,
+body.nera-single-lottery.single-product
+  #primary.site-main
   section:has(.related-competitions)
   .related-competitions
+  h2 {
+  color: #9b5039;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  p,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  p {
+  color: #57534e;
+}
+
+/* View All footer only — do not match card Buy Tickets (also inline-flex + bg-primary) */
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
   a.inline-flex {
-  border-color: rgba(216, 181, 130, 0.35) !important;
+  border-color: rgba(155, 80, 57, 0.35) !important;
+  color: #9b5039 !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex:hover,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex:hover {
+  border-color: #9b5039 !important;
+  color: #7a3d2a !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex
+  .material-symbols-outlined,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex
+  .material-symbols-outlined {
+  color: inherit;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > article
+  a.bg-primary,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > article
+  a.bg-primary {
   color: var(--color-on-primary) !important;
 }
 
 body.nera-single-lottery.single-product
   #primary.site-main
-  section:has(.related-competitions)
+  section.llp-related-competitions-band
   .related-competitions
-  a.inline-flex:hover {
-  border-color: var(--color-on-primary) !important;
-  color: #fefcf8 !important;
-}
-
+  > article
+  a.bg-primary:hover,
 body.nera-single-lottery.single-product
   #primary.site-main
   section:has(.related-competitions)
   .related-competitions
-  a.inline-flex
-  .material-symbols-outlined {
-  color: inherit;
+  > article
+  a.bg-primary:hover {
+  color: #fefcf8 !important;
 }
 
 /* Homepage hero + How It Works — soft light bokeh on terracotta (parent uses --particle-color) */
@@ -1298,16 +1453,18 @@ body.nera-single-lottery.single-product
   --particle-color: rgba(255, 252, 248, 0.14);
 }
 
-/* CTA: high contrast on terracotta gradient (text-on-primary can fail to compile / inherit dark) */
-.how-it-works-page .how-it-works-cta {
-  color: #fefcf8;
+/* CTA: dark canvas on terracotta section (matches hero-primary; fights global link rules) */
+.how-it-works-section .how-it-works-cta {
+  background-color: var(--color-background-light);
+  color: var(--color-on-primary);
 }
 
-.how-it-works-page .how-it-works-cta:hover {
-  color: #ffffff;
+.how-it-works-section .how-it-works-cta:hover {
+  background-color: var(--color-secondary);
+  color: #e8c896;
 }
 
-.how-it-works-page .how-it-works-cta svg {
+.how-it-works-section .how-it-works-cta svg {
   color: inherit;
 }
 
@@ -1353,8 +1510,10 @@ body.woocommerce-account.logged-out input[type='checkbox'] {
 }
 
 /* My Wallet — force heading dark on light account pages */
-body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-wallet-header h2 {
-  color: var(--color-text-primary) !important;
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-my-wallet-container .woo-wallet-header h2,
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-header h2.\!text-white,
+body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-header h2[class*='text-white'] {
+  color: var(--color-primary-dark) !important;
 }
 
 /* Entry list modal — hide "Open full page" button */
