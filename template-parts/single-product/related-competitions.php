@@ -37,7 +37,7 @@ if (empty($section_title)) {
     </p>
   </div>
 
-  <div class="related-competitions__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><?php
+  <div class="related-competitions__grid llp-related-competitions__grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><?php
   foreach ($related_ids as $related_id) {
     $related_product = wc_get_product($related_id);
     if (!$related_product) {

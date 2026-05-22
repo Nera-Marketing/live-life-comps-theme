@@ -280,6 +280,22 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   #primary.site-main
   .prose
+  ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  ul
+  li::marker {
+  color: var(--color-text-secondary);
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
   :where(h1, h2, h3, h4) {
   font-family: var(--font-heading), ui-serif, Georgia, serif;
   color: var(--color-text-primary);
@@ -901,7 +917,7 @@ body.nera-single-lottery.single-product .site-content {
   background-image: none !important;
 }
 
-/* Let main stretch full width; inner `.max-w-7xl` still caps content */
+/* Let main stretch full width; div.product capped below */
 body.nera-single-lottery.single-product #primary.site-main {
   max-width: none;
   width: 100%;
@@ -911,6 +927,13 @@ body.nera-single-lottery.single-product #primary.site-main {
   background-color: transparent !important;
   background-image: none !important;
   color: var(--color-text-secondary);
+}
+
+/* Constrain product content to 7xl while #primary stays full-width for gradient */
+body.nera-single-lottery.single-product #primary.site-main div.product {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.nera-single-lottery.single-product div.product > section:first-of-type {
@@ -1253,43 +1276,139 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
   background-size: cover;
 }
 
-/* Related competitions band — full-width terracotta (parent wraps template in bg-surface section) */
+/* Related competitions — cream band on terracotta single-product canvas */
+body.nera-single-lottery.single-product #primary.site-main section.llp-related-competitions-band,
 body.nera-single-lottery.single-product #primary.site-main section:has(.related-competitions) {
-  background-color: transparent !important;
-  background-image: linear-gradient(
-    to bottom right,
-    var(--color-primary) 0%,
-    var(--color-primary) 50%,
-    var(--color-primary-dark) 100%
-  ) !important;
-  border-top-color: rgba(216, 181, 130, 0.15) !important;
+  margin-top: 2rem;
+  background-color: #fffefb !important;
+  background-image: linear-gradient(180deg, #f5efe6 0%, #faf7f2 45%, #fffefb 100%) !important;
+  border-top: 1px solid rgba(216, 181, 130, 0.45) !important;
+  border-color: rgba(155, 80, 57, 0.12) !important;
+  box-shadow:
+    0 -4px 24px -8px rgba(12, 11, 9, 0.12),
+    0 12px 40px -16px rgba(12, 11, 9, 0.18);
 }
 
 body.nera-single-lottery.single-product
   #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  h2,
+body.nera-single-lottery.single-product
+  #primary.site-main
   section:has(.related-competitions)
   .related-competitions
+  h2 {
+  color: #9b5039;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  p,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  p {
+  color: #57534e;
+}
+
+/* 4-card grid wrapper panel only — cards keep default bg-surface */
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .llp-related-competitions__grid,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions__grid,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions__grid {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(155, 80, 57, 0.18);
+  background: linear-gradient(180deg, #efe6dc 0%, #f8f4ee 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* View All footer only — do not match card Buy Tickets (also inline-flex + bg-primary) */
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
   a.inline-flex {
-  border-color: rgba(216, 181, 130, 0.35) !important;
+  border-color: rgba(155, 80, 57, 0.35) !important;
+  color: #9b5039 !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex:hover,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex:hover {
+  border-color: #9b5039 !important;
+  color: #7a3d2a !important;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex
+  .material-symbols-outlined,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions
+  > .text-center.mt-8
+  a.inline-flex
+  .material-symbols-outlined {
+  color: inherit;
+}
+
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section.llp-related-competitions-band
+  .related-competitions__grid
+  a.bg-primary,
+body.nera-single-lottery.single-product
+  #primary.site-main
+  section:has(.related-competitions)
+  .related-competitions__grid
+  a.bg-primary {
   color: var(--color-on-primary) !important;
 }
 
 body.nera-single-lottery.single-product
   #primary.site-main
-  section:has(.related-competitions)
-  .related-competitions
-  a.inline-flex:hover {
-  border-color: var(--color-on-primary) !important;
-  color: #fefcf8 !important;
-}
-
+  section.llp-related-competitions-band
+  .related-competitions__grid
+  a.bg-primary:hover,
 body.nera-single-lottery.single-product
   #primary.site-main
   section:has(.related-competitions)
-  .related-competitions
-  a.inline-flex
-  .material-symbols-outlined {
-  color: inherit;
+  .related-competitions__grid
+  a.bg-primary:hover {
+  color: #fefcf8 !important;
 }
 
 /* Homepage hero + How It Works — soft light bokeh on terracotta (parent uses --particle-color) */
