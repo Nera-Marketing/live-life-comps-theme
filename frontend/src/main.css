@@ -1123,6 +1123,53 @@ body.nera-single-lottery.single-product .nera-ticket-dialog-root > .nera-ticket-
   z-index: 10000000 !important;
 }
 
+body.nera-single-lottery.single-product .nera-ticket-dialog {
+  max-height: 70dvh;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog__body .lty-lottery-ticket-container {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-dialog__body .lty-lottery-ticket-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+body.nera-single-lottery.single-product .nera-ticket-picker__dialog-grid::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 85%, black);
+}
+
 /* Browse ticket dialog open: hide gallery lightbox if Alpine/JS close races (stacking) */
 body.nera-single-lottery.single-product:has(.nera-ticket-dialog-overlay-active) .product-gallery > div.fixed.inset-0 {
   visibility: hidden !important;
@@ -1463,8 +1510,10 @@ body.woocommerce-account.logged-out input[type='checkbox'] {
 }
 
 /* My Wallet — force heading dark on light account pages */
-body.woocommerce-account .woocommerce .woo-wallet-my-wallet-container .woo-wallet-header h2 {
-  color: var(--color-text-primary) !important;
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-my-wallet-container .woo-wallet-header h2,
+body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-header h2.\!text-white,
+body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-header h2[class*='text-white'] {
+  color: var(--color-primary-dark) !important;
 }
 
 /* Entry list modal — hide "Open full page" button */
