@@ -502,27 +502,31 @@ button[class*='bg-gradient'][class*='9b5039'] {
 /*
  * Entry-list participant modal: “Tickets sold” + “Draw” tiles (parent bg-secondary/40 reads grey on dark theme).
  */
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div {
-  background-color: color-mix(
-    in srgb,
-    var(--color-on-primary) 24%,
-    var(--color-gray-900)
-  ) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div {
+  background-color: var(--color-gray-100) !important;
   background-image: none !important;
-  border-color: color-mix(in srgb, var(--color-gray-200) 55%, var(--color-on-primary) 22%) !important;
+  border-color: color-mix(in srgb, var(--color-on-primary) 32%, var(--color-gray-200)) !important;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary {
-  color: var(--color-gray-400) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div p.text-text-secondary {
+  color: var(--color-on-primary) !important;
   font-weight: 700;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary {
-  color: var(--color-primary-dark) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-text-primary {
+  color: #fefcf8 !important;
 }
 
-.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary {
-  color: var(--color-primary-dark) !important;
+.nera-entry-list-listing [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary,
+.nera-winners-entry-list-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary,
+.nera-winners-dynamic-page [role='dialog'] .space-y-8 > .grid.grid-cols-2 > div .text-primary {
+  color: var(--color-accent) !important;
 }
 
 /* ==========================================================================
