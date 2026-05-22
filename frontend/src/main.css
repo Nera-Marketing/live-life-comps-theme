@@ -1032,6 +1032,14 @@ body.nera-single-lottery.single-product .tab-panel tbody tr:nth-child(even) {
   background-color: var(--color-surface);
 }
 
+/* Instant Win section wrapper: parent uses px-4 lg:px-0 — flush at all breakpoints */
+body.nera-single-lottery.single-product
+  section[aria-label='Instant win prizes']
+  > div.w-full.min-w-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Instant Win toggle: replace pale amber card with earthy surface + bronze text */
 body.nera-single-lottery.single-product .instant-wins-section .instant-wins-toggle-shine {
   background: linear-gradient(
