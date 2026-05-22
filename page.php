@@ -54,7 +54,7 @@ get_header();
             ): ?>
                 <div class="container mx-auto max-w-4xl px-4 py-10 md:py-14">
                     <div
-                      class="prose prose-lg max-w-none text-text-secondary prose-p:text-text-secondary prose-headings:font-heading prose-headings:text-text-primary [&_h2]:text-text-primary [&_h3]:text-text-primary [&_h4]:text-text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary [&_li]:text-text-secondary [&_blockquote]:border-on-primary/25 [&_blockquote]:text-text-secondary">
+                      class="prose prose-lg max-w-none text-text-secondary prose-p:text-text-secondary prose-headings:font-heading prose-headings:text-text-primary [&_h2]:text-text-primary [&_h3]:text-text-primary [&_h4]:text-text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary [&_li]:text-text-secondary [&_blockquote]:border-on-primary/25 [&_blockquote]:text-text-secondary prose-ul:list-disc prose-ul:list-inside [&_ul>li::marker]:text-text-secondary">
                         <?php the_content(); ?>
                     </div>
 
