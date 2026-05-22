@@ -905,6 +905,9 @@ main.nera-homepage .account-prompt-card {
  * transparent so dark gallery + purchase panels read as cards on the gradient.
  */
 body.nera-single-lottery.single-product {
+  /* Parent Vite bundle loads after child and redefines @theme tokens on :root. */
+  --color-text-primary: #d8b582;
+  --color-text-secondary: #a89572;
   background: linear-gradient(
     to bottom right,
     var(--color-primary) 0%,
@@ -1191,6 +1194,14 @@ body.nera-single-lottery.single-product [data-product-tabs] .border-gray-200 {
 /* Tab content readability */
 body.nera-single-lottery.single-product [data-product-tabs] .prose {
   color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product [data-product-tabs] .prose :where(p, li) {
+  color: var(--color-text-secondary);
+}
+
+body.nera-single-lottery.single-product [data-product-tabs] .prose :where(strong) {
+  color: var(--color-text-primary);
 }
 
 body.nera-single-lottery.single-product [data-product-tabs] .prose :where(h1, h2, h3, h4) {
