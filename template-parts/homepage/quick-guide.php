@@ -73,7 +73,6 @@ $guide_title = get_field('guide_title', $acf_post_id) ?: __('How To Enter', 'ner
 $guide_subtitle =
   get_field('guide_subtitle', $acf_post_id) ?:
   __('Win your dream prizes in just three simple steps', 'nera-competitions');
-$guide_live_draw_social_links = get_field('guide_live_draw_social_links', $acf_post_id);
 ?>
 
 <section class="how-to-enter-section py-16 lg:py-24 bg-gradient-to-b from-[#faf7f2] to-[#fffdfb] relative border-t border-stone-200/70 <?php echo esc_attr($section_radius_class); ?> overflow-hidden" id="quick-guide"
@@ -111,95 +110,10 @@ $guide_live_draw_social_links = get_field('guide_live_draw_social_links', $acf_p
           <h3 class="text-lg font-medium text-stone-900 mb-3 tracking-[0.3px]">
             <?php echo esc_html($step['title']); ?>
           </h3>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            <?php echo esc_html($step['description']); ?>
-          </p>
+          <div class="how-step-description text-sm text-stone-600 leading-relaxed rich-text max-w-none">
+            <?php echo wp_kses_post($step['description']); ?>
+          </div>
           <?php
-          if ((int) $index === 2) {
-            $live_draw_socials = is_array($guide_live_draw_social_links)
-              ? $guide_live_draw_social_links
-              : [];
-            if (empty($live_draw_socials)) {
-              $live_draw_socials = [
-                ['platform' => 'facebook', 'url' => '#'],
-                ['platform' => 'instagram', 'url' => '#'],
-              ];
-            }
-            $has_social = false;
-            foreach ($live_draw_socials as $soc) {
-              $fa_icon = $soc['social_icon'] ?? null;
-              if (is_array($fa_icon)) {
-                $fa_icon = (object) $fa_icon;
-              }
-              if (is_object($fa_icon) && !empty($fa_icon->element)) {
-                $has_social = true;
-                break;
-              }
-              if (!empty($soc['platform'] ?? null)) {
-                $has_social = true;
-                break;
-              }
-            }
-            if ($has_social) {
-              ?>
-            <ul class="how-step-social flex flex-wrap gap-2 mt-4 list-none p-0 m-0" role="list">
-              <?php
-              foreach ($live_draw_socials as $soc) {
-                $soc_url = isset($soc['url']) && $soc['url'] !== '' ? $soc['url'] : '#';
-                $fa_icon = $soc['social_icon'] ?? null;
-                if (is_array($fa_icon)) {
-                  $fa_icon = (object) $fa_icon;
-                }
-                $platform = $soc['platform'] ?? '';
-                $icon_markup = '';
-                $aria_piece = '';
-
-                if (is_object($fa_icon) && !empty($fa_icon->element)) {
-                  $icon_markup = wp_kses_post($fa_icon->element);
-                  if (!empty($fa_icon->id)) {
-                    $aria_piece = ucwords(
-                      str_replace(['-', '_'], ' ', (string) $fa_icon->id),
-                    );
-                  }
-                } elseif ($platform !== '') {
-                  $icon_markup = nera_get_social_icon($platform, 'w-5 h-5');
-                  if ($icon_markup !== '') {
-                    $aria_piece = nera_get_social_label($platform);
-                  }
-                }
-
-                if ($icon_markup === '') {
-                  continue;
-                }
-
-                $aria_label =
-                  $aria_piece !== ''
-                    ? sprintf(
-                      __('Follow us on %s', 'nera-competitions'),
-                      $aria_piece,
-                    )
-                    : __('Social media link', 'nera-competitions');
-                $open_external = (bool) preg_match('#^https?://#i', (string) $soc_url);
-                ?>
-              <li>
-                <a href="<?php echo esc_url($soc_url); ?>"
-                  class="how-step-social-link inline-flex items-center justify-center w-9 h-9 rounded-full border border-stone-200/90 bg-white/80 text-[#9b5039] shadow-sm transition-colors hover:border-[#c4704e]/50 hover:text-[#c4704e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4704e]"
-                  <?php
-                  if ($open_external) {
-                    echo ' target="_blank" rel="noopener noreferrer"';
-                  }
-                  ?>
-                  aria-label="<?php echo esc_attr($aria_label); ?>">
-                  <?php echo $icon_markup; ?>
-                </a>
-              </li>
-                <?php
-              }
-              ?>
-            </ul>
-              <?php
-            }
-          }
           $link = $step['step_link'] ?? [];
           $link_url = $link['url'] ?? '';
           $link_title = $link['title'] ?? '';
