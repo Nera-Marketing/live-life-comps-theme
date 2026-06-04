@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 require_once get_stylesheet_directory() . '/inc/icons.php';
 require_once get_stylesheet_directory() . '/inc/social-platform-icons.php';
 require_once get_stylesheet_directory() . '/inc/how-it-works-llp.php';
+require_once get_stylesheet_directory() . '/inc/acf-how-it-works-llp.php';
 require_once get_stylesheet_directory() . '/inc/acf-marquee.php';
 require_once get_stylesheet_directory() . '/inc/acf-header.php';
 require_once get_stylesheet_directory() . '/inc/acf-homepage.php';
@@ -17,6 +18,7 @@ require_once get_stylesheet_directory() . '/inc/acf-faq-page.php';
 require_once get_stylesheet_directory() . '/inc/footer-helpers.php';
 require_once get_stylesheet_directory() . '/inc/footer-widgets-seed.php';
 require_once get_stylesheet_directory() . '/inc/lfw-winners-data.php';
+require_once get_stylesheet_directory() . '/inc/winners-dynamic.php';
 require_once get_stylesheet_directory() . '/inc/page-seed.php';
 
 /**
