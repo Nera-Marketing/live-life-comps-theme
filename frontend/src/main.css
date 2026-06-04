@@ -9,6 +9,10 @@
 @source "../../**/*.php";
 @source "../assets/**/*.js";
 
+/* Shop listing grid columns — emitted from parent PHP (ACF), not in child templates. */
+@source inline("xl:grid-cols-3");
+@source inline("xl:grid-cols-4");
+
 /* Palette reference: bronze #d8b582, terracotta #9b5039 / #c4704e, canvas #0c0b09, surface #1e1c18 */
 @theme {
   --color-primary: #9b5039;
@@ -194,6 +198,14 @@ main.nera-winners-page > section.bg-surface {
 
 .nera-product-listing .border-gray-100 {
   border-color: var(--color-gray-200);
+}
+
+/*
+ * CompetitionCard: parent sets background on square <article>; inner div has rounded-xl + bg-surface.
+ * Without this, dark article corners show on light section canvas (#advanced-filter-competitions, etc.).
+ */
+.ncs-product-card {
+  background-color: transparent;
 }
 
 /*
@@ -854,35 +866,21 @@ main.nera-homepage .prizes .prize-bar {
 }
 
 /* How To Enter = light band; terracotta hover on cream (homepage + single product) */
-main.nera-homepage .how-to-enter-section .how-step-link:hover,
-main.site-main .how-to-enter-section .how-step-link:hover {
-  color: #9b5039 !important;
+main.nera-homepage .how-to-enter-section .how-step-description.rich-text :where(a),
+main.site-main .how-to-enter-section .how-step-description.rich-text :where(a) {
+  color: #c4704e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-main.nera-homepage .how-to-enter-section .how-step-social-link,
-main.site-main .how-to-enter-section .how-step-social-link {
+main.nera-homepage .how-to-enter-section .how-step-description.rich-text :where(a):hover,
+main.site-main .how-to-enter-section .how-step-description.rich-text :where(a):hover {
   color: #9b5039;
 }
 
-main.nera-homepage .how-to-enter-section .how-step-social-link:hover,
-main.nera-homepage .how-to-enter-section .how-step-social-link:focus-visible,
-main.site-main .how-to-enter-section .how-step-social-link:hover,
-main.site-main .how-to-enter-section .how-step-social-link:focus-visible {
-  color: #c4704e;
-}
-
-main.nera-homepage .how-to-enter-section .how-step-social-link svg,
-main.site-main .how-to-enter-section .how-step-social-link svg {
-  flex-shrink: 0;
-}
-
-/* Font Awesome `<i>` inside step social buttons (ACF Font Awesome field) */
-main.nera-homepage .how-to-enter-section .how-step-social-link i,
-main.site-main .how-to-enter-section .how-step-social-link i {
-  font-size: 1.125rem;
-  line-height: 1;
-  flex-shrink: 0;
-  color: inherit;
+main.nera-homepage .how-to-enter-section .how-step-link:hover,
+main.site-main .how-to-enter-section .how-step-link:hover {
+  color: #9b5039 !important;
 }
 
 main.nera-homepage .account-prompt-card {

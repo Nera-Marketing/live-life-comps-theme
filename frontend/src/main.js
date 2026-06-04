@@ -60,17 +60,58 @@ function initSingleProductTabs() {
   });
 }
 
-/** Progress bars: same behavior as parent inline script (parent selectors may miss after DOM changes). */
+const PROGRESS_FILL_SELECTOR =
+  '.ncs-product-card__progress-fill[data-progress], .ncs-progress__fill[data-progress], [data-progress].ncs-product-card__progress-fill, [data-progress].ncs-progress__fill';
+
+/**
+ * Animate a single progress fill from data-progress (cards ship at width: 0%).
+ */
+function applyProgressFill(fill) {
+  const raw = fill.getAttribute('data-progress');
+  if (raw === null || raw === '') {
+    return;
+  }
+  const progress = parseFloat(raw, 10);
+  if (Number.isNaN(progress)) {
+    return;
+  }
+  const clamped = Math.min(100, Math.max(0, progress));
+  setTimeout(() => {
+    fill.style.width = `${clamped}%`;
+  }, 100);
+}
+
+/**
+ * Initialize progress fills within a root element (document or subtree).
+ */
+function initProgressInRoot(root) {
+  if (!root || typeof root.querySelectorAll !== 'function') {
+    return;
+  }
+  root.querySelectorAll(PROGRESS_FILL_SELECTOR).forEach(applyProgressFill);
+}
+
+/** Progress bars site-wide (single product, listing AJAX via nera:content:loaded). */
 function initSingleProductProgressBars() {
-  document.querySelectorAll('[data-progress]').forEach((bar) => {
-    const progress = bar.getAttribute('data-progress');
-    if (progress === null || progress === '') {
-      return;
-    }
-    setTimeout(() => {
-      bar.style.width = `${progress}%`;
-    }, 300);
+  initProgressInRoot(document);
+}
+
+/**
+ * Advanced filter grid: load more / filter replace DOM without nera:content:loaded.
+ */
+function initAdvancedFilterProgressObserver() {
+  const grid = document.getElementById('advanced-filter-grid');
+  if (!grid) {
+    return;
+  }
+
+  initProgressInRoot(grid);
+
+  const observer = new MutationObserver(() => {
+    initProgressInRoot(grid);
   });
+
+  observer.observe(grid, { childList: true, subtree: true });
 }
 
 function closeActiveGalleryLightboxes() {
@@ -122,8 +163,17 @@ function initTicketDialogModalExclusivity() {
   );
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initLiveLifeFrontend() {
   initTicketDialogModalExclusivity();
   initSingleProductTabs();
   initSingleProductProgressBars();
-});
+  initAdvancedFilterProgressObserver();
+}
+
+document.addEventListener('nera:content:loaded', initSingleProductProgressBars);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLiveLifeFrontend);
+} else {
+  initLiveLifeFrontend();
+}
