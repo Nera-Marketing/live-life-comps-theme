@@ -160,3 +160,47 @@ add_filter('acf/load_field/key=field_hiw_hero_step_description', function ($fiel
   $field['delay']        = 1;
   return $field;
 });
+
+/**
+ * Default URL/label for the postal footnote “see more” link.
+ *
+ * @return array{url: string, title: string, target: string}
+ */
+function live_life_prizes_get_hiw_postal_note_link_defaults(): array
+{
+  $page = get_page_by_path('free-postal-entry');
+
+  return [
+    'url' => $page ? (string) get_permalink($page) : (string) home_url('/free-postal-entry/'),
+    'title' => __('see more info here', 'nera-competitions'),
+    'target' => '',
+  ];
+}
+
+/**
+ * Resolve postal footnote link from ACF hiw_postal_note_link on the current page.
+ *
+ * @param array<string, mixed>|null $acf_link Optional pre-loaded link array.
+ * @return array{url: string, title: string, target: string}
+ */
+function live_life_prizes_resolve_hiw_postal_note_link($acf_link = null): array
+{
+  if ($acf_link === null && function_exists('get_field')) {
+    $acf_link = get_field('hiw_postal_note_link');
+  }
+
+  if (is_array($acf_link) && !empty($acf_link['url'])) {
+    $url = esc_url_raw((string) $acf_link['url']);
+    if ($url !== '') {
+      return [
+        'url' => $url,
+        'title' => !empty($acf_link['title'])
+          ? (string) $acf_link['title']
+          : __('see more info here', 'nera-competitions'),
+        'target' => (!empty($acf_link['target']) && $acf_link['target'] === '_blank') ? '_blank' : '',
+      ];
+    }
+  }
+
+  return live_life_prizes_get_hiw_postal_note_link_defaults();
+}

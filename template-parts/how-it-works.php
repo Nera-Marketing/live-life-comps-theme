@@ -107,7 +107,7 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 
     <div class="relative">
 
-      <div class="hidden lg:block absolute top-[120px] left-0 right-0 z-0">
+      <div class="how-it-works-connector hidden lg:block absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 pointer-events-none" aria-hidden="true">
         <svg class="w-full h-20" viewBox="0 0 1200 80" preserveAspectRatio="none" fill="none"
           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path class="how-it-works-path-bg"
@@ -126,15 +126,15 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
             </linearGradient>
           </defs>
           <circle class="flow-dot flow-dot-1" r="6" fill="#9b5039">
-            <animateMotion dur="4s" repeatCount="indefinite"
+            <animateMotion dur="10s" repeatCount="indefinite"
               path="M 200 40 Q 500 40 600 40 Q 850 40 1000 40" />
           </circle>
           <circle class="flow-dot flow-dot-2" r="6" fill="#c4704e">
-            <animateMotion dur="4s" repeatCount="indefinite" begin="1s"
+            <animateMotion dur="10s" repeatCount="indefinite" begin="2.5s"
               path="M 200 40 Q 500 40 600 40 Q 850 40 1000 40" />
           </circle>
           <circle class="flow-dot flow-dot-3" r="6" fill="#d8b582">
-            <animateMotion dur="4s" repeatCount="indefinite" begin="2s"
+            <animateMotion dur="10s" repeatCount="indefinite" begin="5s"
               path="M 200 40 Q 500 40 600 40 Q 850 40 1000 40" />
           </circle>
         </svg>
@@ -147,7 +147,6 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 
           $delay          = ($step_number - 1) * 150;
           $badge_gradient = isset($step['badge_gradient']) ? $step['badge_gradient'] : 'linear-gradient(to bottom right, #9b5039, #c4704e)';
-          $icon_bg        = isset($step['icon_bg']) ? $step['icon_bg'] : 'rgba(155, 80, 57, 0.12)';
           ?>
           <div class="how-it-works-step relative group" data-animate="fade-in-up" data-delay="<?php echo $delay; ?>">
             <div class="relative h-full pt-4 pr-4">
@@ -159,26 +158,13 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
               </div>
 
               <div
-                class="how-it-works-card relative h-full bg-surface/95 backdrop-blur-sm rounded-3xl p-8 border border-on-primary/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-on-primary/30 overflow-hidden [contain:layout_paint]">
+                class="how-it-works-card relative h-full text-center bg-surface/95 backdrop-blur-sm rounded-3xl p-8 border border-on-primary/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-on-primary/30 overflow-hidden [contain:layout_paint]">
 
                 <div
                   class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden rounded-3xl">
                   <div
                     class="absolute inset-0 bg-gradient-to-r from-transparent via-on-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:group-hover:translate-x-0">
                   </div>
-                </div>
-
-                <div class="relative mb-6">
-                  <div
-                    class="w-20 h-20 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
-                    style="background-color: <?php echo esc_attr($icon_bg); ?>">
-                    <div class="text-text-secondary group-hover:text-primary transition-colors duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                      <?php echo $step['icon']; ?>
-                    </div>
-                  </div>
-                  <div
-                    class="pointer-events-none absolute inset-0 w-20 h-20 rounded-2xl ring-0 ring-primary/25 group-hover:ring-2 transition-[box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    aria-hidden="true"></div>
                 </div>
 
                 <h3 class="llp-hiw-step__title text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]">
