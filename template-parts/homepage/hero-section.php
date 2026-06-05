@@ -92,15 +92,15 @@ if ($hero_video_iframe_raw) {
     </span>
     <?php endif; ?>
 
-    <!-- Video frame: outer = border + shadow; inner = true 16:9 (border on same box as aspect distorts embed ratio). -->
-    <div class="w-full rounded-xl overflow-hidden" style="border: 6px solid #d8b582; box-shadow: 10px 12px 0 rgba(155,80,57,0.8), 0 0 50px rgba(216,181,130,0.25);">
-      <div class="w-full aspect-[16/9] overflow-hidden relative rounded-md">
+    <!-- Video frame: outer = bronze padding frame + shadow; inner clips 16:9 media (hero-media-* CSS fixes iOS Safari gap). -->
+    <div class="hero-media-frame w-full rounded-xl bg-[#d8b582] p-1.5" style="box-shadow: 10px 12px 0 rgba(155,80,57,0.8), 0 0 50px rgba(216,181,130,0.25);">
+      <div class="hero-media-clip w-full aspect-[16/9] relative">
       <?php if ($hero_media_type === 'image' && $hero_image): ?>
-        <img src="<?php echo esc_url($hero_image); ?>" alt="" class="w-full h-full object-cover">
+        <img src="<?php echo esc_url($hero_image); ?>" alt="" class="hero-media-fill">
       <?php elseif ($hero_media_type === 'video' && $hero_video): ?>
-        <video src="<?php echo esc_url($hero_video); ?>" controls playsinline preload="metadata" class="w-full h-full object-cover"></video>
+        <video src="<?php echo esc_url($hero_video); ?>" controls playsinline preload="metadata" class="hero-media-fill"></video>
       <?php elseif ($hero_media_type === 'video_iframe' && $hero_video_iframe): ?>
-        <div class="relative size-full [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:size-full">
+        <div class="hero-media-embed [&_iframe]:absolute [&_iframe]:inset-0 [&_iframe]:size-full">
           <?php echo $hero_video_iframe; ?>
         </div>
       <?php else: ?>
