@@ -28,8 +28,6 @@ $story_left_title = get_field('about_story_left_title') ?: __('Our story', 'nera
 $story_left_content = get_field('about_story_left_content');
 $story_right_title = get_field('about_story_right_title') ?: __('What drives us', 'nera-competitions');
 $story_right_content = get_field('about_story_right_content');
-$story_left_icon = llp_about_story_icon($story_left_title);
-$story_right_icon = llp_about_story_icon($story_right_title);
 
 $cta_heading = get_field('about_cta_heading') ?: __('Join the community', 'nera-competitions');
 $cta_description = get_field('about_cta_description') ?: __(
@@ -65,9 +63,9 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
             <?php echo esc_html($title); ?>
           </h1>
           <div class="w-20 h-1 bg-on-primary/80 mb-8 rounded-full" aria-hidden="true"></div>
-          <p class="text-lg sm:text-xl leading-relaxed font-light italic max-w-xl text-on-primary/85">
-            <?php echo esc_html($hero_tagline); ?>
-          </p>
+          <div class="nera-about-us-hero-tagline text-lg sm:text-xl leading-relaxed font-light italic max-w-xl text-on-primary/85">
+            <?php echo wp_kses_post($hero_tagline); ?>
+          </div>
         </div>
 
         <div class="relative" data-aos="fade-left" data-aos-delay="150">
@@ -96,7 +94,7 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
       <div data-aos="fade-up">
         <?php if ($narrative) : ?>
           <div
-            class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-accent prose-strong:text-text-primary [&_blockquote]:border-on-primary/25 [&_blockquote]:text-text-secondary">
+            class="nera-about-us-narrative prose prose-lg max-w-none prose-headings:font-heading [&_h2]:font-heading [&_h2]:text-2xl [&_h2]:lg:text-3xl [&_h2]:leading-tight [&_h2]:text-primary [&_p]:text-[#1c1917] [&_p]:leading-relaxed prose-a:text-accent [&_strong]:text-primary [&_blockquote]:border-on-primary/25 [&_blockquote]:text-text-secondary">
             <?php echo wp_kses_post($narrative); ?>
           </div>
         <?php else : ?>
@@ -108,53 +106,14 @@ $cta_secondary_url = get_field('about_cta_secondary_btn_url') ?: home_url('/cont
     </div>
   </section>
 
-  <section class="py-16 lg:py-24 bg-llp-hero-terracotta relative overflow-hidden" aria-labelledby="about-us-stories">
-    <div class="max-w-7xl mx-auto px-4 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-10 lg:gap-12">
-        <div
-          class="bg-surface p-8 lg:p-12 rounded-3xl border border-on-primary/15 shadow-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5 group"
-          data-aos="fade-right">
-          <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary">
-              <span class="material-symbols-outlined text-2xl" aria-hidden="true"><?php echo esc_html($story_left_icon); ?></span>
-            </div>
-            <h2 class="font-heading text-2xl lg:text-3xl text-text-primary">
-              <?php echo esc_html($story_left_title); ?>
-            </h2>
-          </div>
-          <div class="text-text-secondary leading-relaxed max-w-none [&_a]:text-accent [&_a]:underline">
-            <?php if ($story_left_content) : ?>
-              <?php echo wp_kses_post($story_left_content); ?>
-            <?php else : ?>
-              <p><?php esc_html_e('We will share more about our journey here.', 'nera-competitions'); ?></p>
-            <?php endif; ?>
-          </div>
-        </div>
-
-        <div
-          class="bg-surface p-8 lg:p-12 rounded-3xl border border-on-primary/15 shadow-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5 group"
-          data-aos="fade-left">
-          <div class="flex items-center gap-4 mb-6">
-            <div
-              class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary">
-              <span class="material-symbols-outlined text-2xl" aria-hidden="true"><?php echo esc_html($story_right_icon); ?></span>
-            </div>
-            <h2 class="font-heading text-2xl lg:text-3xl text-text-primary">
-              <?php echo esc_html($story_right_title); ?>
-            </h2>
-          </div>
-          <div class="text-text-secondary leading-relaxed max-w-none [&_a]:text-accent [&_a]:underline">
-            <?php if ($story_right_content) : ?>
-              <?php echo wp_kses_post($story_right_content); ?>
-            <?php else : ?>
-              <p><?php esc_html_e('Insights and values will appear here.', 'nera-competitions'); ?></p>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php
+  get_template_part('template-parts/about-us/stories-section', null, [
+    'story_left_title' => $story_left_title,
+    'story_left_content' => $story_left_content,
+    'story_right_title' => $story_right_title,
+    'story_right_content' => $story_right_content,
+  ]);
+  ?>
 
   <section class="py-16 lg:py-24 text-center relative overflow-hidden bg-gradient-to-b from-[#faf7f2] to-[#fffdfb]" aria-labelledby="about-us-cta-heading">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.06] to-transparent pointer-events-none"></div>

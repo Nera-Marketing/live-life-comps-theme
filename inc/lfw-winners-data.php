@@ -92,8 +92,9 @@ function live_life_prizes_lfw_winners_dataset(?int $page_id = null): array
         ? nera_get_win_categories($page_id)
         : [
             'live-draw' => __('Live Draw', 'live-life-prizes'),
-            'instant-win' => __('Instant Win', 'live-life-prizes'),
         ];
+
+    unset($categories['instant-win']);
 
     if (!function_exists('lty_get_lottery_winner') || !function_exists('lty_get_lottery_winning_dates')) {
         return [
@@ -142,65 +143,6 @@ function live_life_prizes_lfw_winners_dataset(?int $page_id = null): array
                         'quote' => '',
                         'category' => $cat,
                         'category_label' => sanitize_text_field($categories[$cat] ?? __('Live Draw', 'live-life-prizes')),
-                        'image' => esc_url($image_url),
-                        'sort_ts' => $sort_ts,
-                    ];
-                }
-            }
-        }
-    }
-
-    // Instant winners.
-    if (
-        function_exists('lty_get_lottery_instant_winning_dates')
-        && function_exists('lty_get_lottery_instant_winner_log_ids_by_date')
-        && function_exists('lty_get_instant_winner_log')
-    ) {
-        $instant_dates = lty_get_lottery_instant_winning_dates('DESC', false);
-        if (is_array($instant_dates)) {
-            foreach ($instant_dates as $date) {
-                $log_ids = lty_get_lottery_instant_winner_log_ids_by_date($date);
-                if (!is_array($log_ids)) {
-                    continue;
-                }
-                foreach ($log_ids as $log_id) {
-                    $iw = lty_get_instant_winner_log($log_id);
-                    if (!is_object($iw) || !method_exists($iw, 'exists') || !$iw->exists()) {
-                        continue;
-                    }
-
-                    $name = method_exists($iw, 'display_user_name') ? $iw->display_user_name() : '';
-                    $name = is_string($name) ? sanitize_text_field($name) : '';
-
-                    $prize = '';
-                    if (method_exists($iw, 'get_prize_message')) {
-                        $prize = (string) $iw->get_prize_message();
-                    }
-                    $prize = sanitize_text_field($prize);
-                    if ($prize === '' && method_exists($iw, 'get_product_name')) {
-                        $prize = sanitize_text_field((string) $iw->get_product_name(false));
-                    }
-
-                    if ($name === '' || $prize === '') {
-                        continue;
-                    }
-
-                    $gmt = method_exists($iw, 'get_created_date') ? (string) $iw->get_created_date() : '';
-                    $sort_ts = $gmt !== '' ? (int) strtotime($gmt . ' UTC') : 0;
-                    $date_display = live_life_prizes_lfw_format_winner_date($gmt);
-
-                    $product = method_exists($iw, 'get_product') ? $iw->get_product() : null;
-                    $image_url = live_life_prizes_wc_product_image_url($product);
-
-                    $cat = 'instant-win';
-                    $rows[] = [
-                        'id' => md5('lfw-inst|' . (string) $log_id . '|' . $gmt),
-                        'name' => $name,
-                        'prize' => $prize,
-                        'date' => $date_display,
-                        'quote' => '',
-                        'category' => $cat,
-                        'category_label' => sanitize_text_field($categories[$cat] ?? __('Instant Win', 'live-life-prizes')),
                         'image' => esc_url($image_url),
                         'sort_ts' => $sort_ts,
                     ];

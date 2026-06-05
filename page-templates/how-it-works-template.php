@@ -100,6 +100,7 @@ $postal_intro =
     );
 $acf_postal_steps = get_field('hiw_postal_steps');
 $postal_note = get_field('hiw_postal_note');
+$postal_note_link = live_life_prizes_resolve_hiw_postal_note_link();
 
 // Map legacy Material Symbol names to llp_icon() shortnames
 $hiw_icon_map = [
@@ -366,21 +367,26 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
         ?>
       </div>
 
+      <?php
+      $postal_note_text = $postal_note ?: __(
+        'Please note: One entry per postcard. Entries must be received before the competition closes.',
+        'nera-competitions',
+      );
+      ?>
+
       <div
         class="mt-12 p-6 bg-surface/90 backdrop-blur-sm border border-primary/20 rounded-2xl flex items-center gap-4"
         data-aos="fade-up"
         data-aos-delay="<?php echo esc_attr((string) $delay); ?>">
         <span class="material-symbols-outlined text-primary shrink-0 text-2xl" aria-hidden="true">info</span>
         <span class="text-sm text-text-secondary italic">
-          <?php
-          echo esc_html(
-            $postal_note ?:
-              __(
-                'Please note: One entry per postcard. Entries must be received before the competition closes.',
-                'nera-competitions',
-              ),
-          );
-          ?>
+          <?php echo esc_html($postal_note_text); ?>
+          <?php if ($postal_note_link['url'] !== ''): ?>
+            <a href="<?php echo esc_url($postal_note_link['url']); ?>"
+              class="llp-hiw-postal-note__link text-primary font-semibold not-italic hover:text-primary-dark transition-colors"<?php echo $postal_note_link['target'] === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+              <?php echo esc_html($postal_note_link['title']); ?>
+            </a>
+          <?php endif; ?>
         </span>
       </div>
     </div>
@@ -399,25 +405,37 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <?php foreach ($trans_features as $feature): ?>
-          <div
-            class="bg-surface border border-on-primary/15 p-8 rounded-3xl shadow-sm transition-all duration-500 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
-            data-aos="fade-up">
-            <div class="text-primary mb-6">
-              <?php
-              $feat_icon_raw = isset($feature['icon']) ? $feature['icon'] : 'shield-check';
-              $feat_icon_key = isset($hiw_icon_map[$feat_icon_raw]) ? $hiw_icon_map[$feat_icon_raw] : $feat_icon_raw;
-              echo llp_icon($feat_icon_key, '48');
-              ?>
+      <div class="hiw-promise-chapters border-t border-stone-200/70" data-aos="fade-up">
+        <?php
+        foreach ($trans_features as $index => $feature):
+          $feat_icon_raw = isset($feature['icon']) ? $feature['icon'] : 'shield-check';
+          $feat_icon_key = isset($hiw_icon_map[$feat_icon_raw]) ? $hiw_icon_map[$feat_icon_raw] : $feat_icon_raw;
+          $chapter_num = sprintf('%02d', $index + 1);
+          $is_alt = ($index % 2) === 1;
+          ?>
+          <article
+            class="hiw-promise-chapter relative w-full overflow-hidden border-l-4 border-primary py-10 pl-6 lg:py-12 lg:pl-10<?php echo $is_alt ? ' bg-primary/[0.04]' : ' bg-[#fffdfb]/60'; ?>"
+            data-aos="fade-up"
+            data-aos-delay="<?php echo esc_attr((string) ($index * 80)); ?>">
+            <span class="hiw-promise-chapter__index font-heading select-none" aria-hidden="true">
+              <?php echo esc_html($chapter_num); ?>
+            </span>
+            <div class="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-8 lg:max-w-4xl">
+              <div
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary"
+                aria-hidden="true">
+                <?php echo llp_icon($feat_icon_key, '32'); ?>
+              </div>
+              <div class="min-w-0">
+                <h3 class="mb-2 font-heading text-xl font-bold text-text-primary lg:text-2xl">
+                  <?php echo esc_html($feature['title']); ?>
+                </h3>
+                <p class="max-w-2xl text-sm leading-relaxed text-text-secondary lg:text-base">
+                  <?php echo esc_html($feature['description']); ?>
+                </p>
+              </div>
             </div>
-            <h3 class="text-xl font-bold mb-4 text-text-primary">
-              <?php echo esc_html($feature['title']); ?>
-            </h3>
-            <p class="text-sm text-text-secondary leading-relaxed">
-              <?php echo esc_html($feature['description']); ?>
-            </p>
-          </div>
+          </article>
         <?php endforeach; ?>
       </div>
     </div>

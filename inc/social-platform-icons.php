@@ -2,7 +2,7 @@
 /**
  * Live Life Prizes — social platform icons (SVG) and labels
  *
- * Shared by promo-banner, quick-guide step 3, and other templates.
+ * Shared by promo-banner and other templates.
  *
  * @package Nera_Competitions
  */

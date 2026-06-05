@@ -173,22 +173,9 @@ $extra_images = max(0, count($gallery_images) - $visible_thumbs);
 
     <?php nera_competitions_render_spin_to_win_prizes_section($product); ?>
 
-    <?php do_action('nera_before_related_competitions', $product); ?>
-
-    <!-- Related Competitions Section -->
-    <?php
-    $related_ids = nera_get_related_lottery_products($product_id, 4);
-    if (!empty($related_ids)): ?>
-      <section class="llp-related-competitions-band p-6 lg:p-8 rounded-2xl">
-        <?php get_template_part('template-parts/single-product/related-competitions', null, [
-          'product' => $product,
-          'related_ids' => $related_ids,
-        ]); ?>
-      </section>
-    <?php endif;
-    ?>
-
   </div>
+
+  <?php get_template_part('template-parts/about-us/stories-section', null, ['is_product_context' => true]); ?>
 
   <?php do_action('woocommerce_after_single_product'); ?>
 

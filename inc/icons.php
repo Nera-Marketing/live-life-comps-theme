@@ -29,6 +29,9 @@ function llp_icon(string $name, string $size = '32'): string
 
     'sun-horizon' => '<path d="M240,156H194.94A68,68,0,1,0,60,144a68.73,68.73,0,0,0,1.06,12H16a4,4,0,0,0,0,8H240a4,4,0,0,0,0-8ZM68,144a60,60,0,1,1,118.79,12H69.21A60.16,60.16,0,0,1,68,144Zm144,56a4,4,0,0,1-4,4H48a4,4,0,0,1,0-8H208A4,4,0,0,1,212,200ZM76.42,41.79a4,4,0,0,1,7.16-3.58l8,16a4,4,0,0,1-7.16,3.58Zm-56,52.42a4,4,0,0,1,5.37-1.79l16,8a4,4,0,0,1-3.58,7.16l-16-8A4,4,0,0,1,20.42,94.21Zm192,11.58a4,4,0,0,1,1.79-5.37l16-8a4,4,0,1,1,3.58,7.16l-16,8a4,4,0,0,1-5.37-1.79Zm-48-51.58,8-16a4,4,0,1,1,7.16,3.58l-8,16a4,4,0,0,1-7.16-3.58Z"/>',
 
+    // Phosphor Regular — bolder than Thin; About Us story cards only
+    'sun-horizon-regular' => '<path d="M240,152H199.55a73.54,73.54,0,0,0,.45-8,72,72,0,0,0-144,0,73.54,73.54,0,0,0,.45,8H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM72,144a56,56,0,1,1,111.41,8H72.59A56.13,56.13,0,0,1,72,144Zm144,56a8,8,0,0,1-8,8H48a8,8,0,0,1,0-16H208A8,8,0,0,1,216,200ZM72.84,43.58a8,8,0,0,1,14.32-7.16l8,16a8,8,0,0,1-14.32,7.16Zm-56,48.84a8,8,0,0,1,10.74-3.57l16,8a8,8,0,0,1-7.16,14.31l-16-8A8,8,0,0,1,16.84,92.42Zm192,15.16a8,8,0,0,1,3.58-10.73l16-8a8,8,0,1,1,7.16,14.31l-16,8a8,8,0,0,1-10.74-3.58Zm-48-55.16,8-16a8,8,0,0,1,14.32,7.16l-8,16a8,8,0,1,1-14.32-7.16Z"/>',
+
     // Security / trust
     'lock'        => '<path d="M208,84H172V56a44,44,0,0,0-88,0V84H48A12,12,0,0,0,36,96V208a12,12,0,0,0,12,12H208a12,12,0,0,0,12-12V96A12,12,0,0,0,208,84ZM92,56a36,36,0,0,1,72,0V84H92ZM212,208a4,4,0,0,1-4,4H48a4,4,0,0,1-4-4V96a4,4,0,0,1,4-4H208a4,4,0,0,1,4,4Zm-76-56a8,8,0,1,1-8-8A8,8,0,0,1,136,152Z"/>',
 
@@ -68,7 +71,7 @@ function llp_icon(string $name, string $size = '32'): string
  *
  * @param string $title Column title from ACF.
  */
-function llp_about_story_icon(string $title): string
+function llp_about_story_material_icon(string $title): string
 {
   $key = strtolower(wp_strip_all_tags($title));
 
@@ -86,4 +89,39 @@ function llp_about_story_icon(string $title): string
   }
 
   return 'auto_stories';
+}
+
+/**
+ * About Us story column icon markup (Phosphor or Material Symbols).
+ *
+ * "More than prizes…" uses sun-horizon (sunset) instead of trophy — client feedback.
+ *
+ * @param string $title Column title from ACF.
+ * @param string $size  Phosphor SVG width/height when applicable (default 32).
+ */
+function llp_about_story_icon_markup(string $title, string $size = '32'): string
+{
+  $key = strtolower(wp_strip_all_tags($title));
+
+  if (preg_match('/\b(moments|more than)\b/', $key)) {
+    return sprintf(
+      '<span class="about-story-icon about-story-icon--phosphor inline-flex size-8 shrink-0 items-center justify-center" aria-hidden="true">%s</span>',
+      llp_icon('sun-horizon-regular', $size),
+    );
+  }
+
+  $material = llp_about_story_material_icon($title);
+
+  return sprintf(
+    '<span class="material-symbols-outlined text-2xl" aria-hidden="true">%s</span>',
+    esc_html($material),
+  );
+}
+
+/**
+ * @deprecated Use llp_about_story_icon_markup() or llp_about_story_material_icon().
+ */
+function llp_about_story_icon(string $title): string
+{
+  return llp_about_story_material_icon($title);
 }

@@ -85,9 +85,9 @@ if (empty($faqs)) {
             $index,
           ); ?>"
             x-show="activeAccordion === <?php echo $index; ?>" x-collapse x-cloak>
-            <p class="pb-6 text-text-secondary leading-relaxed"><?php echo esc_html(
+            <div class="pb-6 text-text-secondary leading-relaxed [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-accent"><?php echo wp_kses_post(
               $faq['answer'],
-            ); ?></p>
+            ); ?></div>
           </div>
         </div>
       <?php endforeach; ?>
@@ -97,9 +97,9 @@ if (empty($faqs)) {
     <div class="text-center mt-12">
       <p class="text-text-secondary">
         <?php _e('Still have questions?', 'nera-competitions'); ?>
-        <a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>"
+        <a href="/contact-us/"
           class="inline-flex items-center gap-2 text-primary font-semibold ml-2 hover:gap-3 hover:text-accent transition-all duration-200">
-          <?php _e('Contact our support team', 'nera-competitions'); ?>
+          <?php _e('Get in touch here', 'nera-competitions'); ?>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
