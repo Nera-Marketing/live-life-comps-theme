@@ -175,6 +175,8 @@ $extra_images = max(0, count($gallery_images) - $visible_thumbs);
 
   </div>
 
+  <?php get_template_part('template-parts/about-us/stories-section', null, ['is_product_context' => true]); ?>
+
   <?php do_action('woocommerce_after_single_product'); ?>
 
 </main>
