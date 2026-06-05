@@ -1326,6 +1326,13 @@ body.nera-single-lottery.single-product .skill-challenge-wrapper .border-slate-3
   background-size: cover;
 }
 
+/* About Us stories band — transparent on single product so body gradient stays continuous */
+body.nera-single-lottery.single-product #primary.site-main section.llp-product-stories-band {
+  padding-top: 4rem;
+  background: transparent !important;
+  background-image: none !important;
+}
+
 /* Related competitions — cream band on terracotta single-product canvas */
 body.nera-single-lottery.single-product #primary.site-main section.llp-related-competitions-band,
 body.nera-single-lottery.single-product #primary.site-main section:has(.related-competitions) {
@@ -1445,10 +1452,81 @@ body.nera-single-lottery.single-product
   color: #fefcf8 !important;
 }
 
+/* About Us hero tagline (WYSIWYG: links + optional multi-paragraph) */
+.nera-about-us-hero-tagline a {
+  @apply underline underline-offset-2 text-on-primary hover:opacity-100;
+}
+
+.nera-about-us-hero-tagline p {
+  margin: 0;
+}
+
+.nera-about-us-hero-tagline p + p {
+  margin-top: 0.5em;
+}
+
+/* Our Purpose / About narrative band (cream): terracotta H2 + dark body — Cách 1 feedback */
+.nera-about-us-page .nera-about-us-narrative.prose :where(h2) {
+  font-family: var(--font-heading), ui-serif, Georgia, serif;
+  color: var(--color-primary);
+}
+
+.nera-about-us-page .nera-about-us-narrative.prose :where(p) {
+  color: #1c1917;
+}
+
+.nera-about-us-page .nera-about-us-narrative.prose :where(strong) {
+  color: var(--color-primary);
+}
+
+/* About story cards — Phosphor sunset icon (Regular weight, crisp at 32px) */
+.nera-about-us-page .about-story-icon--phosphor svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  shape-rendering: geometricPrecision;
+}
+
 /* Homepage hero + How It Works — soft light bokeh on terracotta (parent uses --particle-color) */
 .hero-section,
 .how-it-works-page .how-it-works-section {
   --particle-color: rgba(255, 252, 248, 0.14);
+}
+
+/*
+ * Hero media frame — iOS Safari leaves a ~1px gap when border-radius + overflow:hidden
+ * clip the same box. Padding frame + clip-path round + media bleed covers subpixel gaps.
+ */
+.hero-media-frame {
+  isolation: isolate;
+}
+
+.hero-media-clip {
+  isolation: isolate;
+  overflow: hidden;
+  clip-path: inset(0 round 6px);
+  background-color: #d8b582;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.hero-media-fill,
+.hero-media-embed {
+  position: absolute;
+  inset: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+}
+
+.hero-media-fill {
+  display: block;
+  object-fit: cover;
+}
+
+.hero-media-embed {
+  transform: translateZ(0);
 }
 
 /* CTA: dark canvas on terracotta section (matches hero-primary; fights global link rules) */
@@ -1556,6 +1634,16 @@ body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-h
 #content.site-content > main > *:last-child,
 #content.site-content > #primary > *:last-child {
   padding-bottom: var(--llp-wave-safe-inset);
+}
+
+/* FAQ answer links */
+.faq-item__answer a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.faq-item__answer a:hover {
+  color: var(--color-accent);
 }
 
 /* Listing grids: minimum gap above footer wave on small viewports */
