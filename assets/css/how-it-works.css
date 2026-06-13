@@ -29,6 +29,21 @@
     text-decoration-thickness: 2px;
 }
 
+.llp-hiw-draw-placeholder__subtitle a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+        text-decoration-thickness 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.llp-hiw-draw-placeholder__subtitle a:hover,
+.llp-hiw-draw-placeholder__subtitle a:focus-visible {
+    color: var(--color-primary);
+    text-decoration-thickness: 2px;
+}
+
 /* Postal footnote link — explicit underline (beats global terracotta link resets) */
 .how-it-works-page a.llp-hiw-postal-note__link {
     color: var(--color-primary) !important;

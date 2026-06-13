@@ -294,9 +294,9 @@ if (!empty($acf_trans_features) && is_array($acf_trans_features)) {
                 <h3 class="text-xl font-bold text-text-primary mb-2">
                   <?php echo esc_html($draw_placeholder_title); ?>
                 </h3>
-                <p class="text-sm text-text-secondary">
-                  <?php echo esc_html($draw_placeholder_text); ?>
-                </p>
+                <div class="llp-hiw-draw-placeholder__subtitle text-sm text-text-secondary">
+                  <?php echo wp_kses_post($draw_placeholder_text); ?>
+                </div>
               </div>
             </div>
           <?php endif; ?>
