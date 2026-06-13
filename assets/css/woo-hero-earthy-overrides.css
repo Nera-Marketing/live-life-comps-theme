@@ -288,6 +288,101 @@ body.woocommerce-account.logged-in .nera-view-order .border-gray-200 {
 }
 
 /* --------------------------------------------------------------------------
+   My Account — Edit account: password icon + deactivate panel (brand earthy)
+   -------------------------------------------------------------------------- */
+
+/* Password change card — lock icon: warning orange → terracotta */
+body.woocommerce-account.logged-in
+  .nera-edit-account
+  form.edit-account
+  .from-warning.to-warning {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+}
+
+/* Deactivate section — divider above dark panel */
+body.woocommerce-account.logged-in .nera-edit-account .border-t.border-danger-bg {
+  border-color: color-mix(in srgb, var(--color-primary) 28%, #1a1410) !important;
+}
+
+/* Deactivate card — black canvas with terracotta border */
+body.woocommerce-account.logged-in .nera-edit-account .bg-danger-bg\/80 {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, #0a0908 94%, var(--color-primary-dark)) 0%,
+    color-mix(in srgb, #1c1612 90%, var(--color-primary)) 55%,
+    color-mix(in srgb, #0a0908 92%, var(--color-primary-dark)) 100%
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 42%, #2a2018) !important;
+  box-shadow:
+    0 8px 28px -8px rgba(0, 0, 0, 0.55),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 18%, transparent) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account .bg-danger-bg\/80 h3,
+body.woocommerce-account.logged-in .nera-edit-account .bg-danger-bg\/80 .text-gray-900 {
+  color: var(--color-on-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account .bg-danger-bg\/80 .text-gray-600 {
+  color: color-mix(in srgb, var(--color-on-primary) 72%, var(--color-accent)) !important;
+}
+
+/* Deactivate warning icon */
+body.woocommerce-account.logged-in .nera-edit-account .bg-danger-bg\/80 .from-danger.to-danger-text {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+}
+
+/* Deactivate CTA */
+body.woocommerce-account.logged-in .nera-edit-account #nera-deactivate-account-open {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent) !important;
+  color: var(--color-on-primary) !important;
+  box-shadow: 0 4px 14px -4px color-mix(in srgb, var(--color-primary) 55%, transparent) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account #nera-deactivate-account-open:hover {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-accent) 12%, var(--color-primary)) 0%,
+    var(--color-primary-dark) 100%
+  ) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account #nera-deactivate-account-open:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-on-primary),
+    0 0 0 4px color-mix(in srgb, var(--color-primary) 65%, transparent) !important;
+}
+
+/* Confirmation dialog — terracotta accents instead of danger red */
+body.woocommerce-account.logged-in .nera-edit-account .nera-deactivate-account-dialog .text-danger {
+  color: var(--color-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account #nera-deactivate-account-confirm {
+  background-color: var(--color-primary) !important;
+  border-color: color-mix(in srgb, var(--color-primary-dark) 55%, transparent) !important;
+  color: var(--color-on-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-edit-account #nera-deactivate-account-confirm:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
+/* --------------------------------------------------------------------------
    Cart: lift line rows above the outer "Your Selections" panel (same bg-surface)
    Child specificity (body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item
    = 0-3-1) beats parent utilities (0-1-0) — no !important on .ncs-* rules.
