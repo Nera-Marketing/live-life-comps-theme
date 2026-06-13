@@ -288,6 +288,22 @@ function live_life_prizes_get_last_child_vite_css_handle(): ?string
 }
 
 /**
+ * My Account dashboard welcome subtitle.
+ */
+add_filter(
+    'gettext_nera-competitions-standard',
+    static function (string $translation, string $text): string {
+        if ($text === 'Ready to win big? Check out our latest competitions!') {
+            return 'Life is full of possibilities. Enter now for your chance to win';
+        }
+
+        return $translation;
+    },
+    10,
+    2,
+);
+
+/**
  * My Account + wallet badge: override parent wp_head indigo / white chrome.
  */
 add_action('wp_enqueue_scripts', function (): void {
