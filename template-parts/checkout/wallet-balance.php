@@ -148,13 +148,13 @@ $wallet_partial_enabled = 'on' === woo_wallet()->settings_api->get_option(
   <div class="mt-4 pt-4 border-t border-primary/10">
     <div class="flex items-center justify-center gap-2 text-xs text-text-secondary">
       <?php if ($can_pay_full): ?>
-        <span class="material-symbols-outlined text-sm text-green-500">verified_user</span>
+        <span class="material-symbols-outlined text-sm text-text-primary">verified_user</span>
         <?php esc_html_e(
             'Select Wallet as your payment method below to use your balance.',
             'nera-competitions',
         ); ?>
       <?php elseif ($wallet_partial_enabled): ?>
-        <span class="material-symbols-outlined text-sm text-green-500">verified_user</span>
+        <span class="material-symbols-outlined text-sm text-text-primary">verified_user</span>
         <?php esc_html_e(
             'Wallet credit will be applied at checkout.',
             'nera-competitions',

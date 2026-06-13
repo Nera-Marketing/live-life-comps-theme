@@ -161,6 +161,16 @@ add_filter('acf/load_field/key=field_hiw_hero_step_description', function ($fiel
   return $field;
 });
 
+add_filter('acf/load_field/key=field_hiw_draw_placeholder_text', function ($field) {
+  $field['type']         = 'wysiwyg';
+  $field['tabs']         = 'visual';
+  $field['toolbar']      = 'basic';
+  $field['media_upload'] = 0;
+  $field['delay']        = 1;
+  $field['instructions'] = __('Supports inline links (e.g. link “YouTube” in the subtitle).', 'nera-competitions');
+  return $field;
+});
+
 /**
  * Default URL/label for the postal footnote “see more” link.
  *

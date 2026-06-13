@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_stylesheet_directory() . '/inc/icons.php';
+require_once get_stylesheet_directory() . '/inc/payment-logos-llp.php';
 require_once get_stylesheet_directory() . '/inc/social-platform-icons.php';
 require_once get_stylesheet_directory() . '/inc/how-it-works-llp.php';
 require_once get_stylesheet_directory() . '/inc/acf-how-it-works-llp.php';
@@ -285,6 +286,22 @@ function live_life_prizes_get_last_child_vite_css_handle(): ?string
 
     return 'live-life-prizes-vite-css-' . ($count - 1);
 }
+
+/**
+ * My Account dashboard welcome subtitle.
+ */
+add_filter(
+    'gettext_nera-competitions-standard',
+    static function (string $translation, string $text): string {
+        if ($text === 'Ready to win big? Check out our latest competitions!') {
+            return 'Life is full of possibilities. Enter now for your chance to win';
+        }
+
+        return $translation;
+    },
+    10,
+    2,
+);
 
 /**
  * My Account + wallet badge: override parent wp_head indigo / white chrome.

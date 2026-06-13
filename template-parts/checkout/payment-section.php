@@ -70,11 +70,11 @@ if (!defined('ABSPATH')) {
               <?php checked(apply_filters('woocommerce_terms_is_checked_default', isset($_POST['terms'])), true); ?>>
             <span>
               <?php printf(
-                  wp_kses_post(__('I have read and agree to the website %s', 'woocommerce')),
+                  wp_kses_post(__('I am a UK or Ireland resident, over 18 years of age, & agree to the %s.', 'live-life-prizes')),
                   '<a href="' .
                   esc_url(get_permalink($terms_page_id)) .
                   '" class="font-semibold text-primary underline underline-offset-2 transition-colors hover:text-primary-dark" target="_blank">' .
-                  esc_html__('terms and conditions', 'woocommerce') .
+                  esc_html__('terms & conditions', 'live-life-prizes') .
                   '</a>',
               ); ?>
             </span>
