@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_stylesheet_directory() . '/inc/icons.php';
+require_once get_stylesheet_directory() . '/inc/payment-logos-llp.php';
 require_once get_stylesheet_directory() . '/inc/social-platform-icons.php';
 require_once get_stylesheet_directory() . '/inc/how-it-works-llp.php';
 require_once get_stylesheet_directory() . '/inc/acf-how-it-works-llp.php';
