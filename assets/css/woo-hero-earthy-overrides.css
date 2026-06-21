@@ -636,6 +636,17 @@ body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full .material-symbo
   font-size: 1.25rem !important;
 }
 
+/* Empty cart trust badges — brand terracotta / accent / bronze tints */
+body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--draws {
+  background-color: color-mix(in srgb, var(--color-primary) 20%, #fffdfb) !important;
+  color: var(--color-primary) !important;
+}
+body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--secure,
+body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--winners {
+  background-color: color-mix(in srgb, var(--color-accent) 20%, #fffdfb) !important;
+  color: var(--color-accent) !important;
+}
+
 /* Cart item rows — lighter warm tint above the card bg */
 body.woocommerce-cart .woocommerce-cart-form .ncs-cart-item {
   background-color: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
