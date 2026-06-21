@@ -196,27 +196,40 @@ body.woocommerce-checkout:not(.woocommerce-order-received) #payment + .pt-6 #pla
 
 /* --------------------------------------------------------------------------
    Wallet balance card: warm cream instead of dark gradient
+   (child template uses .nera-wallet-balance / .llp-wallet-balance-card; parent .ncs-wallet-balance)
    -------------------------------------------------------------------------- */
 
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance {
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance,
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card {
   background: color-mix(in srgb, #fffdfb 80%, var(--color-primary)) !important;
   border-color: color-mix(in srgb, var(--color-primary) 35%, #d8c4a0) !important;
 }
 
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-primary {
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-primary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance .text-text-primary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .text-text-primary {
   color: var(--color-primary-dark) !important;
 }
 
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-secondary {
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .text-text-secondary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance .text-text-secondary,
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .text-text-secondary {
   color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
 }
 
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance a.text-primary:hover {
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance a.text-primary:hover,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance a.text-primary:hover,
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card a.text-primary:hover {
   color: var(--color-accent) !important;
 }
 
 /* Inner info box uses bg-surface/80 (opacity variant) — not caught by the broad .bg-surface rule */
-body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .backdrop-blur-sm {
+body.woocommerce-checkout:not(.woocommerce-order-received) .ncs-wallet-balance .backdrop-blur-sm,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance .backdrop-blur-sm,
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .backdrop-blur-sm,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-wallet-balance [class*='bg-surface'],
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card [class*='bg-surface'] {
   background-color: color-mix(in srgb, #fffdfb 74%, var(--color-primary)) !important;
 }
 
