@@ -1,0 +1,135 @@
+/**
+ * Live Life Prizes — lty-result-screens brand overrides
+ * Remaps parent indigo/gold tokens to earthy terracotta on order-received.
+ * Depends on child Vite bundle (--color-*) and lty-result-screens.css.
+ */
+
+body.woocommerce-order-received {
+  /* Draw */
+  --lty-rs-draw-accent: var(--color-primary);
+  --lty-rs-draw-bg: color-mix(in srgb, #fffdfb 88%, var(--color-primary));
+
+  /* Win */
+  --lty-rs-win-accent: var(--color-primary);
+  --lty-rs-win-accent-light: var(--color-on-primary);
+  --lty-rs-win-accent-glow: rgba(155, 80, 57, 0.35);
+  --lty-rs-win-bg: color-mix(in srgb, #fffdfb 82%, var(--color-primary));
+  --lty-rs-win-stripe: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-primary) 100%
+  );
+
+  /* No-win */
+  --lty-rs-no-win-accent: var(--color-accent);
+  --lty-rs-no-win-bg: color-mix(in srgb, #fffdfb 88%, var(--color-accent));
+}
+
+/* ── Draw modal ─────────────────────────────────────────────────────────── */
+
+.lty-rs-overlay #lty-rs-draw-heading ~ p.text-base {
+  color: color-mix(in srgb, var(--color-primary-dark) 55%, #8a6040) !important;
+}
+
+.lty-rs-overlay #lty-rs-draw-heading ~ .inline-flex.rounded-full {
+  background: color-mix(in srgb, var(--color-primary) 8%, #fffdfb) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 18%, #e8dcc0) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-draw {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  ) !important;
+  box-shadow: 0 4px 16px rgba(155, 80, 57, 0.28) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-draw:hover {
+  box-shadow: 0 6px 22px rgba(155, 80, 57, 0.38) !important;
+}
+
+/* ── Win modal ──────────────────────────────────────────────────────────── */
+
+.lty-rs-overlay > div.bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+}
+
+.lty-rs-overlay [data-lty-rs-prizes] .rounded-2xl {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, #e8dcc0) !important;
+}
+
+.lty-rs-overlay .lty-rs-copy-code.bg-surface,
+.lty-rs-overlay button.lty-rs-copy-code {
+  background-color: color-mix(in srgb, #fffdfb 92%, var(--color-primary)) !important;
+}
+
+.lty-rs-overlay .lty-rs-copy-code .text-gray-900,
+.lty-rs-overlay .rounded-2xl .text-gray-900 {
+  color: var(--color-primary-dark) !important;
+}
+
+.lty-rs-overlay .text-gray-400 {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+.lty-rs-overlay .lty-rs-prize-meta {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+.lty-rs-overlay .lty-rs-pager__btn {
+  color: var(--color-primary-dark) !important;
+}
+
+.lty-rs-overlay .lty-rs-pager__dot {
+  background: color-mix(in srgb, var(--color-primary) 25%, #e8dcc0) !important;
+}
+
+.lty-rs-overlay .lty-rs-pager__dot:hover {
+  background: color-mix(in srgb, var(--color-primary) 45%, #d8c4a0) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-win {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  ) !important;
+  box-shadow: 0 4px 18px var(--lty-rs-win-accent-glow) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-win:hover {
+  box-shadow: 0 6px 24px var(--lty-rs-win-accent-glow) !important;
+}
+
+.lty-rs-overlay .lty-rs-close-x {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+.lty-rs-overlay .lty-rs-close-x:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, #fffdfb) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+/* ── No-win modal ───────────────────────────────────────────────────────── */
+
+.lty-rs-overlay #lty-rs-no-win-heading.text-gray-800 {
+  color: var(--color-primary-dark) !important;
+}
+
+.lty-rs-overlay #lty-rs-no-win-heading ~ p.text-\[\#5a5a6a\] {
+  color: color-mix(in srgb, var(--color-primary-dark) 55%, #8a6040) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-no-win {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-primary) 100%
+  ) !important;
+  box-shadow: 0 4px 16px rgba(196, 112, 78, 0.3) !important;
+}
+
+.lty-rs-overlay .lty-rs-btn-no-win:hover {
+  box-shadow: 0 6px 22px rgba(196, 112, 78, 0.4) !important;
+}

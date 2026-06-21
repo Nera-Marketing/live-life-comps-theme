@@ -468,6 +468,10 @@ button[class*='bg-gradient'][class*='9b5039'] {
   #site-header #mobile-menu {
     display: none !important;
   }
+
+  #site-header > div > nav {
+    height: 5rem !important;
+  }
 }
 
 @media (max-width: 63.999rem) {
@@ -478,6 +482,21 @@ button[class*='bg-gradient'][class*='9b5039'] {
   #site-header > div > nav > .flex.lg\:hidden {
     display: flex !important;
   }
+
+  #site-header > div > nav {
+    height: 4rem !important;
+  }
+}
+
+/*
+ * lty-result-screens.css (Tailwind v3 unlayered) resets --tw-translate-y to 0 via
+ * `*,:before,:after { --tw-translate-y: 0 }`, which beats any @layer rule regardless
+ * of specificity. The organic wave uses `.translate-y-full` whose value relies on
+ * that variable. Force the translate directly with !important so the wave sits
+ * below the header on the order-received page.
+ */
+#site-header .translate-y-full {
+  translate: 0 100% !important;
 }
 
 /* Header primary menu: fixed label size (desktop, dropdown, mobile) */

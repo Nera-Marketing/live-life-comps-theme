@@ -334,10 +334,10 @@ add_action('wp_enqueue_scripts', function (): void {
  */
 add_action('wp_enqueue_scripts', function (): void {
     $on_cart = function_exists('is_cart') && is_cart();
-    $on_checkout = function_exists('is_checkout') && is_checkout()
-        && (!function_exists('is_order_received_page') || !is_order_received_page());
+    $on_order_received = function_exists('is_order_received_page') && is_order_received_page();
+    $on_checkout = function_exists('is_checkout') && is_checkout() && !$on_order_received;
     $on_account = function_exists('is_account_page') && is_account_page();
-    if (!$on_cart && !$on_checkout && !$on_account) {
+    if (!$on_cart && !$on_checkout && !$on_account && !$on_order_received) {
         return;
     }
 
@@ -424,6 +424,32 @@ add_action('wp_enqueue_scripts', function (): void {
         (string) filemtime($path),
     );
 }, 118);
+
+/**
+ * Order received: lty-result-screens overlays (draw / win / no-win) — earthy brand tokens.
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    if (!function_exists('is_order_received_page') || !is_order_received_page()) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/assets/css/result-screens-brand-overrides.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $dep = live_life_prizes_get_last_child_vite_css_handle();
+    if ($dep === null) {
+        $dep = live_life_prizes_parent_style_dependency();
+    }
+
+    wp_enqueue_style(
+        'live-life-prizes-result-screens-brand',
+        get_stylesheet_directory_uri() . '/assets/css/result-screens-brand-overrides.css',
+        [$dep, 'lty-result-screens'],
+        (string) filemtime($path),
+    );
+}, 120);
 
 /**
  * Enqueue child Vite build (CSS + JS) from manifest, after parent Tailwind bundle.

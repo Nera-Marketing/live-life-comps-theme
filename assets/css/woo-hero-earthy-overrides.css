@@ -37,6 +37,20 @@
   color: #fefcf8 !important;
 }
 
+/* Checkout progress: complete step → earthy brand (PHP uses bg-success / text-success) */
+.llp-earthy-hero--checkout .max-w-md .rounded-full.bg-success {
+  background-color: var(--color-on-primary) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+.llp-earthy-hero--checkout .max-w-md .text-success.text-xs {
+  color: var(--color-on-primary) !important;
+}
+
+.llp-earthy-hero--checkout .max-w-md .h-px.bg-success {
+  background-color: var(--color-on-primary) !important;
+}
+
 /* Icon tile in hero */
 .llp-earthy-hero .rounded-xl.bg-surface {
   background-color: var(--color-surface) !important;
@@ -63,6 +77,7 @@
 
 body.woocommerce-cart,
 body.woocommerce-checkout:not(.woocommerce-order-received),
+body.woocommerce-order-received,
 body.woocommerce-account.logged-in {
   background: linear-gradient(to bottom, #fffdfb, #faf7f2) !important;
   background-color: #fffdfb !important;
@@ -76,6 +91,10 @@ body.woocommerce-checkout:not(.woocommerce-order-received) #page,
 body.woocommerce-checkout:not(.woocommerce-order-received) #content,
 body.woocommerce-checkout:not(.woocommerce-order-received) .site-content,
 body.woocommerce-checkout:not(.woocommerce-order-received) .site-main,
+body.woocommerce-order-received #page,
+body.woocommerce-order-received #content,
+body.woocommerce-order-received .site-content,
+body.woocommerce-order-received .site-main,
 body.woocommerce-account.logged-in #page,
 body.woocommerce-account.logged-in #content,
 body.woocommerce-account.logged-in .site-content,
@@ -880,4 +899,73 @@ body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-my
 body.woocommerce-account.logged-in .woocommerce-MyAccount-content .woo-wallet-header h2.\!text-white,
 body.woocommerce-account.logged-in .woo-wallet-my-wallet-container .woo-wallet-header h2[class*='text-white'] {
   color: var(--color-primary-dark) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Order received — full-bleed hero inside page shortcode (article is not 100vw)
+   Tailwind left-1/2 -translate-x-1/2 w-screen breaks when nested in article;
+   use margin breakout instead (same technique as full-bleed strips in prose).
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-order-received article,
+body.woocommerce-order-received article .woocommerce {
+  overflow: visible !important;
+}
+
+body.woocommerce-order-received .llp-earthy-hero--order-received {
+  position: relative;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  translate: none !important;
+  --tw-translate-x: 0 !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Order received — success banner (earthy green semantics) + summary cards
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-order-received .woocommerce-order .bg-success-bg.border-success-border {
+  background-color: color-mix(in srgb, var(--color-success) 20%, #fffdfb) !important;
+  border-color: color-mix(in srgb, var(--color-success) 40%, #e8dcc0) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order .bg-success-bg .rounded-full.bg-success {
+  background-color: color-mix(in srgb, var(--color-success) 88%, #145235) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order .bg-success-bg .text-gray-900,
+body.woocommerce-order-received .woocommerce-order .bg-success-bg .woocommerce-thankyou-order-received {
+  color: color-mix(in srgb, var(--color-success) 85%, #145235) !important;
+}
+
+/* Order summary cards — warm cream panels on canvas */
+body.woocommerce-order-received .woocommerce-order .grid .bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order .grid .text-gray-900 {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order .grid .text-gray-500 {
+  color: color-mix(in srgb, var(--color-primary-dark) 55%, #8a6040) !important;
+}
+
+/* Failed-order panel on cream canvas */
+body.woocommerce-order-received .woocommerce-order .max-w-2xl.bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
 }
