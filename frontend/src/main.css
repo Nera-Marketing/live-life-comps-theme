@@ -468,6 +468,10 @@ button[class*='bg-gradient'][class*='9b5039'] {
   #site-header #mobile-menu {
     display: none !important;
   }
+
+  #site-header > div > nav {
+    height: 5rem !important;
+  }
 }
 
 @media (max-width: 63.999rem) {
@@ -478,6 +482,21 @@ button[class*='bg-gradient'][class*='9b5039'] {
   #site-header > div > nav > .flex.lg\:hidden {
     display: flex !important;
   }
+
+  #site-header > div > nav {
+    height: 4rem !important;
+  }
+}
+
+/*
+ * lty-result-screens.css (Tailwind v3 unlayered) resets --tw-translate-y to 0 via
+ * `*,:before,:after { --tw-translate-y: 0 }`, which beats any @layer rule regardless
+ * of specificity. The organic wave uses `.translate-y-full` whose value relies on
+ * that variable. Force the translate directly with !important so the wave sits
+ * below the header on the order-received page.
+ */
+#site-header .translate-y-full {
+  translate: 0 100% !important;
 }
 
 /* Header primary menu: fixed label size (desktop, dropdown, mobile) */
@@ -990,6 +1009,40 @@ body.nera-single-lottery.single-product div.order-2.lg\:col-span-5 .bg-primary\/
   color: var(--color-on-primary) !important;
 }
 
+/* Purchase card: countdown header + trust badge icons → brand (parent uses text-danger / text-success) */
+body.nera-single-lottery.single-product
+  .bg-surface.rounded-2xl.shadow-xl
+  .flex.items-center.gap-2.mb-3:has(+ .competition-countdown)
+  .text-danger {
+  color: var(--color-primary);
+}
+
+body.nera-single-lottery.single-product
+  .bg-surface.rounded-2xl.shadow-xl
+  .flex.items-center.justify-center.gap-6
+  .material-symbols-outlined.text-success {
+  color: var(--color-primary);
+}
+
+/* Toast — success variant: full earthy brand (add-to-cart, etc.) */
+body .fixed.top-20.right-6.z-\[9999\] .group:has(.material-symbols-outlined.text-success) {
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-gray-200));
+  border-left-width: 3px;
+  border-left-color: var(--color-primary);
+  background-color: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+  box-shadow: var(--shadow-primary);
+}
+
+body .fixed.top-20.right-6.z-\[9999\] .group:has(.material-symbols-outlined.text-success)
+  .material-symbols-outlined.text-success {
+  color: var(--color-primary);
+}
+
+body .fixed.top-20.right-6.z-\[9999\] .group:has(.material-symbols-outlined.text-success)
+  .text-gray-800 {
+  color: var(--color-text-primary);
+}
+
 /* Trust row: gold pills (parent = green check + plain text) */
 body.nera-single-lottery.single-product div.order-2.lg\:col-span-5 .flex.items-center.justify-center.gap-6 {
   flex-wrap: wrap;
@@ -1012,7 +1065,7 @@ body.nera-single-lottery.single-product div.order-2.lg\:col-span-5 .flex.items-c
 body.nera-single-lottery.single-product
   div.order-2.lg\:col-span-5
   .flex.items-center.justify-center.gap-6
-  .material-symbols-outlined.text-green-500 {
+  .material-symbols-outlined:is(.text-green-500, .text-success) {
   color: #1c1917 !important;
 }
 
