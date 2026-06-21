@@ -383,6 +383,17 @@ add_action('wp_enqueue_scripts', function (): void {
         [$dep],
         (string) filemtime($path),
     );
+
+    $js_path = get_stylesheet_directory() . '/assets/js/footer-brand-social-align.js';
+    if (is_readable($js_path)) {
+        wp_enqueue_script(
+            'live-life-prizes-footer-social-align',
+            get_stylesheet_directory_uri() . '/assets/js/footer-brand-social-align.js',
+            [],
+            (string) filemtime($js_path),
+            true,
+        );
+    }
 }, 119);
 
 /**
