@@ -17,6 +17,7 @@ require_once get_stylesheet_directory() . '/inc/acf-woocommerce-filter.php';
 require_once get_stylesheet_directory() . '/inc/acf-homepage.php';
 require_once get_stylesheet_directory() . '/inc/homepage-acf-source.php';
 require_once get_stylesheet_directory() . '/inc/about-us-acf-source.php';
+require_once get_stylesheet_directory() . '/inc/archive-stories-band.php';
 require_once get_stylesheet_directory() . '/inc/acf-faq-page.php';
 require_once get_stylesheet_directory() . '/inc/acf-about-us-llp.php';
 require_once get_stylesheet_directory() . '/inc/acf-contact-llp.php';
