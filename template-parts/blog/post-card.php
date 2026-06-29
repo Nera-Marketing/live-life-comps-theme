@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog post card (child override) — category pills match competition-card / all-competitions.
+ * Blog post card (child override).
  *
  * @package Nera_Competitions
  *
@@ -19,34 +19,6 @@ $tone_cream = isset($tone) && $tone === 'cream';
 $content_raw = get_post_field('post_content', get_the_ID());
 $word_count = $content_raw ? str_word_count(wp_strip_all_tags($content_raw)) : 0;
 $read_mins = max(1, (int) ceil($word_count / 200));
-
-$categories = get_the_category();
-if (!empty($categories)) {
-  $primary_cat = $categories[0];
-  $category_label = $primary_cat->name;
-  $category_url = get_category_link($primary_cat->term_id);
-  $category_badge_slug = $primary_cat->slug;
-} else {
-  $default_cat_id = (int) get_option('default_category');
-  $category_label = __('Uncategorized', 'nera-competitions');
-  $category_url = $default_cat_id ? get_category_link($default_cat_id) : '';
-  if ($default_cat_id) {
-    $default_cat = get_category($default_cat_id);
-    $category_badge_slug =
-      $default_cat && !is_wp_error($default_cat) ? $default_cat->slug : 'uncategorized';
-  } else {
-    $category_badge_slug = 'uncategorized';
-  }
-}
-
-$category_badge_hex = live_life_prizes_post_category_badge_color($category_badge_slug);
-$category_badge_style = sprintf(
-  'background-color: %1$s; color: #fff; border-color: %1$s;',
-  esc_attr($category_badge_hex),
-);
-
-$category_badge_classes =
-  'inline-block px-3 py-1.5 text-xs font-bold uppercase tracking-wide rounded-full backdrop-blur-sm border-[1.5px] shadow-sm transform transition-transform hover:scale-105';
 
 $date_upper = strtoupper(get_the_date('F j, Y'));
 $read_label = sprintf(
@@ -85,15 +57,6 @@ $featured_placeholder_text = $tone_cream ? 'text-sm text-stone-400' : 'text-sm t
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($card_classes . ' flex flex-col lg:flex-row lg:items-stretch'); ?>>
     <div class="relative w-full lg:w-1/2 lg:min-h-[min(22rem,50vw)] min-h-[12rem] shrink-0">
-        <?php if ($category_url): ?>
-            <a href="<?php echo esc_url($category_url); ?>" class="absolute left-4 top-4 z-10 <?php echo esc_attr($category_badge_classes); ?>" style="<?php echo esc_attr($category_badge_style); ?>">
-                <?php echo esc_html(strtoupper($category_label)); ?>
-            </a>
-        <?php else: ?>
-            <span class="absolute left-4 top-4 z-10 <?php echo esc_attr($category_badge_classes); ?>" style="<?php echo esc_attr($category_badge_style); ?>">
-                <?php echo esc_html(strtoupper($category_label)); ?>
-            </span>
-        <?php endif; ?>
         <?php if (has_post_thumbnail()): ?>
             <a href="<?php the_permalink(); ?>" class="block h-full min-h-[12rem] lg:min-h-full">
                 <?php the_post_thumbnail('large', [
@@ -164,15 +127,6 @@ $placeholder_text_cls = $tone_dark
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($card_classes . ' flex h-full flex-col'); ?>>
     <div class="relative aspect-video w-full shrink-0 overflow-hidden">
-        <?php if ($category_url): ?>
-            <a href="<?php echo esc_url($category_url); ?>" class="absolute left-3 top-3 z-10 sm:left-4 sm:top-4 <?php echo esc_attr($category_badge_classes); ?>" style="<?php echo esc_attr($category_badge_style); ?>">
-                <?php echo esc_html(strtoupper($category_label)); ?>
-            </a>
-        <?php else: ?>
-            <span class="absolute left-3 top-3 z-10 sm:left-4 sm:top-4 <?php echo esc_attr($category_badge_classes); ?>" style="<?php echo esc_attr($category_badge_style); ?>">
-                <?php echo esc_html(strtoupper($category_label)); ?>
-            </span>
-        <?php endif; ?>
         <?php if (has_post_thumbnail()): ?>
             <a href="<?php the_permalink(); ?>" class="block h-full">
                 <?php the_post_thumbnail('medium_large', [

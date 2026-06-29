@@ -139,31 +139,6 @@ function live_life_prizes_category_colors_for_all_terms(): array
     return $out;
 }
 
-/**
- * Hex background for blog post category pills (matches competition-card slug→color rules).
- *
- * @param string $slug Post category slug (e.g. `uncategorized`).
- */
-function live_life_prizes_post_category_badge_color(string $slug): string
-{
-    if ($slug === 'uncategorized') {
-        return apply_filters('nera_competition_card_fallback_accent', '#9b5039');
-    }
-
-    $map = live_life_prizes_category_colors_for_all_terms();
-    if (isset($map[$slug])) {
-        return $map[$slug];
-    }
-
-    $palette = live_life_prizes_earthy_category_palette();
-    $n = count($palette);
-    if ($n < 1) {
-        return apply_filters('nera_competition_card_fallback_accent', '#9b5039');
-    }
-
-    return $palette[abs(crc32($slug)) % $n];
-}
-
 add_filter('nera_competition_card_category_colors', function (): array {
     return live_life_prizes_category_colors_for_all_terms();
 });

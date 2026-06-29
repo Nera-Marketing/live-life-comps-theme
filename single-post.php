@@ -27,17 +27,6 @@ get_header();
         _n('%d MIN READ', '%d MIN READ', $read_mins, 'nera-competitions'),
         $read_mins,
       );
-
-      $categories = get_the_category();
-      if (!empty($categories)) {
-        $primary_cat = $categories[0];
-        $category_label = $primary_cat->name;
-        $category_url = get_category_link($primary_cat->term_id);
-      } else {
-        $default_cat_id = (int) get_option('default_category');
-        $category_label = __('Uncategorized', 'nera-competitions');
-        $category_url = $default_cat_id ? get_category_link($default_cat_id) : '';
-      }
       ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -54,18 +43,8 @@ get_header();
                     <div class="relative z-10 flex flex-1 flex-col justify-end">
                         <div class="container mx-auto max-w-7xl px-4 pb-10 pt-24 md:pb-14 md:pt-32">
                             <div class="max-w-3xl">
-                                <p class="mb-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium uppercase tracking-wide text-on-primary/90">
-                                    <?php if ($category_url): ?>
-                                        <a href="<?php echo esc_url($category_url); ?>" class="inline-flex items-center rounded-full border border-on-primary/40 bg-black/35 px-3 py-1 text-[11px] font-semibold !text-on-primary backdrop-blur-sm hover:bg-black/50 hover:!text-on-primary">
-                                            <?php echo esc_html(strtoupper($category_label)); ?>
-                                        </a>
-                                    <?php else: ?>
-                                        <span class="inline-flex items-center rounded-full border border-on-primary/40 bg-black/35 px-3 py-1 text-[11px] font-semibold text-on-primary backdrop-blur-sm">
-                                            <?php echo esc_html(strtoupper($category_label)); ?>
-                                        </span>
-                                    <?php endif; ?>
-                                    <span class="text-on-primary/70" aria-hidden="true">•</span>
-                                    <span><?php echo esc_html($read_label); ?></span>
+                                <p class="mb-4 text-xs font-medium uppercase tracking-wide text-on-primary/90">
+                                    <?php echo esc_html($read_label); ?>
                                 </p>
 
                                 <?php the_title(
@@ -114,18 +93,8 @@ get_header();
 
                   <div class="container relative z-10 mx-auto max-w-6xl px-4 py-10 md:py-14">
                         <div class="max-w-3xl">
-                            <p class="mb-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium uppercase tracking-wide text-on-primary/90">
-                                <?php if ($category_url): ?>
-                                    <a href="<?php echo esc_url($category_url); ?>" class="inline-flex items-center rounded-full border border-on-primary/25 bg-on-primary/10 px-3 py-1 text-[11px] font-semibold text-on-primary backdrop-blur-sm hover:bg-on-primary/20">
-                                        <?php echo esc_html(strtoupper($category_label)); ?>
-                                    </a>
-                                <?php else: ?>
-                                    <span class="inline-flex items-center rounded-full border border-on-primary/25 bg-on-primary/10 px-3 py-1 text-[11px] font-semibold text-on-primary backdrop-blur-sm">
-                                        <?php echo esc_html(strtoupper($category_label)); ?>
-                                    </span>
-                                <?php endif; ?>
-                                <span class="text-on-primary/70" aria-hidden="true">•</span>
-                                <span><?php echo esc_html($read_label); ?></span>
+                            <p class="mb-4 text-xs font-medium uppercase tracking-wide text-on-primary/90">
+                                <?php echo esc_html($read_label); ?>
                             </p>
 
                             <?php the_title(
