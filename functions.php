@@ -595,3 +595,52 @@ add_action(
     },
     99,
 );
+
+/**
+ * Whether the Nera Coming Soon plugin will render for the current request.
+ */
+function live_life_prizes_is_coming_soon_request(): bool
+{
+    if (is_admin() || wp_doing_ajax() || wp_doing_cron()) {
+        return false;
+    }
+
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return false;
+    }
+
+    if (is_user_logged_in()) {
+        return false;
+    }
+
+    if (function_exists('get_field')) {
+        return (bool) get_field('nera_coming_soon_enable', 'option');
+    }
+
+    return true;
+}
+
+/**
+ * Coming Soon maintenance page — layout + brand overrides (body.nera-coming-soon only).
+ * Printed early in wp_footer so it wins over the plugin's inline <head> grid rules.
+ */
+add_action('wp_footer', static function (): void {
+    if (!live_life_prizes_is_coming_soon_request()) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/assets/css/coming-soon-maintenance.css';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    $css = file_get_contents($path);
+    if ($css === false || $css === '') {
+        return;
+    }
+
+    printf(
+        '<style id="live-life-prizes-coming-soon-maintenance">%s</style>',
+        wp_strip_all_tags($css)
+    );
+}, 1);

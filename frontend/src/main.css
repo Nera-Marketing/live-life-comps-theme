@@ -305,6 +305,32 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   color: var(--color-text-secondary);
 }
 
+/* Compliance plugin cards (help-and-support, player-protection): prose list-disc
+   markers stack above block-level titles — these are card lists, not bullet copy. */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  :is(.nera-rp-directory__list, .nera-vc-measures, .nera-cmp-checklist, .nera-cmp-process) {
+  list-style: none;
+  padding-left: 0;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  :is(.nera-rp-directory__list, .nera-vc-measures, .nera-cmp-checklist, .nera-cmp-process)
+  > :is(.nera-rp-directory__item, .nera-vc-measure, .nera-cmp-checklist__item, .nera-cmp-process__step) {
+  list-style: none;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .prose
+  :is(.nera-rp-directory__list, .nera-vc-measures, .nera-cmp-checklist, .nera-cmp-process)
+  > :is(.nera-rp-directory__item, .nera-vc-measure, .nera-cmp-checklist__item, .nera-cmp-process__step)::marker {
+  content: none;
+}
+
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   #primary.site-main
   .prose
@@ -323,6 +349,257 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #pr
 
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose strong {
   color: var(--color-text-primary);
+}
+
+/* Complaints page — warm cream form widget (matches My Account Personal Information) */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  border-radius: 1rem;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .fluentform,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .frm-fluent-form {
+  background: transparent !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-el-form-control,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  textarea.ff-el-form-control,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  select.ff-el-form-control {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  border-radius: 0.75rem !important;
+  color: #3d2418 !important;
+  padding: 0.75rem 1rem !important;
+  min-height: 3rem;
+  font-size: 0.9375rem !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-el-form-control::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-el-form-control:focus,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  textarea.ff-el-form-control:focus,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  select.ff-el-form-control:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+  outline: none !important;
+}
+
+/* Native select arrow — solid triangle like Country/Region (Select2 default caret) */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .frm-fluent-form
+  select.ff-el-form-control,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-default
+  select.ff-el-form-control,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  select.ff-el-form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.75rem !important;
+  cursor: pointer;
+  /* Beats Fluent Forms `.ff-default .ff-el-form-control { background-image: none }` */
+  background: #ffffff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23888888' d='M0 0h10L5 6z'/%3E%3C/svg%3E")
+    no-repeat right 1rem center / 10px 6px !important;
+}
+
+/* Fluent Forms Choices.js dropdown — match My Account Country/Region select */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices {
+  margin-bottom: 0;
+  font-size: 0.9375rem;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__inner {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  border-radius: 0.75rem !important;
+  min-height: 3rem !important;
+  padding: 0.5rem 2.75rem 0.5rem 1rem !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__list--single {
+  padding: 0 !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__list--single
+  .choices__item {
+  color: #3d2418 !important;
+  padding: 0.125rem 0 !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+  opacity: 1 !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices.is-focused
+  .choices__inner,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices.is-open
+  .choices__inner {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+}
+
+/* Solid triangle caret — same as Country/Region Select2 default arrow */
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices[data-type*='select-one']::after,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices[data-type*='select-one'].is-open::after {
+  border: none !important;
+  width: 10px !important;
+  height: 6px !important;
+  margin-top: 0 !important;
+  top: 50% !important;
+  right: 1rem !important;
+  transform: translateY(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23888888' d='M0 0h10L5 6z'/%3E%3C/svg%3E")
+    no-repeat center / 10px 6px !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__list.choices__list--dropdown {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  border-radius: 0.75rem !important;
+  margin-top: 0.35rem !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__list--dropdown
+  .choices__item {
+  color: #3d2418 !important;
+  padding: 0.65rem 1rem !important;
+  font-size: 0.9375rem !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices__list--dropdown
+  .choices__item--selectable.is-highlighted {
+  background-color: color-mix(in srgb, #fffdfb 72%, var(--color-primary)) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .choices[data-type*='select-one']
+  .choices__input {
+  background-color: #ffffff !important;
+  border: 2px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  border-radius: 0.5rem !important;
+  color: #3d2418 !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-el-input--label label {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-btn-submit {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
+}
+
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-btn-submit:hover,
+body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
+  #primary.site-main
+  .nera-cmp-form-card
+  .ff-btn-submit:focus {
+  background: var(--color-primary-dark) !important;
+  border-color: var(--color-primary-dark) !important;
 }
 
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout) #primary.site-main .prose blockquote {

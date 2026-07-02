@@ -77,6 +77,23 @@
     transition-delay: 3000ms;
 }
 
+/* Mobile / tablet — card height follows content (no grid stretch on steps 1–2) */
+@media (max-width: 1023px) {
+    .how-it-works-section .grid {
+        align-items: start;
+    }
+
+    .how-it-works-step > .relative,
+    .how-it-works-card {
+        height: auto !important;
+        min-height: 0;
+    }
+
+    .llp-hiw-step__desc > p:last-child {
+        margin-bottom: 0;
+    }
+}
+
 /* Promise section — stacked full-width chapters */
 .hiw-promise-chapters {
     margin-top: 0;

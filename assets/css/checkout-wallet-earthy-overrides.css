@@ -98,6 +98,91 @@ body.woocommerce-checkout:not(.woocommerce-order-received) input#coupon_code {
   color: #3d2418 !important;
 }
 
+/* --------------------------------------------------------------------------
+   Coupon accordion — expanded body (no extra bg; stay within parent width)
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .bg-surface:has(.woocommerce-form-coupon)
+  > div.border-t {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100%;
+  background-color: transparent !important;
+  background: none !important;
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  > .flex.flex-col {
+  min-width: 0;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  > .flex.flex-col
+  > .flex {
+  min-width: 0;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  .flex-1 {
+  min-width: 0;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  > .flex.flex-col
+  > .flex {
+  flex-wrap: wrap;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  .woocommerce-error,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  .woocommerce-NoticeGroup {
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  button[name='apply_coupon'] {
+  background-color: var(--color-primary) !important;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-accent)
+  ) !important;
+  color: var(--color-on-primary) !important;
+  border: none !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  button[name='apply_coupon']:hover,
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  button[name='apply_coupon']:focus-visible {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary-dark),
+    var(--color-primary)
+  ) !important;
+  color: #fffdfb !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received)
+  .woocommerce-form-coupon
+  input#coupon_code::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+  opacity: 1;
+}
+
 /* Country / Region: WooCommerce replaces the native <select> with Select2 custom divs */
 body.woocommerce-checkout:not(.woocommerce-order-received) #customer_details .select2-selection {
   background-color: #ffffff !important;
@@ -317,4 +402,35 @@ body.woocommerce-checkout:not(.woocommerce-order-received)
 
 body.woocommerce-checkout:not(.woocommerce-order-received) textarea:focus-visible {
   --tw-ring-offset-color: #fffdfb;
+}
+
+/* =============================================================================
+   Spending-limit alerts — border-only (no filled background)
+   Responsible-play signpost + spend-limit status card at checkout.
+   ============================================================================= */
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-rp-checkout-signpost {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid color-mix(in srgb, var(--color-danger) 32%, #e8dcc0) !important;
+  border-left-width: 1px !important;
+  border-radius: 0.75rem;
+  color: #5c4838 !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-rp-checkout-signpost a,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-rp-checkout-signpost .nera-rp-checkout-signpost__link {
+  color: var(--color-primary) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-rp-checkout-signpost a:hover,
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-rp-checkout-signpost a:focus-visible {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-sl-checkout[data-state='over_soft'],
+body.woocommerce-checkout:not(.woocommerce-order-received) .nera-sl-checkout[data-state='over_blocked'] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: color-mix(in srgb, var(--color-danger) 40%, #fca5a5) !important;
 }

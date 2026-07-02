@@ -170,6 +170,135 @@ body.woocommerce-account.logged-in .bg-surface {
     0 1px 3px rgba(0, 0, 0, 0.06) !important;
 }
 
+/* --------------------------------------------------------------------------
+   My Account — self-exclusion / responsible gambling widgets
+   Match Personal Information card (.bg-surface warm cream panels).
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-account.logged-in .nera-se__card,
+body.woocommerce-account.logged-in .nera-se__status {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__card--danger {
+  background: color-mix(
+    in srgb,
+    var(--color-danger) 6%,
+    color-mix(in srgb, #fffdfb 88%, var(--color-primary))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-danger) 32%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__intro-heading,
+body.woocommerce-account.logged-in .nera-se__card-title,
+body.woocommerce-account.logged-in .nera-se__legend,
+body.woocommerce-account.logged-in .nera-se__status-heading,
+body.woocommerce-account.logged-in .nera-se__confirm-text-label {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__intro-copy,
+body.woocommerce-account.logged-in .nera-se__card-subtitle,
+body.woocommerce-account.logged-in .nera-se__custom-label,
+body.woocommerce-account.logged-in .nera-se__status-message,
+body.woocommerce-account.logged-in .nera-se__status-note,
+body.woocommerce-account.logged-in .nera-se__status-help,
+body.woocommerce-account.logged-in .nera-se__check-label {
+  color: color-mix(in srgb, var(--color-primary-dark) 62%, #8a6040) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__card-header {
+  border-bottom-color: color-mix(in srgb, var(--color-primary) 20%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__card-icon {
+  color: var(--color-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__pill-label {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__pill:hover .nera-se__pill-label {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__pill-radio:checked + .nera-se__pill-label {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
+  box-shadow: 0 4px 12px -4px rgba(155, 80, 57, 0.45) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__custom-input,
+body.woocommerce-account.logged-in .nera-se__confirm-text-input {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__custom-input::placeholder,
+body.woocommerce-account.logged-in .nera-se__confirm-text-input::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__custom-input:focus,
+body.woocommerce-account.logged-in .nera-se__confirm-text-input:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__warning {
+  background: color-mix(in srgb, var(--color-danger) 8%, #fffdfb) !important;
+  border-color: color-mix(in srgb, var(--color-danger) 30%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__status--paused {
+  background: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    color-mix(in srgb, #fffdfb 88%, var(--color-primary))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 35%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__status--suspended {
+  background: color-mix(
+    in srgb,
+    var(--color-warning) 8%,
+    color-mix(in srgb, #fffdfb 88%, var(--color-primary))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-warning) 35%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__status--closed {
+  background: color-mix(
+    in srgb,
+    var(--color-danger) 8%,
+    color-mix(in srgb, #fffdfb 88%, var(--color-primary))
+  ) !important;
+  border-color: color-mix(in srgb, var(--color-danger) 35%, #e8dcc0) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__submit--pause,
+body.woocommerce-account.logged-in .nera-se__submit--suspend {
+  background: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
+  box-shadow: 0 6px 18px -6px rgba(155, 80, 57, 0.45) !important;
+}
+
+body.woocommerce-account.logged-in .nera-se__submit--pause:hover:not(:disabled),
+body.woocommerce-account.logged-in .nera-se__submit--suspend:hover:not(:disabled) {
+  background: var(--color-primary-dark) !important;
+}
+
 /* Order/item rows (bg-gray-50) → lighter cream */
 body.woocommerce-account.logged-in .nera-account-dashboard .bg-gray-50,
 body.woocommerce-account.logged-in .nera-account-orders .bg-gray-50,
@@ -620,6 +749,22 @@ body.woocommerce-cart .nera-cart-coupon {
     0 1px 3px rgba(0, 0, 0, 0.06) !important;
 }
 
+/* Cart coupon accordion divider — gray-100 is dark in earthy palette */
+body.woocommerce-cart .bg-surface:has(.coupon-form) > div.border-t {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+body.woocommerce-cart .coupon-form input#coupon_code {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  color: #3d2418 !important;
+}
+
+body.woocommerce-cart .coupon-form input#coupon_code::placeholder {
+  color: color-mix(in srgb, var(--color-primary-dark) 45%, #b0957a) !important;
+  opacity: 1;
+}
+
 /* Empty cart state card */
 body.woocommerce-cart .nera-cart-empty-state {
   background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
@@ -968,4 +1113,89 @@ body.woocommerce-order-received .woocommerce-order .max-w-2xl.bg-surface {
   box-shadow:
     0 4px 24px -8px rgba(155, 80, 57, 0.12),
     0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Order received — Order details line items (bg-gray-50 is dark in earthy palette)
+   Border-only rows on warm cream card.
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-order-received .woocommerce-order-details > .bg-surface {
+  background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+  box-shadow:
+    0 4px 24px -8px rgba(155, 80, 57, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .woocommerce-order-details__title,
+body.woocommerce-order-received .woocommerce-order-details .text-gray-900 {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .text-gray-700 {
+  color: color-mix(in srgb, var(--color-primary-dark) 65%, #8a6040) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .order_item,
+body.woocommerce-order-received .woocommerce-order-details .woocommerce-table__line-item {
+  background-color: transparent !important;
+  background: none !important;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, #d8c4a0) !important;
+  box-shadow: none !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .order_item .text-gray-600,
+body.woocommerce-order-received .woocommerce-order-details .order_item .text-gray-700,
+body.woocommerce-order-received .woocommerce-order-details .order_item [class*='variation'] {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .order_item .bg-surface {
+  background-color: #ffffff !important;
+  border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order-details .border-gray-200,
+body.woocommerce-order-received .woocommerce-order-details .border-gray-100 {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Order received — full-width stacked order details + billing address
+   Parent uses lg:grid-cols-3 (2+1); billing ends up narrower than order details.
+   -------------------------------------------------------------------------- */
+
+body.woocommerce-order-received .woocommerce-order .grid:has(> .woocommerce-order-details) {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+body.woocommerce-order-received .woocommerce-order .grid:has(> .woocommerce-order-details) > .woocommerce-order-details,
+body.woocommerce-order-received .woocommerce-order .grid:has(> .woocommerce-order-details) > .woocommerce-customer-details {
+  grid-column: 1 / -1 !important;
+  width: 100%;
+}
+
+body.woocommerce-order-received .woocommerce-customer-details > .bg-surface,
+body.woocommerce-order-received .woocommerce-customer-details .woocommerce-column {
+  width: 100%;
+}
+
+body.woocommerce-order-received .woocommerce-customer-details .woocommerce-column__title,
+body.woocommerce-order-received .woocommerce-customer-details .text-gray-900 {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-order-received .woocommerce-customer-details .text-gray-700,
+body.woocommerce-order-received .woocommerce-customer-details address {
+  color: color-mix(in srgb, var(--color-primary-dark) 65%, #8a6040) !important;
+}
+
+body.woocommerce-order-received .woocommerce-customer-details .text-gray-500 {
+  color: color-mix(in srgb, var(--color-primary-dark) 55%, #8a6040) !important;
+}
+
+body.woocommerce-order-received .woocommerce-customer-details .border-gray-200,
+body.woocommerce-order-received .woocommerce-customer-details .border-gray-100 {
+  border-color: color-mix(in srgb, var(--color-primary) 14%, #e8dcc0) !important;
 }

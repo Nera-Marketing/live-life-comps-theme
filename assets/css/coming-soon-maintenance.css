@@ -1,0 +1,75 @@
+/**
+ * Live Life Prizes — Coming Soon / maintenance page only (body.nera-coming-soon).
+ * Loaded late via wp_footer so it overrides the plugin's inline <head> layout rules.
+ */
+
+body.nera-coming-soon {
+	display: flex !important;
+	flex-direction: column;
+	align-items: stretch !important;
+	justify-content: flex-start !important;
+	place-items: unset !important;
+	min-height: 100dvh;
+	padding: 0 !important;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+}
+
+body.nera-coming-soon .nera-coming-wrap {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 42rem;
+	margin: 0 auto;
+	padding: clamp(2.5rem, 8vh, 5.5rem) clamp(1.25rem, 4vw, 2.5rem);
+	box-sizing: border-box;
+}
+
+body.nera-coming-soon .nera-coming-logo {
+	margin: 0 auto clamp(1.25rem, 3vh, 1.75rem);
+}
+
+body.nera-coming-soon .nera-coming-logo img {
+	max-width: min(15rem, 72vw);
+	height: auto;
+}
+
+body.nera-coming-soon .nera-coming-title {
+	margin: 0 0 0.875rem;
+	font-family: var(--font-heading, 'Playfair Display', ui-serif, Georgia, serif);
+	font-size: clamp(1.875rem, 4.5vw, 2.75rem);
+	font-weight: 500;
+	line-height: 1.12;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+	color: var(--nera-coming-heading);
+}
+
+body.nera-coming-soon .nera-coming-description {
+	margin: 0 auto;
+	max-width: 34rem;
+	font-family: var(--font-body, 'DM Sans', ui-sans-serif, system-ui, sans-serif);
+	font-size: clamp(1rem, 2.2vw, 1.125rem);
+	font-weight: 400;
+	line-height: 1.65;
+	opacity: 0.92;
+	text-wrap: pretty;
+	color: var(--nera-coming-description);
+}
+
+/* Hide plugin compliance strips on maintenance only — still shown on all other pages */
+body.nera-coming-soon > .nera-rp-footer-strip,
+body.nera-coming-soon > .nera-vc-footer-badge {
+	display: none !important;
+}
+
+@media (max-width: 480px) {
+	body.nera-coming-soon .nera-coming-wrap {
+		padding-top: clamp(2rem, 10vh, 3rem);
+		padding-bottom: clamp(2rem, 10vh, 3rem);
+	}
+}

@@ -140,7 +140,7 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
         </svg>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 <?php echo esc_attr($hiw_grid_cols); ?> gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 <?php echo esc_attr($hiw_grid_cols); ?> gap-2 md:gap-6 lg:gap-8 items-start">
         <?php
         $step_number = 1;
         foreach ($steps as $step):
@@ -149,7 +149,7 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
           $badge_gradient = isset($step['badge_gradient']) ? $step['badge_gradient'] : 'linear-gradient(to bottom right, #9b5039, #c4704e)';
           ?>
           <div class="how-it-works-step relative group" data-animate="fade-in-up" data-delay="<?php echo $delay; ?>">
-            <div class="relative h-full pt-4 pr-4">
+            <div class="relative h-auto lg:h-full pt-4 pr-4">
 
               <div
                 class="absolute top-0 right-0 w-12 h-12 rounded-2xl flex items-center justify-center text-on-primary font-bold text-lg shadow-lg shadow-primary/25 rotate-12 group-hover:rotate-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 will-change-transform"
@@ -158,7 +158,7 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
               </div>
 
               <div
-                class="how-it-works-card relative h-full text-center bg-surface/95 backdrop-blur-sm rounded-3xl p-8 border border-on-primary/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-on-primary/30 overflow-hidden [contain:layout_paint]">
+                class="how-it-works-card relative h-auto lg:h-full text-center bg-surface/95 backdrop-blur-sm rounded-3xl p-5 sm:p-6 lg:p-8 border border-on-primary/15 shadow-lg shadow-black/35 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-xl group-hover:shadow-black/40 group-hover:-translate-y-1 group-hover:border-on-primary/30 overflow-hidden [contain:layout_paint]">
 
                 <div
                   class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden rounded-3xl">
@@ -189,10 +189,10 @@ $hiw_grid_cols = count($steps) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
             </div>
 
             <?php if ($step_number < count($steps)): ?>
-              <div class="flex justify-center py-6 lg:hidden">
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-0.5 h-8 rounded-full" style="background: <?php echo esc_attr($badge_gradient); ?>"></div>
-                  <svg class="w-5 h-5 text-on-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="flex justify-center py-2 lg:hidden">
+                <div class="flex flex-col items-center gap-0.5">
+                  <div class="w-0.5 h-4 rounded-full" style="background: <?php echo esc_attr($badge_gradient); ?>"></div>
+                  <svg class="w-4 h-4 text-on-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                   </svg>
                 </div>
