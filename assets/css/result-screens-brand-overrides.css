@@ -4,6 +4,11 @@
  * Depends on child Vite bundle (--color-*) and lty-result-screens.css.
  */
 
+/* Above header, footer, admin bar, and toast stack once portaled to body */
+.lty-rs-overlay {
+  z-index: 10000000 !important;
+}
+
 body.woocommerce-order-received {
   /* Draw */
   --lty-rs-draw-accent: var(--color-primary);

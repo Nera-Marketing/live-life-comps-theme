@@ -331,6 +331,17 @@ body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   content: none;
 }
 
+/* Voluntary Code — GOV.UK CTA: bright label on primary button (beats prose link + plugin). */
+#primary.site-main .prose .nera-vc-govuk__link {
+  color: #fff !important;
+}
+
+#primary.site-main .prose .nera-vc-govuk__link:hover,
+#primary.site-main .prose .nera-vc-govuk__link:focus {
+  color: #fff !important;
+  text-decoration: none;
+}
+
 body.page-template-default:not(.woocommerce-cart):not(.woocommerce-checkout)
   #primary.site-main
   .prose

@@ -425,6 +425,17 @@ add_action('wp_enqueue_scripts', function (): void {
         [$dep, 'lty-result-screens'],
         (string) filemtime($path),
     );
+
+    $portal_js = get_stylesheet_directory() . '/assets/js/result-screens-overlay-portal.js';
+    if (is_readable($portal_js)) {
+        wp_enqueue_script(
+            'live-life-prizes-result-screens-portal',
+            get_stylesheet_directory_uri() . '/assets/js/result-screens-overlay-portal.js',
+            ['lty-result-screens'],
+            (string) filemtime($portal_js),
+            true,
+        );
+    }
 }, 120);
 
 /**
