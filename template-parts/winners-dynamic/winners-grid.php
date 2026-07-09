@@ -20,6 +20,8 @@ $show_participants_cta    = !empty($args['show_participants_cta']);
 $include_entry_list_modal = !empty($args['include_entry_list_modal']);
 $stack_layout             = !empty($args['stack_layout']);
 
+$page_id = get_queried_object_id();
+
 $counts = function_exists('nera_winners_dynamic_get_filter_counts')
   ? nera_winners_dynamic_get_filter_counts()
   : ['all' => 0, 'main' => 0, 'instant' => 0];
@@ -35,6 +37,16 @@ $total_active   = isset($dataset['total']) ? (int) $dataset['total'] : 0;
 $per_page_ds    = isset($dataset['per_page']) ? (int) $dataset['per_page'] : 12;
 $showing_start  = count($rows);
 $global_empty   = (int) ($counts['all'] ?? 0) === 0;
+
+$empty_copy = function_exists('nera_get_winners_dynamic_empty_copy')
+  ? nera_get_winners_dynamic_empty_copy($page_id)
+  : [
+    'heading' => __('No winners to show yet', 'nera-competitions'),
+    'description' => __(
+      'Winners appear here once competitions have ended and winners are selected in the giveaway settings.',
+      'nera-competitions',
+    ),
+  ];
 
 $ajax_url = admin_url('admin-ajax.php');
 $nonce    = wp_create_nonce('nera_nonce');
@@ -232,10 +244,10 @@ if ($include_entry_list_modal) {
           <span class="material-symbols-outlined text-4xl text-text-secondary">emoji_events</span>
         </div>
         <h3 class="text-xl font-bold text-text-primary mb-2">
-          <?php esc_html_e('No winners to show yet', 'nera-competitions'); ?>
+          <?php echo esc_html($empty_copy['heading']); ?>
         </h3>
         <p class="text-sm text-text-secondary max-w-md mx-auto">
-          <?php esc_html_e('Winners appear here once competitions have ended and winners are selected in the giveaway settings.', 'nera-competitions'); ?>
+          <?php echo esc_html($empty_copy['description']); ?>
         </p>
       </div>
 
