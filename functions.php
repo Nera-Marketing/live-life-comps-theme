@@ -29,6 +29,13 @@ require_once get_stylesheet_directory() . '/inc/winners-dynamic.php';
 require_once get_stylesheet_directory() . '/inc/page-seed.php';
 
 /**
+ * Enable Excerpt on Pages so hero subtitles can be edited in the page editor.
+ */
+add_action('init', static function (): void {
+    add_post_type_support('page', 'excerpt');
+});
+
+/**
  * Last registered parent production Vite CSS handle (nera-vite-css-0, nera-vite-css-1, …).
  */
 function live_life_prizes_get_parent_vite_css_handle(): ?string
