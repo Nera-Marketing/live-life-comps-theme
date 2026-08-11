@@ -12,10 +12,19 @@ if (!defined('ABSPATH')) {
   exit();
 }
 
+// Admin-configurable count + grid columns (Homepage ACF: Current Prizes tab)
+$featured_count = (int) (get_field('featured_count') ?: 3);
+$featured_count = min(12, max(1, $featured_count));
+
+$featured_columns = (string) (get_field('featured_columns') ?: '3');
+if (!in_array($featured_columns, ['2', '3', '4'], true)) {
+  $featured_columns = '3';
+}
+
 // Get competitions - Query for lottery product type
 $competitions_args = [
   'post_type' => 'product',
-  'posts_per_page' => 3,
+  'posts_per_page' => $featured_count,
   'post_status' => 'publish',
   'tax_query' => [
     [
@@ -36,7 +45,7 @@ $competitions = new WP_Query($competitions_args);
 if (!$competitions->have_posts()) {
   $competitions_args = [
     'post_type' => 'product',
-    'posts_per_page' => 3,
+    'posts_per_page' => $featured_count,
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
@@ -45,6 +54,10 @@ if (!$competitions->have_posts()) {
 }
 
 $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop/');
+
+$show_progress_site_wide = function_exists('nera_show_tickets_progress')
+  ? nera_show_tickets_progress()
+  : true;
 ?>
 
 <section class="prizes bg-[#9b5039] border-t border-[rgba(216,181,130,0.2)]" id="ending-soon" data-aos="fade-up">
@@ -59,7 +72,7 @@ $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id
     </div>
     <a href="<?php echo esc_url($view_all_url); ?>"><?php _e('View all prizes', 'nera-competitions'); ?> →</a>
   </div>
-  <div class="prizes-grid">
+  <div class="prizes-grid prizes-grid--cols-<?php echo esc_attr($featured_columns); ?>">
     <?php if ($competitions->have_posts()): ?>
       <?php
       $index = 0;
@@ -80,6 +93,10 @@ $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id
         // Calculate progress
         $progress = $max_tickets ? min(100, round(($sold_tickets / $max_tickets) * 100)) : 0;
         $remaining = $max_tickets ? $max_tickets - $sold_tickets : 0;
+
+        $show_progress = function_exists('nera_show_tickets_progress')
+          ? nera_show_tickets_progress($product_id)
+          : true;
 
         // Get end date
         $end_date_gmt = get_post_meta($product_id, '_lty_end_date_gmt', true);
@@ -130,14 +147,14 @@ $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id
                 <label><?php echo $index === 0 ? __('Max entries', 'nera-competitions') : __('Max', 'nera-competitions'); ?></label>
                 <span class="prize-stat-value"><?php echo $max_tickets ? number_format_i18n($max_tickets) : '—'; ?></span>
               </div>
-              <?php if ($is_live && $max_tickets): ?>
+              <?php if ($is_live && $max_tickets && $show_progress): ?>
                 <div class="prize-stat">
                   <label><?php _e('Sold', 'nera-competitions'); ?></label>
                   <span class="prize-stat-value"><?php echo esc_html($progress); ?>%</span>
                 </div>
               <?php endif; ?>
             </div>
-            <?php if ($is_live && $max_tickets): ?>
+            <?php if ($is_live && $max_tickets && $show_progress): ?>
               <div class="prize-bar"><div class="prize-bar-fill" style="width:<?php echo esc_attr($progress); ?>%"></div></div>
             <?php endif; ?>
           </div>
@@ -160,9 +177,13 @@ $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id
           <div class="prize-stats">
             <div class="prize-stat"><label><?php _e('Price', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
             <div class="prize-stat"><label><?php _e('Max entries', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-            <div class="prize-stat"><label><?php _e('Sold', 'nera-competitions'); ?></label><span class="prize-stat-value">0%</span></div>
+            <?php if ($show_progress_site_wide): ?>
+              <div class="prize-stat"><label><?php _e('Sold', 'nera-competitions'); ?></label><span class="prize-stat-value">0%</span></div>
+            <?php endif; ?>
           </div>
-          <div class="prize-bar"><div class="prize-bar-fill" style="width:0%"></div></div>
+          <?php if ($show_progress_site_wide): ?>
+            <div class="prize-bar"><div class="prize-bar-fill" style="width:0%"></div></div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="prize-card">

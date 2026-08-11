@@ -905,9 +905,20 @@ button[class*='bg-gradient'][class*='9b5039'] {
 
 .prizes-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 20px;
   grid-auto-rows: auto;
+}
+
+.prizes-grid--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.prizes-grid--cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.prizes-grid--cols-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .prizes .prize-card {
