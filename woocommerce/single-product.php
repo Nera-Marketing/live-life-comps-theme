@@ -180,6 +180,9 @@ $extra_images = max(0, count($gallery_images) - $visible_thumbs);
       ? nera_get_merged_related_ids($product_id, 4)
       : ['ids' => [], 'upsell_ids' => []];
     $related_ids = $merged_related['ids'];
+    if (function_exists('live_life_prizes_fill_competition_slots')) {
+      $related_ids = live_life_prizes_fill_competition_slots($related_ids, [(int) $product_id], 4);
+    }
     if (!empty($related_ids)): ?>
       <section class="llp-related-competitions-band p-6 lg:p-8 bg-surface border-t border-gray-100 rounded-2xl">
         <div>
