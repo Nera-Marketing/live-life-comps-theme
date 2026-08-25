@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div
-  class="nera-cart-empty-state max-w-2xl mx-auto border-0 shadow-2xl shadow-primary/5 bg-surface/80 backdrop-blur-sm rounded-3xl p-12 overflow-hidden relative">
+  class="nera-cart-empty-state w-full max-w-2xl mx-auto border-0 shadow-2xl shadow-primary/5 bg-surface/80 backdrop-blur-sm rounded-3xl p-12 overflow-hidden relative">
 
   <!-- Decorative Background Elements -->
   <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
@@ -40,7 +40,7 @@ if (!defined('ABSPATH')) {
     <a href="<?php echo esc_url(
       apply_filters('woocommerce_return_to_shop_redirect', wc_get_page_permalink('shop')),
     ); ?>"
-      class="group relative inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary text-white font-bold text-lg shadow-lg shadow-primary/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1">
+      class="group relative inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary text-white font-bold text-base md:text-lg shadow-lg shadow-primary/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1">
 
       <!-- Shine Effect -->
       <span
@@ -54,25 +54,8 @@ if (!defined('ABSPATH')) {
   </div>
 
   <!-- Trust Badges (Refined) -->
-  <div class="mt-12 pt-10 border-t border-gray-100/80 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-
-      <div class="flex flex-col items-center gap-2 group cursor-default">
-        <div
-          class="llp-cart-trust-icon llp-cart-trust-icon--draws p-2 bg-success-bg rounded-full text-success mb-1 transition-transform group-hover:scale-110 duration-300">
-          <span class="material-symbols-outlined text-xl">verified_user</span>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-text-primary"><?php _e(
-            'Guaranteed Draws',
-            'nera-competitions',
-          ); ?></h4>
-          <p class="text-xs text-text-secondary mt-0.5"><?php _e(
-            'Regardless of sell out',
-            'nera-competitions',
-          ); ?></p>
-        </div>
-      </div>
+  <div class="mt-12 pt-10 border-t border-gray-100/80 relative z-10 w-full">
+    <div class="flex flex-row justify-center items-center gap-6 w-full text-center">
 
       <div class="flex flex-col items-center gap-2 group cursor-default">
         <div
