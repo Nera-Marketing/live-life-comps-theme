@@ -27,6 +27,7 @@ require_once get_stylesheet_directory() . '/inc/footer-widgets-seed.php';
 require_once get_stylesheet_directory() . '/inc/lfw-winners-data.php';
 require_once get_stylesheet_directory() . '/inc/winners-dynamic.php';
 require_once get_stylesheet_directory() . '/inc/page-seed.php';
+require_once get_stylesheet_directory() . '/inc/fill-competition-slots.php';
 
 /**
  * Enable Excerpt on Pages so hero subtitles can be edited in the page editor.

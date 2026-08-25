@@ -765,10 +765,22 @@ body.woocommerce-cart .coupon-form input#coupon_code::placeholder {
   opacity: 1;
 }
 
-/* Empty cart state card */
+/* Empty cart state card — cap at original 3-badge intrinsic width (~527px), not max-w-2xl */
 body.woocommerce-cart .nera-cart-empty-state {
+  width: 100%;
+  max-width: 527px;
   background-color: color-mix(in srgb, #fffdfb 88%, var(--color-primary)) !important;
   border-color: color-mix(in srgb, var(--color-primary) 16%, #e8dcc0) !important;
+}
+
+/* Empty cart CTA: slightly smaller type on small screens so the label stays one line */
+@media (max-width: 767px) {
+  body.woocommerce-cart .nera-cart-empty-state a.group {
+    font-size: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    white-space: nowrap;
+  }
 }
 
 /* Empty cart main icon circle: replace dark gray-50 end-stop with cream */
@@ -787,7 +799,7 @@ body.woocommerce-cart .nera-cart-empty-state .w-20.h-20.rounded-full .material-s
 }
 
 /* Trust badge icon wrappers: force square circle + centred icon */
-body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full {
+body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon {
   width: 3rem !important;
   height: 3rem !important;
   padding: 0 !important;
@@ -795,16 +807,12 @@ body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full {
   align-items: center !important;
   justify-content: center !important;
 }
-body.woocommerce-cart .nera-cart-empty-state .grid .rounded-full .material-symbols-outlined {
+body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon .material-symbols-outlined {
   line-height: 1 !important;
   font-size: 1.25rem !important;
 }
 
 /* Empty cart trust badges — brand terracotta / accent / bronze tints */
-body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--draws {
-  background-color: color-mix(in srgb, var(--color-primary) 20%, #fffdfb) !important;
-  color: var(--color-primary) !important;
-}
 body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--secure,
 body.woocommerce-cart .nera-cart-empty-state .llp-cart-trust-icon--winners {
   background-color: color-mix(in srgb, var(--color-accent) 20%, #fffdfb) !important;

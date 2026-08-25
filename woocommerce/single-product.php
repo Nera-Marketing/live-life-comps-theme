@@ -173,6 +173,28 @@ $extra_images = max(0, count($gallery_images) - $visible_thumbs);
 
     <?php nera_competitions_render_spin_to_win_prizes_section($product); ?>
 
+    <?php do_action('nera_before_related_competitions', $product); ?>
+
+    <?php
+    $merged_related = function_exists('nera_get_merged_related_ids')
+      ? nera_get_merged_related_ids($product_id, 4)
+      : ['ids' => [], 'upsell_ids' => []];
+    $related_ids = $merged_related['ids'];
+    if (function_exists('live_life_prizes_fill_competition_slots')) {
+      $related_ids = live_life_prizes_fill_competition_slots($related_ids, [(int) $product_id], 4);
+    }
+    if (!empty($related_ids)): ?>
+      <section class="llp-related-competitions-band p-6 lg:p-8 bg-surface border-t border-gray-100 rounded-2xl">
+        <div>
+          <?php get_template_part('template-parts/single-product/related-competitions', null, [
+            'product' => $product,
+            'related_ids' => $related_ids,
+            'upsell_ids' => $merged_related['upsell_ids'],
+          ]); ?>
+        </div>
+      </section>
+    <?php endif; ?>
+
   </div>
 
   <?php get_template_part('template-parts/about-us/stories-section', null, ['is_product_context' => true]); ?>
