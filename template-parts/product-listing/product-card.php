@@ -208,7 +208,7 @@ if ($is_related) {
   </div>
 
   <div class="p-6">
-    <h3 class="text-lg font-bold text-text-primary mb-4 line-clamp-2">
+    <h3 class="text-lg font-bold text-text-primary mb-4 line-clamp-2 min-h-[2lh]">
       <a href="<?php echo esc_url($permalink); ?>" class="hover:text-primary transition-colors">
         <?php echo esc_html($title); ?>
       </a>
