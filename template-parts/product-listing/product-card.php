@@ -24,6 +24,9 @@ if (!$product || !is_a($product, 'WC_Product')) {
 
 $cta_mode = isset($args['cta_mode']) && $args['cta_mode'] === 'link' ? 'link' : 'ajax';
 $card_context = isset($args['card_context']) ? (string) $args['card_context'] : '';
+$highlight_badge = isset($args['highlight_badge']) && is_string($args['highlight_badge'])
+  ? trim($args['highlight_badge'])
+  : '';
 $is_related = $card_context === 'related';
 
 $product_id = $product->get_id();
@@ -39,6 +42,10 @@ $sold_tickets = method_exists($product, 'get_purchased_ticket_count')
 
 $progress = $max_tickets ? min(100, round(($sold_tickets / $max_tickets) * 100)) : 0;
 $remaining = $max_tickets ? max(0, $max_tickets - $sold_tickets) : 0;
+
+$show_progress = function_exists('nera_show_tickets_progress')
+  ? nera_show_tickets_progress($product_id)
+  : true;
 
 $end_date_gmt = get_post_meta($product_id, '_lty_end_date_gmt', true);
 $countdown_timestamp = $end_date_gmt ? strtotime($end_date_gmt) * 1000 : 0;
@@ -144,6 +151,14 @@ if ($is_related) {
   data-is-new="<?php echo $is_new ? 'true' : 'false'; ?>">
 
   <div class="relative aspect-[4/3] overflow-hidden">
+    <?php if ($highlight_badge !== ''): ?>
+      <div
+        class="absolute top-4 right-4 z-20 inline-flex items-center gap-1 llp-prize-badge rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-lg">
+        <span class="material-symbols-outlined text-sm leading-none" aria-hidden="true">star</span>
+        <span><?php echo esc_html($highlight_badge); ?></span>
+      </div>
+    <?php endif; ?>
+
     <?php if ($is_related && ($primary_badge_text !== '' || $secondary_badge_text !== '')): ?>
       <div class="absolute top-4 left-4 z-10 flex max-w-[85%] flex-col items-start gap-1.5">
         <?php if ($primary_badge_text !== ''): ?>
@@ -214,7 +229,7 @@ if ($is_related) {
         </div>
       <?php endif; ?>
 
-      <?php if ($max_tickets): ?>
+      <?php if ($max_tickets && $show_progress): ?>
         <div class="space-y-2">
           <div class="flex justify-between items-center text-xs font-bold">
             <span class="text-text-secondary"><?php echo esc_html(

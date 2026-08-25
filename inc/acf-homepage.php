@@ -274,6 +274,32 @@ acf_add_local_field_group([
             'type' => 'text',
             'instructions' => 'Heading above the competition grid.',
         ],
+        [
+            'key' => 'field_llp_home_featured_count',
+            'label' => 'Number of Products',
+            'name' => 'featured_count',
+            'type' => 'number',
+            'instructions' => 'How many competitions to show (1–12).',
+            'default_value' => 3,
+            'min' => 1,
+            'max' => 12,
+            'step' => 1,
+        ],
+        [
+            'key' => 'field_llp_home_featured_columns',
+            'label' => 'Grid Columns (Desktop)',
+            'name' => 'featured_columns',
+            'type' => 'select',
+            'instructions' => 'Number of columns in the grid on desktop.',
+            'choices' => [
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+            ],
+            'default_value' => '3',
+            'return_format' => 'value',
+            'ui' => 0,
+        ],
 
         // Tab: Quick guide
         [
