@@ -305,7 +305,8 @@ acf_add_local_field_group([
             'label' => 'Empty State Heading',
             'name' => 'featured_empty_heading',
             'type' => 'text',
-            'instructions' => 'Shown when no prize is open. Leave empty to hide. Default: "No prizes open right now".',
+            'instructions' => 'Shown when no prize is open. Clear the field to hide the heading.',
+            'default_value' => 'No prizes open right now',
             'placeholder' => 'No prizes open right now',
         ],
         [
@@ -313,7 +314,8 @@ acf_add_local_field_group([
             'label' => 'Empty State Text',
             'name' => 'featured_empty_text',
             'type' => 'text',
-            'instructions' => 'Shown under the heading when no prize is open. Leave empty to hide. Default: "New draws are coming soon. Check back shortly."',
+            'instructions' => 'Shown under the heading when no prize is open. Clear the field to hide the text.',
+            'default_value' => 'New draws are coming soon. Check back shortly.',
             'placeholder' => 'New draws are coming soon. Check back shortly.',
         ],
 
