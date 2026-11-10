@@ -300,6 +300,24 @@ acf_add_local_field_group([
             'return_format' => 'value',
             'ui' => 0,
         ],
+        [
+            'key' => 'field_llp_home_featured_empty_heading',
+            'label' => 'Empty State Heading',
+            'name' => 'featured_empty_heading',
+            'type' => 'text',
+            'instructions' => 'Shown when no prize is open. Clear the field to hide the heading.',
+            'default_value' => 'No prizes open right now',
+            'placeholder' => 'No prizes open right now',
+        ],
+        [
+            'key' => 'field_llp_home_featured_empty_text',
+            'label' => 'Empty State Text',
+            'name' => 'featured_empty_text',
+            'type' => 'text',
+            'instructions' => 'Shown under the heading when no prize is open. Clear the field to hide the text.',
+            'default_value' => 'New draws are coming soon. Check back shortly.',
+            'placeholder' => 'New draws are coming soon. Check back shortly.',
+        ],
 
         // Tab: Quick guide
         [

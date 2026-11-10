@@ -1058,6 +1058,33 @@ button[class*='bg-gradient'][class*='9b5039'] {
   background: linear-gradient(90deg, var(--color-primary), var(--color-on-primary));
 }
 
+.prizes .prizes-empty {
+  background: var(--color-surface);
+  border: 1px solid rgba(216, 181, 130, 0.04);
+  border-radius: 20px;
+  padding: 56px 24px;
+  text-align: center;
+}
+
+.prizes .prizes-empty h3 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--color-on-primary);
+}
+
+.prizes .prizes-empty h3 + p {
+  margin-top: 12px;
+}
+
+.prizes .prizes-empty p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--color-on-primary);
+}
+
 @media (max-width: 1024px) {
   .prizes {
     padding: 60px 24px;

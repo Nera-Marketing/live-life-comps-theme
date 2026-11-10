@@ -41,23 +41,16 @@ $competitions_args = [
 
 $competitions = new WP_Query($competitions_args);
 
-// Fallback to regular products if no lottery products
-if (!$competitions->have_posts()) {
-  $competitions_args = [
-    'post_type' => 'product',
-    'posts_per_page' => $featured_count,
-    'post_status' => 'publish',
-    'orderby' => 'date',
-    'order' => 'DESC',
-  ];
-  $competitions = new WP_Query($competitions_args);
-}
+// Empty-state copy: never saved -> default text, saved blank -> line hidden
+$page_id = get_the_ID();
+$empty_heading = metadata_exists('post', $page_id, 'featured_empty_heading')
+  ? trim((string) get_field('featured_empty_heading', $page_id))
+  : __('No prizes open right now', 'nera-competitions');
+$empty_text = metadata_exists('post', $page_id, 'featured_empty_text')
+  ? trim((string) get_field('featured_empty_text', $page_id))
+  : __('New draws are coming soon. Check back shortly.', 'nera-competitions');
 
 $view_all_url = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop/');
-
-$show_progress_site_wide = function_exists('nera_show_tickets_progress')
-  ? nera_show_tickets_progress()
-  : true;
 ?>
 
 <section class="prizes bg-[#9b5039] border-t border-[rgba(216,181,130,0.2)]" id="ending-soon" data-aos="fade-up">
@@ -72,8 +65,8 @@ $show_progress_site_wide = function_exists('nera_show_tickets_progress')
     </div>
     <a href="<?php echo esc_url($view_all_url); ?>"><?php _e('View all prizes', 'nera-competitions'); ?> →</a>
   </div>
-  <div class="prizes-grid prizes-grid--cols-<?php echo esc_attr($featured_columns); ?>">
-    <?php if ($competitions->have_posts()): ?>
+  <?php if ($competitions->have_posts()): ?>
+    <div class="prizes-grid prizes-grid--cols-<?php echo esc_attr($featured_columns); ?>">
       <?php
       $index = 0;
       while ($competitions->have_posts()):
@@ -102,6 +95,20 @@ $show_progress_site_wide = function_exists('nera_show_tickets_progress')
         $end_date_gmt = get_post_meta($product_id, '_lty_end_date_gmt', true);
         $is_live = $max_tickets && $remaining > 0 && ($end_date_gmt ? strtotime($end_date_gmt) > time() : true);
 
+        // Ending soon: live and less than 24 hours left (same rule as product-card.php)
+        $is_ending_soon = $is_live && $end_date_gmt && (strtotime($end_date_gmt) - time()) < DAY_IN_SECONDS;
+
+        // Label shown in the status pill, e.g. "Ending 8pm" or "Ending tomorrow 8:30pm" (site timezone)
+        $ending_label = '';
+        if ($is_ending_soon) {
+          $end_ts = strtotime($end_date_gmt);
+          $end_time = wp_date(wp_date('i', $end_ts) === '00' ? 'ga' : 'g:ia', $end_ts);
+          $ends_today = wp_date('Y-m-d', $end_ts) === wp_date('Y-m-d');
+          $ending_label = $ends_today
+            ? sprintf(__('Ending %s', 'nera-competitions'), $end_time)
+            : sprintf(__('Ending tomorrow %s', 'nera-competitions'), $end_time);
+        }
+
         // Caption: product category or truncated title
         $terms = get_the_terms($product_id, 'product_cat');
         $caption = $terms && !is_wp_error($terms)
@@ -125,7 +132,9 @@ $show_progress_site_wide = function_exists('nera_show_tickets_progress')
           endif;
           ?>>
             <div class="prize-status">
-              <?php if ($is_live): ?>
+              <?php if ($is_ending_soon): ?>
+                <span class="status-dot"></span> <?php echo esc_html($ending_label); ?>
+              <?php elseif ($is_live): ?>
                 <span class="status-dot"></span> <?php _e('Live Now', 'nera-competitions'); ?>
               <?php else: ?>
                 <?php _e('Coming Soon', 'nera-competitions'); ?>
@@ -164,56 +173,15 @@ $show_progress_site_wide = function_exists('nera_show_tickets_progress')
       endwhile;
       wp_reset_postdata();
       ?>
-    <?php else: ?>
-      <!-- Placeholder cards when no competitions -->
-      <div class="prize-card featured">
-        <div class="prize-img">
-          <div class="prize-status"><span class="status-dot"></span> <?php _e('Live Now', 'nera-competitions'); ?></div>
-          <span><?php _e('Prize', 'nera-competitions'); ?></span>
-        </div>
-        <div class="prize-body">
-          <h3><?php _e('Coming Soon', 'nera-competitions'); ?></h3>
-          <p><?php _e('New competitions will appear here soon.', 'nera-competitions'); ?></p>
-          <div class="prize-stats">
-            <div class="prize-stat"><label><?php _e('Price', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-            <div class="prize-stat"><label><?php _e('Max entries', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-            <?php if ($show_progress_site_wide): ?>
-              <div class="prize-stat"><label><?php _e('Sold', 'nera-competitions'); ?></label><span class="prize-stat-value">0%</span></div>
-            <?php endif; ?>
-          </div>
-          <?php if ($show_progress_site_wide): ?>
-            <div class="prize-bar"><div class="prize-bar-fill" style="width:0%"></div></div>
-          <?php endif; ?>
-        </div>
-      </div>
-      <div class="prize-card">
-        <div class="prize-img">
-          <div class="prize-status"><?php _e('Coming Soon', 'nera-competitions'); ?></div>
-          <span><?php _e('Prize', 'nera-competitions'); ?></span>
-        </div>
-        <div class="prize-body">
-          <h3><?php _e('Coming Soon', 'nera-competitions'); ?></h3>
-          <p><?php _e('Check back for new competitions.', 'nera-competitions'); ?></p>
-          <div class="prize-stats">
-            <div class="prize-stat"><label><?php _e('Price', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-            <div class="prize-stat"><label><?php _e('Max', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="prize-card">
-        <div class="prize-img">
-          <div class="prize-status"><?php _e('Coming Soon', 'nera-competitions'); ?></div>
-          <span><?php _e('Prize', 'nera-competitions'); ?></span>
-        </div>
-        <div class="prize-body">
-          <h3><?php _e('Coming Soon', 'nera-competitions'); ?></h3>
-          <p><?php _e('Check back for new competitions.', 'nera-competitions'); ?></p>
-          <div class="prize-stats">
-            <div class="prize-stat"><label><?php _e('Price', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-            <div class="prize-stat"><label><?php _e('Max', 'nera-competitions'); ?></label><span class="prize-stat-value">—</span></div>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
-  </div>
+    </div>
+  <?php elseif ($empty_heading !== '' || $empty_text !== ''): ?>
+    <div class="prizes-empty">
+      <?php if ($empty_heading !== ''): ?>
+        <h3><?php echo esc_html($empty_heading); ?></h3>
+      <?php endif; ?>
+      <?php if ($empty_text !== ''): ?>
+        <p><?php echo esc_html($empty_text); ?></p>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
 </section>
