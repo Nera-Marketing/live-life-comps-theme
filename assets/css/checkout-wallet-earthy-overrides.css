@@ -264,6 +264,44 @@ body.woocommerce-checkout:not(.woocommerce-order-received)
   accent-color: var(--color-primary);
 }
 
+/* Gateway titles and descriptions inherit the light text token; use the dark text on cream rows */
+body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method .gateway-title {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box,
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box p {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
+/* Phones: brand icons wrap inside the row instead of running past its border */
+@media (max-width: 639px) {
+  body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method > div > label {
+    min-width: 0;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method .gateway-brand-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* Selected row: the parent turns the gateway icon to the light text token */
+body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method.active > div > label .material-symbols-outlined {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Wallet balance card: brand terracotta is under 4.5:1 on cream; darken the amount and icons (hover too) and the links (their hover keeps the accent) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .text-primary:not(a),
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card a.text-primary:not(:hover) {
+  color: var(--color-primary-dark) !important;
+}
+
 /* --------------------------------------------------------------------------
    Payment layout: terms + Place order stacked full-width
    -------------------------------------------------------------------------- */

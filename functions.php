@@ -410,6 +410,34 @@ add_action('wp_enqueue_scripts', function (): void {
 }, 118);
 
 /**
+ * Checkout: notice after the customer cancels the DNA Payments Lightbox.
+ */
+add_action('wp_enqueue_scripts', function (): void {
+    if (!function_exists('is_checkout') || !is_checkout()) {
+        return;
+    }
+    if (function_exists('is_order_received_page') && is_order_received_page()) {
+        return;
+    }
+
+    $path = get_stylesheet_directory() . '/assets/js/dna-cancel-notice.js';
+    if (!is_readable($path)) {
+        return;
+    }
+
+    wp_enqueue_script(
+        'live-life-prizes-dna-cancel-notice',
+        get_stylesheet_directory_uri() . '/assets/js/dna-cancel-notice.js',
+        ['jquery'],
+        (string) filemtime($path),
+        true,
+    );
+    wp_localize_script('live-life-prizes-dna-cancel-notice', 'liveLifeDnaCancel', [
+        'message' => __('Payment cancelled. You have not been charged. You can try again.', 'live-life-prizes'),
+    ]);
+}, 118);
+
+/**
  * Order received: lty-result-screens overlays (draw / win / no-win) — earthy brand tokens.
  */
 add_action('wp_enqueue_scripts', function (): void {
