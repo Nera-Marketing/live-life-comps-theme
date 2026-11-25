@@ -279,8 +279,9 @@ body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method.ac
   color: var(--color-primary-dark) !important;
 }
 
-/* Wallet balance card: brand terracotta is under 4.5:1 on cream; darken amount and links (hover keeps the accent) */
-body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .text-primary:not(:hover) {
+/* Wallet balance card: brand terracotta is under 4.5:1 on cream; darken the amount and icons (hover too) and the links (their hover keeps the accent) */
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card .text-primary:not(a),
+body.woocommerce-checkout:not(.woocommerce-order-received) .llp-wallet-balance-card a.text-primary:not(:hover) {
   color: var(--color-primary-dark) !important;
 }
 

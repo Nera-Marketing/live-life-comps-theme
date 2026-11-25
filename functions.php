@@ -433,7 +433,7 @@ add_action('wp_enqueue_scripts', function (): void {
         true,
     );
     wp_localize_script('live-life-prizes-dna-cancel-notice', 'liveLifeDnaCancel', [
-        'message' => __('Payment cancelled. You have not been charged. You can try again with Place order.', 'live-life-prizes'),
+        'message' => __('Payment cancelled. You have not been charged. You can try again.', 'live-life-prizes'),
     ]);
 }, 118);
 

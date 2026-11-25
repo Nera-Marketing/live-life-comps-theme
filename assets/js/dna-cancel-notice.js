@@ -12,7 +12,7 @@
   var FLAG = '__liveLifeCancelNotice';
 
   function showNotice() {
-    var $form = $('form.checkout');
+    var $form = $('form.checkout, form#order_review').first();
     if (!$form.length || !params.message) {
       return;
     }
@@ -54,7 +54,7 @@
     }
   }, true);
   document.addEventListener('submit', function (event) {
-    if (event.target && event.target.matches && event.target.matches('form.checkout')) {
+    if (event.target && event.target.matches && event.target.matches('form.checkout, form#order_review')) {
       wrapConfigure();
     }
   }, true);
