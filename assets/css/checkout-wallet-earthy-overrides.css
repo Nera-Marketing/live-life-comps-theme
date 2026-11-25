@@ -264,6 +264,16 @@ body.woocommerce-checkout:not(.woocommerce-order-received)
   accent-color: var(--color-primary);
 }
 
+/* Gateway titles and descriptions inherit the light text token; use the dark text on cream rows */
+body.woocommerce-checkout:not(.woocommerce-order-received) .wc_payment_method .gateway-title {
+  color: var(--color-primary-dark) !important;
+}
+
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box,
+body.woocommerce-checkout:not(.woocommerce-order-received) .woocommerce-checkout-payment .payment_box p {
+  color: color-mix(in srgb, var(--color-primary-dark) 60%, #8a6040) !important;
+}
+
 /* --------------------------------------------------------------------------
    Payment layout: terms + Place order stacked full-width
    -------------------------------------------------------------------------- */
